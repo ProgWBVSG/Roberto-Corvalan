@@ -3,7 +3,9 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 
-const WHATSAPP_URL = "https://wa.me/000000000";
+const WHATSAPP_URL =
+  "https://wa.me/5491136830740?text=" +
+  encodeURIComponent("Hola Roberto, vi tu web y quiero coordinar una llamada.");
 
 const faqs = [
   {

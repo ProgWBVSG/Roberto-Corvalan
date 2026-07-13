@@ -290,6 +290,15 @@ export default function Home() {
               );
             })}
           </div>
+
+          <Reveal className="mt-14 md:mt-16 text-center">
+            <a href="#contacto" className="btn btn-gold">
+              Explorá nuestros programas
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
+          </Reveal>
         </div>
       </section>
 
@@ -307,15 +316,15 @@ export default function Home() {
               llegó a un techo?
             </h2>
             <p className="mt-5 max-w-sm text-ink-2/75 leading-relaxed">
-              Reservá 30 minutos sin cargo y salí de la llamada con tu próximo paso claro,
-              no con más dudas.
+              Una consulta estratégica de 30 minutos, sin cargo, para identificar dónde
+              tu liderazgo necesita método, no más esfuerzo.
             </p>
             <div className="mt-8">
               <a
                 href="#contacto"
                 className="inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm font-medium text-ivory transition-all duration-300 hover:-translate-y-0.5 hover:bg-ink-2"
               >
-                Reservá tu llamada gratis
+                Solicitá una consulta estratégica
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
                   <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -369,8 +378,8 @@ export default function Home() {
                 ¿Qué hace que mi coaching funcione?
               </h2>
               <p className="mt-6 max-w-xl text-white/60 leading-relaxed text-lg">
-                Una combinación de claridad, método y acompañamiento humano para desarrollar tu
-                liderazgo y el de tu equipo, con resultados que perduran.
+                Una metodología estructurada y probada, no una fórmula genérica, para desarrollar
+                tu liderazgo y el de tu equipo con resultados medibles.
               </p>
             </Reveal>
             <Reveal delay={120}>
@@ -541,7 +550,7 @@ export default function Home() {
               </ul>
               <div className="mt-10">
                 <a href="#contacto" className="btn btn-gold">
-                  Sumarme a la comunidad
+                  Unite a la comunidad
                 </a>
               </div>
             </Reveal>
@@ -684,11 +693,16 @@ export default function Home() {
                 </svg>
                 hola@robertocorvalan.com
               </a>
-              <a href="https://wa.me/000000000" className="flex items-center gap-3 hover:text-gold-2 transition-colors">
+              <a
+                href={`https://wa.me/5491136830740?text=${encodeURIComponent("Hola Roberto, vi tu web y quiero coordinar una llamada.")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 hover:text-gold-2 transition-colors"
+              >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1112 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 01-1.9-1.2 7.3 7.3 0 01-1.4-1.7c-.1-.3 0-.4.1-.5l.4-.4.2-.4v-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 00-.7.3 2.8 2.8 0 00-.9 2.1 4.9 4.9 0 001 2.6 11 11 0 004.3 3.8c1.6.7 1.9.6 2.3.5a2.5 2.5 0 001.6-1.1 2 2 0 00.1-1.1c0-.1-.2-.2-.4-.3z" />
                 </svg>
-                WhatsApp
+                Contactar por WhatsApp
               </a>
             </div>
           </Reveal>
