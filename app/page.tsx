@@ -9,6 +9,7 @@ import MagneticButton from "@/components/MagneticButton";
 import StatNumber from "@/components/StatNumber";
 import SpotlightCard from "@/components/SpotlightCard";
 import FloatingAssistant from "@/components/FloatingAssistant";
+import ShaderBackground from "@/components/ui/shader-background";
 
 /* Placeholder para fotos reales — se reemplaza por next/image cuando lleguen los assets */
 function Portrait({
@@ -65,13 +66,6 @@ function EventTile({ ratio = "aspect-[4/3]" }: { ratio?: string }) {
     </div>
   );
 }
-
-const stats = [
-  { n: "+1500", l: "Coaches formados y acompañados" },
-  { n: "+20", l: "Años desarrollando líderes" },
-  { n: "+150", l: "Procesos organizacionales" },
-  { n: "98%", l: "Recomiendan la experiencia" },
-];
 
 const roles = [
   { t: "Coach", d: "Sesiones 1:1 de coaching ejecutivo que impulsan decisiones y resultados." },
@@ -413,22 +407,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ STATS BAND (navy) ============ */}
-      <section className="bg-navy text-ivory grain relative">
-        <div className="container-x py-14 md:py-16">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6">
-            {stats.map((s, i) => (
-              <Reveal key={s.n} delay={i * 80} className="text-center md:text-left">
-                <StatNumber value={s.n} className="font-display text-4xl md:text-5xl text-gold-2" />
-                <div className="mt-2 text-sm text-white/55 leading-snug max-w-[12rem] mx-auto md:mx-0">
-                  {s.l}
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ============ SOBRE MÍ ============ */}
       <section id="sobre" className="py-24 md:py-32">
         <div className="container-x grid md:grid-cols-12 gap-12 md:gap-16 items-start">
@@ -516,11 +494,8 @@ export default function Home() {
 
       {/* ============ PARA COACHES (navy, comunidad) ============ */}
       <section id="coaches" className="relative bg-navy text-ivory grain overflow-hidden py-24 md:py-32">
-        <div
-          className="absolute top-0 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full blur-3xl opacity-20"
-          style={{ background: "radial-gradient(circle, var(--gold) 0%, transparent 70%)" }}
-        />
-        <div className="container-x relative grid md:grid-cols-12 gap-12 items-center">
+        <ShaderBackground />
+        <div className="container-x relative z-10 grid md:grid-cols-12 gap-12 items-center">
           <div className="md:col-span-7">
             <Reveal>
               <p className="eyebrow mb-5">Comunidad · Para coaches</p>
@@ -621,17 +596,41 @@ export default function Home() {
             className="relative overflow-hidden rounded-[2rem] grain"
             style={{ background: "radial-gradient(130% 150% at 0% 0%, #17242f 0%, #0a0e15 55%)" }}
           >
-            <div className="grid lg:grid-cols-[1.15fr_0.85fr] items-stretch">
+            <ShaderBackground overlayClassName="bg-[#0a0e15]/55" />
+            <div className="relative z-10 grid lg:grid-cols-[1.15fr_0.85fr] items-stretch">
               <div className="relative z-10 p-9 md:p-12 lg:p-14">
-                <h2 className="font-display text-3xl md:text-4xl lg:text-[2.75rem] leading-[1.1] tracking-[-0.02em] text-ivory">
-                  Tu equipo puede seguir igual…
-                  <br />
-                  <span className="italic text-gold-2">o tener un líder distinto.</span>
+                <h2 className="font-display text-2xl md:text-3xl leading-snug tracking-[-0.01em] text-ivory max-w-md">
+                  El respaldo no se declara.{" "}
+                  <span className="italic text-gold-2">Se construye.</span>
                 </h2>
-                <p className="mt-5 max-w-md text-white/60 leading-relaxed">
-                  El liderazgo no mejora solo con el tiempo. Mejora cuando alguien decide
-                  trabajarlo con acompañamiento y método.
-                </p>
+
+                {/* Número protagonista */}
+                <div className="mt-10 flex items-end gap-4">
+                  <StatNumber
+                    value="+1500"
+                    className="font-display leading-[0.82] text-gold-2 text-[3.75rem] sm:text-7xl lg:text-[5.25rem]"
+                  />
+                  <p className="pb-2.5 max-w-[8.5rem] text-sm leading-tight text-white/60">
+                    coaches formados y acompañados
+                  </p>
+                </div>
+
+                {/* Métricas de apoyo, en línea */}
+                <div className="mt-9 flex flex-wrap items-baseline gap-x-7 gap-y-3">
+                  <span className="text-sm text-white/55">
+                    <span className="font-display text-2xl text-ivory mr-1.5">+20</span>
+                    años desarrollando líderes
+                  </span>
+                  <span className="text-sm text-white/55">
+                    <span className="font-display text-2xl text-ivory mr-1.5">+150</span>
+                    procesos organizacionales
+                  </span>
+                  <span className="text-sm text-white/55">
+                    <span className="font-display text-2xl text-ivory mr-1.5">98%</span>
+                    recomienda la experiencia
+                  </span>
+                </div>
+
                 <a
                   href="#contacto"
                   className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-medium text-ink transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/90 shadow-[0_16px_40px_-16px_rgba(0,0,0,0.6)]"
@@ -672,11 +671,8 @@ export default function Home() {
 
       {/* ============ CONTACTO (CTA final, navy) ============ */}
       <section id="contacto" className="relative bg-navy text-ivory grain overflow-hidden py-24 md:py-32">
-        <div
-          className="absolute inset-x-0 bottom-0 h-80 blur-3xl opacity-25"
-          style={{ background: "radial-gradient(50% 100% at 50% 100%, var(--gold) 0%, transparent 70%)" }}
-        />
-        <div className="container-x relative grid lg:grid-cols-2 gap-14 items-center">
+        <ShaderBackground overlayClassName="bg-[#080b11]/52" />
+        <div className="container-x relative z-10 grid lg:grid-cols-2 gap-14 items-center">
           <Reveal>
             <p className="eyebrow mb-5">Contacto</p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-[2.75rem] leading-[1.15] tracking-[-0.02em] text-balance">
