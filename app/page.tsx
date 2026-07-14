@@ -599,36 +599,38 @@ export default function Home() {
             <ShaderBackground overlayClassName="bg-[#0a0e15]/55" />
             <div className="relative z-10 grid lg:grid-cols-[1.15fr_0.85fr] items-stretch">
               <div className="relative z-10 p-9 md:p-12 lg:p-14">
-                <h2 className="font-display text-2xl md:text-3xl leading-snug tracking-[-0.01em] text-ivory max-w-md">
-                  El respaldo no se declara.{" "}
-                  <span className="italic text-gold-2">Se construye.</span>
+                <h2 className="font-display font-medium text-[2rem] md:text-4xl lg:text-[2.9rem] leading-[1.08] tracking-[-0.02em] text-ivory max-w-lg">
+                  Más de dos décadas de trabajo,{" "}
+                  <span className="italic text-gold-2">respaldadas por números.</span>
                 </h2>
 
-                {/* Número protagonista */}
-                <div className="mt-10 flex items-end gap-4">
-                  <StatNumber
-                    value="+1500"
-                    className="font-display leading-[0.82] text-gold-2 text-[3.75rem] sm:text-7xl lg:text-[5.25rem]"
-                  />
-                  <p className="pb-2.5 max-w-[8.5rem] text-sm leading-tight text-white/60">
-                    coaches formados y acompañados
-                  </p>
-                </div>
-
-                {/* Métricas de apoyo, en línea */}
-                <div className="mt-9 flex flex-wrap items-baseline gap-x-7 gap-y-3">
-                  <span className="text-sm text-white/55">
-                    <span className="font-display text-2xl text-ivory mr-1.5">+20</span>
-                    años desarrollando líderes
-                  </span>
-                  <span className="text-sm text-white/55">
-                    <span className="font-display text-2xl text-ivory mr-1.5">+150</span>
-                    procesos organizacionales
-                  </span>
-                  <span className="text-sm text-white/55">
-                    <span className="font-display text-2xl text-ivory mr-1.5">98%</span>
-                    recomienda la experiencia
-                  </span>
+                {/* Estadísticas — grilla estructurada */}
+                <div className="mt-11 grid grid-cols-2 max-w-lg">
+                  {[
+                    { n: "+1500", l: "Coaches formados y acompañados", hero: true },
+                    { n: "+20", l: "Años desarrollando líderes" },
+                    { n: "+150", l: "Procesos organizacionales" },
+                    { n: "98%", l: "Recomiendan la experiencia" },
+                  ].map((s, i) => (
+                    <div
+                      key={s.n}
+                      className={`py-6 ${i % 2 === 0 ? "pr-7 border-r" : "pl-7"} ${
+                        i < 2 ? "border-b" : ""
+                      } border-[color:var(--navy-line)]`}
+                    >
+                      {s.hero ? (
+                        <StatNumber
+                          value={s.n}
+                          className="block font-display text-[2.75rem] md:text-5xl leading-none tracking-tight text-gold-2"
+                        />
+                      ) : (
+                        <span className="block font-display text-[2.75rem] md:text-5xl leading-none tracking-tight text-gold-2">
+                          {s.n}
+                        </span>
+                      )}
+                      <div className="mt-3 text-sm text-white/55 leading-snug">{s.l}</div>
+                    </div>
+                  ))}
                 </div>
 
                 <a
