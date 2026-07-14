@@ -6,10 +6,10 @@ import ScrollProgress from "@/components/ScrollProgress";
 import SplitHeading from "@/components/SplitHeading";
 import Marquee from "@/components/Marquee";
 import MagneticButton from "@/components/MagneticButton";
-import StatNumber from "@/components/StatNumber";
 import SpotlightCard from "@/components/SpotlightCard";
 import FloatingAssistant from "@/components/FloatingAssistant";
 import ShaderBackground from "@/components/ui/shader-background";
+import Typewriter from "@/components/Typewriter";
 
 /* Placeholder para fotos reales — se reemplaza por next/image cuando lleguen los assets */
 function Portrait({
@@ -598,44 +598,54 @@ export default function Home() {
           >
             <ShaderBackground overlayClassName="bg-[#0a0e15]/55" />
             <div className="relative z-10 grid lg:grid-cols-[1.15fr_0.85fr] items-stretch">
-              <div className="relative z-10 p-9 md:p-12 lg:p-14">
-                <h2 className="font-display font-medium text-[2rem] md:text-4xl lg:text-[2.9rem] leading-[1.08] tracking-[-0.02em] text-ivory max-w-lg">
+              <div className="relative z-10 p-8 md:p-10 lg:p-11 flex flex-col justify-center">
+                <h2 className="font-display font-medium text-[1.65rem] md:text-[1.9rem] lg:text-[2.15rem] leading-[1.1] tracking-[-0.02em] text-ivory max-w-md">
                   Más de dos décadas de trabajo,{" "}
                   <span className="italic text-gold-2">respaldadas por números.</span>
                 </h2>
 
-                {/* Estadísticas — grilla estructurada */}
-                <div className="mt-11 grid grid-cols-2 max-w-lg">
+                {/* Estadística destacada con typewriter */}
+                <div className="mt-8 flex items-baseline gap-3 flex-wrap">
+                  <span className="font-display text-[2.4rem] md:text-5xl leading-none tracking-tight text-gold-2">
+                    +1.500
+                  </span>
+                  <span className="font-display text-xl md:text-2xl italic text-ivory/90">
+                    <Typewriter
+                      words={[
+                        "ejecutivos",
+                        "profesionales",
+                        "emprendedores",
+                        "profesionales independientes",
+                        "empresas",
+                      ]}
+                    />
+                  </span>
+                </div>
+
+                {/* Estadísticas de apoyo — fila */}
+                <div className="mt-7 grid grid-cols-3 max-w-md">
                   {[
-                    { n: "+1500", l: "Coaches formados y acompañados", hero: true },
-                    { n: "+20", l: "Años desarrollando líderes" },
-                    { n: "+150", l: "Procesos organizacionales" },
-                    { n: "98%", l: "Recomiendan la experiencia" },
+                    { n: "+20", l: "Años de experiencia" },
+                    { n: "+150", l: "Procesos guiados" },
+                    { n: "98%", l: "Recomiendan" },
                   ].map((s, i) => (
                     <div
                       key={s.n}
-                      className={`py-6 ${i % 2 === 0 ? "pr-7 border-r" : "pl-7"} ${
-                        i < 2 ? "border-b" : ""
-                      } border-[color:var(--navy-line)]`}
+                      className={
+                        i > 0 ? "pl-5 border-l border-[color:var(--navy-line)]" : ""
+                      }
                     >
-                      {s.hero ? (
-                        <StatNumber
-                          value={s.n}
-                          className="block font-display text-[2.75rem] md:text-5xl leading-none tracking-tight text-gold-2"
-                        />
-                      ) : (
-                        <span className="block font-display text-[2.75rem] md:text-5xl leading-none tracking-tight text-gold-2">
-                          {s.n}
-                        </span>
-                      )}
-                      <div className="mt-3 text-sm text-white/55 leading-snug">{s.l}</div>
+                      <span className="block font-display text-2xl md:text-3xl leading-none tracking-tight text-gold-2">
+                        {s.n}
+                      </span>
+                      <div className="mt-2 text-xs text-white/55 leading-snug">{s.l}</div>
                     </div>
                   ))}
                 </div>
 
                 <a
                   href="#contacto"
-                  className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-medium text-ink transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/90 shadow-[0_16px_40px_-16px_rgba(0,0,0,0.6)]"
+                  className="mt-9 inline-flex w-fit items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-medium text-ink transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/90 shadow-[0_16px_40px_-16px_rgba(0,0,0,0.6)]"
                 >
                   Reservá tu llamada · cupos limitados
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
@@ -643,7 +653,7 @@ export default function Home() {
                   </svg>
                 </a>
               </div>
-              <div className="relative min-h-[340px] md:min-h-[440px]">
+              <div className="relative min-h-[280px] md:min-h-[360px]">
                 <div
                   className="absolute bottom-0 left-1/2 h-3/4 w-4/5 -translate-x-1/2 rounded-full blur-3xl opacity-25"
                   style={{ background: "radial-gradient(circle, var(--gold) 0%, transparent 70%)" }}

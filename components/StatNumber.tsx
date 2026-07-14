@@ -31,7 +31,7 @@ export default function StatNumber({ value, className = "" }: { value: string; c
   return (
     <span ref={ref} className={className}>
       {prefix}
-      <AnimatedNumber value={inView ? num : 0} mass={0.6} stiffness={60} damping={14} />
+      <AnimatedNumber value={inView ? num : 0} mass={0.8} stiffness={120} damping={20} />
       {suffix}
     </span>
   );
