@@ -499,9 +499,21 @@ export default function Home() {
           <div className="md:col-span-7">
             <Reveal>
               <p className="eyebrow mb-5">Comunidad · Para coaches</p>
-              <h2 className="font-display text-3xl md:text-[2.9rem] leading-tight tracking-[-0.02em] text-balance">
-                Una comunidad de{" "}
-                <span className="italic text-gold-2">+1500 coaches</span> que crece unida.
+              <h2 className="font-display text-3xl md:text-[2.9rem] leading-tight tracking-[-0.02em]">
+                Una comunidad que crece unida:{" "}
+                <span className="italic text-gold-2">
+                  +1.500{" "}
+                  <Typewriter
+                    words={[
+                      "coaches",
+                      "ejecutivos",
+                      "profesionales",
+                      "emprendedores",
+                      "profesionales independientes",
+                      "empresas",
+                    ]}
+                  />
+                </span>
               </h2>
               <p className="mt-7 max-w-xl text-white/65 leading-relaxed text-lg">
                 Si sos coach, este es tu lugar. Formación continua, mentoría, supervisión de casos y

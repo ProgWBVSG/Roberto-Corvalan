@@ -10,6 +10,31 @@ const links = [
   { href: "#eventos", label: "Eventos" },
 ];
 
+const socials = [
+  {
+    label: "Instagram",
+    href: "https://instagram.com/",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+      </svg>
+    ),
+  },
+  {
+    label: "LinkedIn",
+    href: "https://linkedin.com/",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-11h4v1.5" />
+        <rect width="4" height="12" x="2" y="9" />
+        <circle cx="4" cy="4" r="2" />
+      </svg>
+    ),
+  },
+];
+
 export default function SiteNav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -47,20 +72,39 @@ export default function SiteNav() {
           ))}
         </nav>
 
-        {/* Right CTA pill */}
-        <a
-          href="#contacto"
-          className={`hidden md:inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-medium transition-all duration-500 hover:-translate-y-0.5 ${
-            scrolled
-              ? "bg-ink text-ivory hover:bg-ink-2 shadow-[0_10px_30px_-10px_rgba(20,23,30,0.5)]"
-              : "bg-white text-ink shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] hover:bg-white/90"
-          }`}
-        >
-          Agendá tu sesión
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-            <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </a>
+        {/* Right: redes + CTA */}
+        <div className="hidden md:flex items-center gap-2">
+          {socials.map((s) => (
+            <a
+              key={s.label}
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={s.label}
+              className={`flex h-9 w-9 items-center justify-center rounded-full border transition-colors duration-500 ${
+                scrolled
+                  ? "border-[color:var(--line)] text-ink-2 hover:border-[color:var(--gold)] hover:text-gold"
+                  : "border-white/20 text-white/70 hover:border-gold-2 hover:text-gold-2"
+              }`}
+            >
+              {s.icon}
+            </a>
+          ))}
+
+          <a
+            href="#contacto"
+            className={`ml-1 inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-medium transition-all duration-500 hover:-translate-y-0.5 ${
+              scrolled
+                ? "bg-ink text-ivory hover:bg-ink-2 shadow-[0_10px_30px_-10px_rgba(20,23,30,0.5)]"
+                : "bg-white text-ink shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] hover:bg-white/90"
+            }`}
+          >
+            Agendá tu sesión
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+              <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
+        </div>
 
         {/* Mobile toggle */}
         <button
@@ -102,6 +146,21 @@ export default function SiteNav() {
           >
             Agendá tu sesión
           </a>
+
+          <div className="mt-4 flex items-center justify-center gap-3 border-t border-[color:var(--line-2)] pt-4">
+            {socials.map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={s.label}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-[color:var(--line)] text-ink-2 transition-colors hover:border-[color:var(--gold)] hover:text-gold"
+              >
+                {s.icon}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </header>
