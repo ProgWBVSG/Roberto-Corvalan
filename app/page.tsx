@@ -10,6 +10,7 @@ import SpotlightCard from "@/components/SpotlightCard";
 import FloatingAssistant from "@/components/FloatingAssistant";
 import ShaderBackground from "@/components/ui/shader-background";
 import Typewriter from "@/components/Typewriter";
+import CompanyOrbit from "@/components/CompanyOrbit";
 
 /* Placeholder para fotos reales — se reemplaza por next/image cuando lleguen los assets */
 function Portrait({
@@ -232,6 +233,13 @@ export default function Home() {
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ============ EMPRESAS (órbita) ============ */}
+      <section className="pt-16 md:pt-20 pb-4 overflow-hidden">
+        <div className="container-x">
+          <CompanyOrbit />
         </div>
       </section>
 
