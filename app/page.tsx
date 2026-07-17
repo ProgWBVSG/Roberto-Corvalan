@@ -237,7 +237,7 @@ export default function Home() {
       </section>
 
       {/* ============ EMPRESAS (órbita) ============ */}
-      <section className="pt-16 md:pt-20 pb-4 overflow-hidden">
+      <section className="relative grain overflow-hidden pt-10 md:pt-12 pb-0">
         <div className="container-x">
           <CompanyOrbit />
         </div>

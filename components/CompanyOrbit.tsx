@@ -60,6 +60,8 @@ function angleAtArc(lut: Lut, s: number) {
 export default function CompanyOrbit() {
   const wrapRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<SVGEllipseElement>(null);
+  const ring2Ref = useRef<SVGEllipseElement>(null);
+  const ring3Ref = useRef<SVGEllipseElement>(null);
   const itemsRef = useRef<Array<HTMLDivElement | null>>([]);
   const dist = useRef(0);
   const paused = useRef(false);
@@ -85,13 +87,16 @@ export default function CompanyOrbit() {
       const ry = Math.max(h / 2 - pad, 28);
       dims.current = { w, h, rx, ry, lut: buildLut(rx, ry) };
 
-      const ring = ringRef.current;
-      if (ring) {
-        ring.setAttribute("cx", String(w / 2));
-        ring.setAttribute("cy", String(h / 2));
-        ring.setAttribute("rx", String(rx));
-        ring.setAttribute("ry", String(ry));
-      }
+      const setRing = (el: SVGEllipseElement | null, fx: number, fy: number) => {
+        if (!el) return;
+        el.setAttribute("cx", String(w / 2));
+        el.setAttribute("cy", String(h / 2));
+        el.setAttribute("rx", String(rx * fx));
+        el.setAttribute("ry", String(ry * fy));
+      };
+      setRing(ringRef.current, 1, 1);
+      setRing(ring2Ref.current, 0.72, 0.62);
+      setRing(ring3Ref.current, 0.44, 0.3);
     };
 
     const place = (dt: number) => {
@@ -148,40 +153,67 @@ export default function CompanyOrbit() {
         paused.current = false;
         hovered.current = null;
       }}
-      className={`relative mx-auto h-[320px] w-full max-w-5xl sm:h-[360px] transition-opacity duration-700 ${
+      className={`relative mx-auto h-[250px] w-full max-w-5xl sm:h-[280px] transition-opacity duration-700 ${
         ready ? "opacity-100" : "opacity-0"
       }`}
     >
       {/* Resplandor central */}
       <div
-        className="pointer-events-none absolute left-1/2 top-1/2 h-56 w-[36rem] max-w-full -translate-x-1/2 -translate-y-1/2 blur-3xl"
+        className="pointer-events-none absolute left-1/2 top-1/2 h-64 w-[40rem] max-w-full -translate-x-1/2 -translate-y-1/2 blur-3xl"
         style={{
           background:
-            "radial-gradient(ellipse at center, rgba(176,141,76,0.16), transparent 70%)",
+            "radial-gradient(ellipse at center, rgba(176,141,76,0.2), rgba(28,58,107,0.08) 55%, transparent 75%)",
         }}
       />
 
-      {/* Trayectoria de la órbita */}
+      {/* Anillos concéntricos (esfera de brújula) */}
       <svg className="pointer-events-none absolute inset-0 h-full w-full" aria-hidden="true">
         <ellipse
           ref={ringRef}
           fill="none"
           stroke="#B08D4C"
-          strokeOpacity="0.28"
+          strokeOpacity="0.35"
           strokeWidth="1"
           strokeDasharray="2 7"
           strokeLinecap="round"
         />
+        <ellipse
+          ref={ring2Ref}
+          fill="none"
+          stroke="#B08D4C"
+          strokeOpacity="0.14"
+          strokeWidth="1"
+        />
+        <ellipse
+          ref={ring3Ref}
+          fill="none"
+          stroke="#B08D4C"
+          strokeOpacity="0.08"
+          strokeWidth="1"
+        />
       </svg>
 
       {/* Texto central */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 z-20 w-[12rem] -translate-x-1/2 -translate-y-1/2 text-center sm:w-auto">
-        <h2 className="font-display text-xl leading-tight tracking-[-0.015em] sm:whitespace-nowrap sm:text-[2.15rem]">
-          Empresas que confían en mí
+      <div className="pointer-events-none absolute left-1/2 top-[44%] z-20 w-[13rem] -translate-x-1/2 -translate-y-1/2 text-center sm:w-auto">
+        {/* Velo que esfuma los círculos al pasar detrás del texto */}
+        <div
+          className="absolute -inset-x-16 -inset-y-10"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, var(--ivory) 38%, rgba(246,242,234,0.75) 60%, transparent 78%)",
+          }}
+        />
+        <svg
+          className="relative mx-auto mb-4 h-4 w-4 text-gold"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z" />
+        </svg>
+        <h2 className="relative font-display font-medium text-[1.6rem] leading-[1.12] tracking-[-0.02em] text-ink sm:whitespace-nowrap sm:text-[2.6rem]">
+          Empresas que <span className="italic text-gold">confían</span> en mí
         </h2>
-        <p className="mx-auto mt-3 max-w-[15rem] text-[0.72rem] leading-relaxed text-ink-2/55 sm:max-w-sm sm:text-[0.82rem]">
-          Organizaciones que eligieron trabajar su liderazgo con método.
-        </p>
       </div>
 
       {/* Órbita */}
@@ -199,7 +231,7 @@ export default function CompanyOrbit() {
           <div className="flex h-11 w-11 items-center justify-center rounded-full border border-[color:var(--line)] bg-paper font-display text-xs text-gold shadow-[0_12px_28px_-12px_rgba(20,23,30,0.35)] transition-colors duration-300 group-hover:border-[color:var(--gold)] group-hover:shadow-[0_16px_36px_-12px_rgba(176,141,76,0.5)] sm:h-20 sm:w-20 sm:text-lg">
             {c.logo}
           </div>
-          <span className="text-center text-[9px] leading-tight text-ink-2/60 transition-colors duration-300 group-hover:text-ink sm:text-[11px]">
+          <span className="whitespace-nowrap text-center text-[8px] uppercase tracking-[0.16em] text-ink-2/55 transition-colors duration-300 group-hover:text-gold sm:text-[10px]">
             {c.name}
           </span>
         </div>
