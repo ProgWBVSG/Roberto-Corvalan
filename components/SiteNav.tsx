@@ -13,7 +13,7 @@ const links = [
 const socials = [
   {
     label: "Instagram",
-    href: "https://instagram.com/",
+    href: "https://www.instagram.com/roberto.corvalan.coach/",
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
@@ -24,7 +24,7 @@ const socials = [
   },
   {
     label: "LinkedIn",
-    href: "https://linkedin.com/",
+    href: "https://www.linkedin.com/in/roberto-c-corvalan-coach-profesional-649749a4/",
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-11h4v1.5" />

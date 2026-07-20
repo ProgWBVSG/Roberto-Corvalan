@@ -11,58 +11,38 @@ import FloatingAssistant from "@/components/FloatingAssistant";
 import ShaderBackground from "@/components/ui/shader-background";
 import Typewriter from "@/components/Typewriter";
 import CompanyOrbit from "@/components/CompanyOrbit";
+import Footer from "@/components/Footer";
 
-/* Placeholder para fotos reales — se reemplaza por next/image cuando lleguen los assets */
-function Portrait({
+function EventTile({
+  src,
+  alt,
   label,
-  className = "",
-  ratio = "aspect-[4/5]",
+  ratio = "aspect-[4/3]",
+  position = "object-center",
 }: {
-  label: string;
-  className?: string;
+  src: string;
+  alt: string;
+  label?: string;
   ratio?: string;
+  position?: string;
 }) {
   return (
-    <div
-      className={`relative ${ratio} overflow-hidden rounded-2xl border border-[color:var(--line)] ${className}`}
-      style={{
-        background:
-          "linear-gradient(145deg, #1a2230 0%, #0c1017 55%, #05070c 100%)",
-      }}
-    >
-      <div className="absolute inset-0 grain" />
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-center px-6">
-        <span className="font-display text-4xl text-[color:var(--gold-2)]/70">RC</span>
-        <span className="text-[11px] uppercase tracking-[0.2em] text-white/35">
-          {label}
-        </span>
-      </div>
-      <div
-        className="absolute -inset-x-10 -bottom-10 h-40 blur-3xl opacity-40"
-        style={{ background: "radial-gradient(50% 100% at 50% 100%, var(--gold) 0%, transparent 70%)" }}
-      />
-    </div>
-  );
-}
-
-function EventTile({ ratio = "aspect-[4/3]" }: { ratio?: string }) {
-  return (
     <div className={`group relative ${ratio} overflow-hidden rounded-2xl border border-[color:var(--line)]`}>
-      <div
-        className="absolute inset-0 transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
-        style={{ background: "linear-gradient(145deg, #17202e 0%, #0b0f16 100%)" }}
-      >
-        <div className="absolute inset-0 grain" />
-      </div>
-      <div className="absolute inset-0 flex items-center justify-center text-gold-2/40 transition-transform duration-700 group-hover:scale-90">
-        <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="3" y="5" width="18" height="16" rx="2" />
-          <path d="M3 10h18M8 3v4M16 3v4" />
-        </svg>
-      </div>
-      <span className="absolute left-4 top-4 text-[10px] uppercase tracking-[0.2em] text-white/30">
-        Imagen evento
-      </span>
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes="(max-width: 768px) 90vw, 45vw"
+        className={`object-cover ${position} transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105`}
+      />
+      {label && (
+        <>
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent" />
+          <span className="absolute bottom-3 left-4 text-[10px] uppercase tracking-[0.18em] text-white/85">
+            {label}
+          </span>
+        </>
+      )}
       <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-transparent transition-colors duration-500 group-hover:ring-[color:var(--gold)]/40" />
     </div>
   );
@@ -420,7 +400,16 @@ export default function Home() {
         <div className="container-x grid md:grid-cols-12 gap-12 md:gap-16 items-start">
           <div className="md:col-span-5 md:sticky md:top-28">
             <Reveal>
-              <Portrait label="Foto · Roberto Corvalán" ratio="aspect-[4/5]" />
+              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-[color:var(--line)]">
+                <Image
+                  src="/fotos/retrato.jpeg"
+                  alt="Roberto Corvalán"
+                  fill
+                  sizes="(max-width: 768px) 90vw, 40vw"
+                  className="object-cover"
+                />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/35 to-transparent" />
+              </div>
             </Reveal>
           </div>
           <div className="md:col-span-7">
@@ -552,7 +541,19 @@ export default function Home() {
           </div>
           <div className="md:col-span-5">
             <Reveal delay={150}>
-              <Portrait label="Foto · comunidad de coaches" ratio="aspect-[4/5]" className="border-[color:var(--navy-line)]" />
+              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-[color:var(--navy-line)]">
+                <Image
+                  src="/fotos/comunidad.jpeg"
+                  alt="Roberto Corvalán junto a coaches certificados de su comunidad"
+                  fill
+                  sizes="(max-width: 768px) 90vw, 40vw"
+                  className="object-cover"
+                />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/50 to-transparent" />
+                <span className="absolute bottom-3 left-4 text-[10px] uppercase tracking-[0.18em] text-white/85">
+                  Entrega de certificaciones
+                </span>
+              </div>
             </Reveal>
           </div>
         </div>
@@ -580,7 +581,7 @@ export default function Home() {
                 <p className="px-6 text-xs uppercase tracking-[0.24em] text-gold mb-4">
                   Referentes invitados
                 </p>
-                <Marquee items={["Referente 1", "Referente 2", "Referente 3", "Referente 4", "Referente 5"]} />
+                <Marquee items={["Jonatan Loidi", "Grupo Set", "Referente 3", "Referente 4", "Referente 5"]} />
               </div>
             </Reveal>
 
@@ -597,13 +598,30 @@ export default function Home() {
           {/* Collage asimétrico */}
           <div className="grid grid-cols-2 gap-4">
             <Reveal className="col-span-2">
-              <EventTile ratio="aspect-[16/9]" />
+              <EventTile
+                src="/fotos/evento-taller.jpeg"
+                alt="Roberto Corvalán dictando un taller de liderazgo"
+                label="Taller · Modelo de negocio"
+                ratio="aspect-[16/9]"
+              />
             </Reveal>
             <Reveal delay={120}>
-              <EventTile ratio="aspect-[4/3]" />
+              <EventTile
+                src="/fotos/evento-conferencia.jpeg"
+                alt="Roberto Corvalán dando una conferencia"
+                label="Conferencia"
+                ratio="aspect-[4/3]"
+                position="object-top"
+              />
             </Reveal>
             <Reveal delay={220}>
-              <EventTile ratio="aspect-[4/3]" />
+              <EventTile
+                src="/fotos/evento-loidi.jpeg"
+                alt="Roberto Corvalán junto a Jonatan Loidi en un evento de Grupo Set"
+                label="Con Jonatan Loidi · Grupo Set"
+                ratio="aspect-[4/3]"
+                position="object-top"
+              />
             </Reveal>
           </div>
         </div>
@@ -762,30 +780,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ FOOTER ============ */}
-      <footer className="bg-navy-2 text-ivory border-t border-[color:var(--navy-line)]">
-        <div className="container-x py-14">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-            <div>
-              <div className="font-display text-2xl">Roberto Corvalán</div>
-              <p className="mt-2 text-sm text-white/50 max-w-xs">
-                Coach ejecutivo · Liderazgo · Desarrollo personal y gestión organizacional.
-              </p>
-            </div>
-            <div className="flex gap-6 text-sm text-white/60">
-              <a href="#sobre" className="hover:text-gold-2 transition-colors">Sobre mí</a>
-              <a href="#enfoque" className="hover:text-gold-2 transition-colors">Enfoque</a>
-              <a href="#servicios" className="hover:text-gold-2 transition-colors">Servicios</a>
-              <a href="#contacto" className="hover:text-gold-2 transition-colors">Contacto</a>
-            </div>
-          </div>
-          <div className="hairline my-10 opacity-40" />
-          <div className="flex flex-col sm:flex-row justify-between gap-3 text-xs text-white/35">
-            <span>© {new Date().getFullYear()} Roberto Corvalán. Todos los derechos reservados.</span>
-            <span>Diseño y desarrollo por MYB Digitals</span>
-          </div>
-        </div>
-      </footer>
+      <Footer />
 
       <FloatingAssistant />
     </main>

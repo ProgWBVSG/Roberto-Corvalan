@@ -1,19 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
-// Empresas ficticias — reemplazar por las reales (logo + nombre)
 const companies = [
-  { name: "Grupo Andes", logo: "GA" },
-  { name: "Nexo Consultora", logo: "NC" },
-  { name: "Vértice Group", logo: "VG" },
-  { name: "Altamira", logo: "AL" },
-  { name: "Praxis Consulting", logo: "PX" },
-  { name: "Delta Logística", logo: "DL" },
-  { name: "Rivera & Asoc.", logo: "RA" },
-  { name: "Origen Salud", logo: "OS" },
-  { name: "Meridiano", logo: "MD" },
-  { name: "Kaizen Corp", logo: "KZ" },
+  { name: "Abart", logo: "/logos/abart.jpeg" },
+  { name: "Federación Patronal Seguros", logo: "/logos/federacion-patronal.jpeg" },
+  { name: "Forza Seguros", logo: "/logos/forza-seguros.jpeg" },
+  { name: "Mary Kay", logo: "/logos/mary-kay.jpeg" },
+  { name: "Monsalvo Propiedades", logo: "/logos/monsalvo-propiedades.jpeg" },
+  { name: "PARH APS Seguros", logo: "/logos/parh-aps.jpeg" },
 ];
 
 type Lut = { ts: Float64Array; ls: Float64Array; total: number };
@@ -228,8 +224,14 @@ export default function CompanyOrbit() {
           className="group absolute left-1/2 top-1/2 flex w-16 cursor-pointer flex-col items-center gap-2 sm:w-24"
           style={{ willChange: "transform, opacity" }}
         >
-          <div className="flex h-11 w-11 items-center justify-center rounded-full border border-[color:var(--line)] bg-paper font-display text-xs text-gold shadow-[0_12px_28px_-12px_rgba(20,23,30,0.35)] transition-colors duration-300 group-hover:border-[color:var(--gold)] group-hover:shadow-[0_16px_36px_-12px_rgba(176,141,76,0.5)] sm:h-20 sm:w-20 sm:text-lg">
-            {c.logo}
+          <div className="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-xl border border-[color:var(--line)] bg-white p-1.5 shadow-[0_12px_28px_-12px_rgba(20,23,30,0.35)] transition-colors duration-300 group-hover:border-[color:var(--gold)] group-hover:shadow-[0_16px_36px_-12px_rgba(176,141,76,0.5)] sm:h-20 sm:w-20 sm:rounded-2xl sm:p-2.5">
+            <Image
+              src={c.logo}
+              alt={c.name}
+              fill
+              sizes="80px"
+              className="object-contain"
+            />
           </div>
           <span className="whitespace-nowrap text-center text-[8px] uppercase tracking-[0.16em] text-ink-2/55 transition-colors duration-300 group-hover:text-gold sm:text-[10px]">
             {c.name}
