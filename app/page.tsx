@@ -12,6 +12,7 @@ import ShaderBackground from "@/components/ui/shader-background";
 import Typewriter from "@/components/Typewriter";
 import LogoMarquee from "@/components/LogoMarquee";
 import StickyServices from "@/components/StickyServices";
+import RolesCarousel from "@/components/RolesCarousel";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 
@@ -124,11 +125,11 @@ export default function Home() {
           priority
           quality={90}
           sizes="100vw"
-          className="object-cover object-[75%_center] md:object-right"
+          className="object-cover object-[68%_18%] md:object-right"
         />
-        {/* Degradados para legibilidad del texto a la izquierda */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#06080d] via-[#06080d]/85 md:via-[#06080d]/60 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#06080d] via-transparent to-[#06080d]/40" />
+        {/* Degradados para legibilidad del texto (más marcados en mobile para calmar la foto) */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#06080d] via-[#06080d]/80 md:via-[#06080d]/60 to-[#06080d]/30 md:to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#06080d] via-[#06080d]/45 to-[#06080d]/55 md:via-transparent md:to-[#06080d]/40" />
 
         <div className="container-x relative w-full flex-1 flex flex-col justify-center pt-28">
           <div className="max-w-3xl pb-10 md:pb-0 text-center md:text-left mx-auto md:mx-0">
@@ -171,15 +172,7 @@ export default function Home() {
 
         {/* Roles */}
         <div className="container-x relative w-full pt-10 md:pt-12 pb-10 md:pb-14">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-9">
-            {roles.map((r, i) => (
-              <Reveal key={r.t} delay={i * 80} className="text-center md:text-left">
-                <div className="h-px w-full bg-gradient-to-r from-white/25 via-white/40 to-white/25 md:from-white/50 md:via-white/25 md:to-transparent mb-5" />
-                <h3 className="text-base md:text-lg font-medium text-white">{r.t}</h3>
-                <p className="mt-2 text-sm text-white/55 leading-relaxed max-w-[15rem] mx-auto md:mx-0">{r.d}</p>
-              </Reveal>
-            ))}
-          </div>
+          <RolesCarousel roles={roles} />
         </div>
       </section>
 
