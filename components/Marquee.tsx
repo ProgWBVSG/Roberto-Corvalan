@@ -1,7 +1,10 @@
 "use client";
 
 export default function Marquee({ items }: { items: string[] }) {
-  const loop = [...items, ...items];
+  // Repetimos la base hasta tener suficiente ancho para un loop continuo
+  const base: string[] = [];
+  while (items.length && base.length < 8) base.push(...items);
+  const loop = [...base, ...base];
 
   return (
     <div className="group relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">

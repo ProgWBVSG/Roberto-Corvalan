@@ -37,9 +37,9 @@ export default function SplitHeading({
       variants={container}
     >
       {lines.map((line, li) => (
-        <span key={li} className={`block overflow-hidden ${line.className ?? ""}`}>
+        <span key={li} className={`block overflow-y-hidden pl-[0.06em] -ml-[0.06em] ${line.className ?? ""}`}>
           {line.text.split(" ").map((w, wi) => (
-            <span key={wi} className="inline-block overflow-hidden mr-[0.28em] align-top">
+            <span key={wi} className="inline-block overflow-y-hidden mr-[0.28em] align-top">
               <motion.span className="inline-block" variants={word}>
                 {w}
               </motion.span>

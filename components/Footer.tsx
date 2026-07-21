@@ -48,17 +48,17 @@ export default function Footer() {
   return (
     <footer className="bg-navy-2 text-ivory border-t border-[color:var(--navy-line)]">
       <div className="container-x py-16 md:py-20">
-        <div className="grid gap-12 md:grid-cols-[1.4fr_0.8fr_0.8fr_1fr]">
+        <div className="grid gap-12 md:grid-cols-[1.4fr_0.8fr_0.8fr_1fr] text-center md:text-left">
           {/* Marca */}
           <div>
             <Link href="/#top" className="font-display text-2xl">
               Roberto Corvalán
             </Link>
-            <p className="mt-3 max-w-xs text-sm leading-relaxed text-white/50">
+            <p className="mt-3 max-w-xs mx-auto md:mx-0 text-sm leading-relaxed text-white/50">
               Coach ejecutivo certificado ICF. Desarrollo personal, liderazgo y gestión
               organizacional para líderes, equipos y una comunidad de +1.500 coaches.
             </p>
-            <div className="mt-6 flex gap-2.5">
+            <div className="mt-6 flex gap-2.5 justify-center md:justify-start">
               {socials.map((s) => (
                 <a
                   key={s.label}
@@ -129,16 +129,30 @@ export default function Footer() {
 
         <div className="hairline my-10 opacity-40" />
 
-        <div className="flex flex-col gap-4 text-xs text-white/35 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col items-center gap-4 text-xs text-white/35 sm:flex-row sm:items-center sm:justify-between">
           <span>© {new Date().getFullYear()} Roberto Corvalán. Todos los derechos reservados.</span>
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
             <Link href="/privacidad" className="hover:text-white/60 transition-colors">
               Política de Privacidad
             </Link>
             <Link href="/terminos" className="hover:text-white/60 transition-colors">
               Términos y Condiciones
             </Link>
-            <span>Diseño y desarrollo por MYB Digitals</span>
+            <span className="inline-flex items-center gap-1.5">
+              Hecho con
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" className="text-[color:var(--gold-2)]" aria-label="amor">
+                <path d="M12 21s-6.7-4.35-9.3-8.3C.9 9.9 2 6.7 4.8 5.9c1.9-.5 3.7.4 4.7 1.9l.5.8.5-.8c1-1.5 2.8-2.4 4.7-1.9 2.8.8 3.9 4 2.1 6.8C18.7 16.65 12 21 12 21z" />
+              </svg>
+              por{" "}
+              <a
+                href="https://mybdigitals.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-white/55 hover:text-gold-2 transition-colors"
+              >
+                MYB Digitals
+              </a>
+            </span>
           </div>
         </div>
       </div>
