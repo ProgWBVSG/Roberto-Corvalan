@@ -52,7 +52,7 @@ export default function Footer() {
           {/* Marca */}
           <div>
             <Link href="/#top" className="font-display text-2xl">
-              Roberto Corvalán
+              Roberto C. Corvalán
             </Link>
             <p className="mt-3 max-w-xs mx-auto md:mx-0 text-sm leading-relaxed text-white/50">
               Coach ejecutivo certificado ICF. Desarrollo personal, liderazgo y gestión

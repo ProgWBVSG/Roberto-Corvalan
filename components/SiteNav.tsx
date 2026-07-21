@@ -69,7 +69,7 @@ export default function SiteNav() {
             scrolled ? "text-ink" : "text-ivory"
           }`}
         >
-          Roberto&nbsp;Corvalán
+          Roberto&nbsp;C.&nbsp;Corvalán
         </a>
 
         {/* Center floating pill nav */}

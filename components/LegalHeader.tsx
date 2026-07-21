@@ -5,7 +5,7 @@ export default function LegalHeader() {
     <header className="border-b border-[color:var(--line-2)]">
       <div className="container-x flex items-center justify-between py-5">
         <Link href="/#top" className="font-display text-lg tracking-tight text-ink">
-          Roberto&nbsp;Corvalán
+          Roberto&nbsp;C.&nbsp;Corvalán
         </Link>
         <Link
           href="/#top"

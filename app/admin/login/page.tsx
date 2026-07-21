@@ -23,7 +23,7 @@ export default async function LoginPage({
           <p className="text-xs uppercase tracking-[0.22em] text-gold-2 mb-3">
             Panel de consultas
           </p>
-          <h1 className="font-display text-3xl">Roberto Corvalán</h1>
+          <h1 className="font-display text-3xl">Roberto C. Corvalán</h1>
         </div>
 
         <form
