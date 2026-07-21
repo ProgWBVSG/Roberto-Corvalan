@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { isAuthed } from "@/lib/auth";
+import PasswordInput from "@/components/PasswordInput";
 
 export const metadata: Metadata = {
   title: "Acceso — Panel",
@@ -34,14 +35,7 @@ export default async function LoginPage({
             <label htmlFor="password" className="block text-sm text-white/60 mb-2">
               Contraseña
             </label>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              autoFocus
-              required
-              className="w-full rounded-xl bg-white/[0.04] border border-[color:var(--navy-line)] px-4 py-3 text-ivory outline-none transition-colors focus:border-[color:var(--gold)]"
-            />
+            <PasswordInput />
           </div>
 
           {error === "blocked" ? (
