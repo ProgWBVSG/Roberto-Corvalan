@@ -150,8 +150,19 @@ export default function Home() {
             <Reveal delay={180}>
               <p className="mt-8 max-w-xl mx-auto md:mx-0 text-lg md:text-xl leading-relaxed text-white/70">
                 Soy Roberto Corvalán. Hace más de 20 años acompaño a ejecutivos y a una
-                comunidad de <span className="text-white font-medium">+1.500 coaches</span> a
-                liderar con claridad, propósito y resultados que perduran.
+                comunidad de{" "}
+                <span className="text-white font-medium">
+                  +1.500{" "}
+                  <Typewriter
+                    words={[
+                      "coaches",
+                      "emprendedores",
+                      "profesionales independientes",
+                      "empresarios",
+                    ]}
+                  />
+                </span>{" "}
+                a liderar con claridad, propósito y resultados que perduran.
               </p>
             </Reveal>
             <Reveal delay={270}>
