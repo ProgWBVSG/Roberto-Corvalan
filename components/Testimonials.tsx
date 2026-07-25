@@ -24,7 +24,6 @@ export default function Testimonials({ items }: { items: Item[] }) {
     <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-start">
       {/* Izquierda: título */}
       <div>
-        <p className="eyebrow mb-5">Testimonios</p>
         <h2 className="font-display text-3xl md:text-[2.9rem] leading-[1.1] tracking-[-0.02em] text-balance">
           Historias reales de líderes y coaches que acompañé.
         </h2>

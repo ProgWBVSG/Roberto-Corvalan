@@ -14,7 +14,6 @@ export default function PrivacidadPage() {
       <LegalHeader />
 
       <article className="container-x py-16 md:py-24">
-        <p className="eyebrow mb-4">Legal</p>
         <h1 className="font-display text-3xl md:text-[2.7rem] leading-tight tracking-[-0.02em] mb-3">
           Política de Privacidad
         </h1>

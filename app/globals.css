@@ -196,14 +196,6 @@ body {
   font-optical-sizing: auto;
 }
 
-.eyebrow {
-  font-size: 0.72rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  font-weight: 500;
-  color: var(--gold);
-}
-
 .text-balance {
   text-wrap: balance;
 }

@@ -8,6 +8,7 @@ import Marquee from "@/components/Marquee";
 import MagneticButton from "@/components/MagneticButton";
 import SpotlightCard from "@/components/SpotlightCard";
 import FloatingAssistant from "@/components/FloatingAssistant";
+import ScrollToTop from "@/components/ScrollToTop";
 import ShaderBackground from "@/components/ui/shader-background";
 import Typewriter from "@/components/Typewriter";
 import LogoMarquee from "@/components/LogoMarquee";
@@ -195,7 +196,6 @@ export default function Home() {
       <section id="servicios" className="pt-14 md:pt-16 pb-24 md:pb-28">
         <div className="container-x">
           <Reveal className="text-center max-w-3xl mx-auto">
-            <p className="eyebrow mb-5">Servicios</p>
             <h2 className="font-display text-3xl md:text-[3rem] leading-[1.12] tracking-[-0.02em] text-balance">
               Un acompañamiento para cada objetivo.
             </h2>
@@ -289,7 +289,6 @@ export default function Home() {
         <div className="container-x relative pt-24 md:pt-32 pb-24 md:pb-28">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 text-center md:text-left">
             <Reveal className="max-w-2xl mx-auto md:mx-0">
-              <p className="eyebrow mb-5">El método</p>
               <h2 className="font-display text-3xl md:text-[3rem] leading-[1.08] tracking-[-0.02em] text-balance">
                 ¿Qué hace que mi coaching funcione?
               </h2>
@@ -349,7 +348,6 @@ export default function Home() {
           </div>
           <div className="md:col-span-7 text-center md:text-left">
             <Reveal>
-              <p className="eyebrow mb-5">Sobre mí</p>
               <div className="gold-rule mb-8 mx-auto md:mx-0" />
               <h2 className="font-display text-3xl md:text-[2.7rem] leading-tight tracking-[-0.02em] text-balance">
                 Un acompañamiento profesional, humano y con respaldo real.
@@ -376,7 +374,7 @@ export default function Home() {
 
             {/* Certificaciones */}
             <Reveal className="mt-14">
-              <p className="eyebrow mb-6">Certificaciones</p>
+              <p className="mb-6 font-display text-lg text-ink">Certificaciones</p>
               <div className="grid sm:grid-cols-2 gap-4">
                 {certificaciones.map((c) => (
                   <div
@@ -407,7 +405,7 @@ export default function Home() {
 
             {/* Otras acreditaciones */}
             <Reveal className="mt-8">
-              <p className="eyebrow mb-5">Otras acreditaciones</p>
+              <p className="mb-5 font-display text-lg text-ink">Otras acreditaciones</p>
               <ul className="space-y-3.5 text-left">
                 {acreditaciones.map((a) => (
                   <li key={a} className="flex items-start gap-3 text-ink-2/80 leading-relaxed">
@@ -438,7 +436,6 @@ export default function Home() {
         <div className="container-x relative z-10 grid md:grid-cols-12 gap-12 items-center">
           <div className="md:col-span-7 text-center md:text-left">
             <Reveal>
-              <p className="eyebrow mb-5">Comunidad · Para coaches</p>
               <h2 className="font-display text-3xl md:text-[2.9rem] leading-tight tracking-[-0.02em]">
                 Una comunidad que crece unida:{" "}
                 <span className="italic text-gold-2">
@@ -505,7 +502,6 @@ export default function Home() {
           {/* Texto + referentes */}
           <div className="min-w-0 text-center md:text-left">
             <Reveal>
-              <p className="eyebrow mb-5">Eventos</p>
               <h2 className="font-display text-3xl md:text-[2.9rem] leading-[1.1] tracking-[-0.02em] text-balance">
                 Encuentros que reúnen a grandes referentes.
               </h2>
@@ -699,6 +695,7 @@ export default function Home() {
       <Footer />
 
       <FloatingAssistant />
+      <ScrollToTop />
     </main>
   );
 }

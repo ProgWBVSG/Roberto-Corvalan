@@ -85,12 +85,20 @@ export default function ContactForm() {
   });
 
   const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement | null>(null);
+  const isFirstRender = useRef(true);
   const step = steps[current];
   const value = data[step.key];
   const valid = isValid(step, value);
   const isLast = current === steps.length - 1;
 
   useEffect(() => {
+    // No enfocar en el montaje inicial: eso scrollearía la página hasta
+    // el formulario apenas carga. Solo enfocar cuando el usuario ya está
+    // navegando entre pasos (avanzando/retrocediendo o eligiendo "Otro").
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
     if (step.type === "choice" && !otroMode) return;
     const t = setTimeout(() => inputRef.current?.focus(), 260);
     return () => clearTimeout(t);
@@ -252,7 +260,7 @@ export default function ContactForm() {
           transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-1 flex-col"
         >
-          <p className="eyebrow mb-3">{step.eyebrow}</p>
+          <p className="mb-3 text-sm font-medium text-gold-2">{step.eyebrow}</p>
           <label htmlFor={step.key} className="font-display text-2xl md:text-[1.9rem] leading-snug text-ivory">
             {step.question}
           </label>

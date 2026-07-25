@@ -95,7 +95,7 @@ export default function Footer() {
 
           {/* Navegación */}
           <div>
-            <p className="eyebrow mb-5">Navegación</p>
+            <p className="mb-5 font-display text-base text-ivory">Navegación</p>
             <ul className="space-y-3">
               {nav.map((l) => (
                 <li key={l.href}>
@@ -109,7 +109,7 @@ export default function Footer() {
 
           {/* Servicios */}
           <div>
-            <p className="eyebrow mb-5">Servicios</p>
+            <p className="mb-5 font-display text-base text-ivory">Servicios</p>
             <ul className="space-y-3">
               {servicios.map((s) => (
                 <li key={s}>
@@ -123,7 +123,7 @@ export default function Footer() {
 
           {/* Contacto */}
           <div>
-            <p className="eyebrow mb-5">Contacto</p>
+            <p className="mb-5 font-display text-base text-ivory">Contacto</p>
             <ul className="space-y-3 text-sm text-white/55">
               <li>
                 <a href="mailto:hola@robertocorvalan.com" className="hover:text-gold-2 transition-colors">

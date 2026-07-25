@@ -55,7 +55,7 @@ export default function FloatingAssistant() {
             >
               {/* Header */}
               <div className="relative shrink-0 p-5 pb-4 border-b border-[color:var(--navy-line)]">
-                <p className="eyebrow mb-1.5">Asistente virtual</p>
+                <p className="mb-1.5 text-xs font-medium text-gold-2">Asistente virtual</p>
                 <h3 className="font-display text-lg leading-snug pr-6">
                   ¿En qué te puedo ayudar?
                 </h3>
