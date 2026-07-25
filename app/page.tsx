@@ -512,7 +512,7 @@ export default function Home() {
                 <p className="px-6 text-xs uppercase tracking-[0.24em] text-gold mb-4">
                   Referentes invitados
                 </p>
-                <Marquee items={["Jonatan Loidi", "Grupo Set"]} />
+                <Marquee items={["Grupo Set", "ARGENNOVA", "Networking Presencial", "CIC"]} />
               </div>
             </Reveal>
 
