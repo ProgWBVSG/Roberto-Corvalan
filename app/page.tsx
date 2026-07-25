@@ -13,6 +13,7 @@ import Typewriter from "@/components/Typewriter";
 import LogoMarquee from "@/components/LogoMarquee";
 import StickyServices from "@/components/StickyServices";
 import RolesCarousel from "@/components/RolesCarousel";
+import CertificadoCIC from "@/components/CertificadoCIC";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 
@@ -356,9 +357,12 @@ export default function Home() {
               <div className="mt-8 space-y-5 text-ink-2/80 leading-relaxed text-[1.05rem]">
                 <p>
                   Soy Roberto Corvalán, coach profesional certificado con sólida formación y
-                  experiencia en desarrollo personal, liderazgo y gestión organizacional. Mi
-                  propósito es acompañar a organizaciones y personas a desplegar su potencial y su
-                  liderazgo, promoviendo el logro de metas y objetivos estratégicos.
+                  experiencia en desarrollo personal, liderazgo y gestión organizacional. Soy{" "}
+                  <strong className="font-medium text-ink">
+                    CPA (Coach Profesional Acreditado) por la CIC
+                  </strong>
+                  . Mi propósito es acompañar a organizaciones y personas a desplegar su potencial y
+                  su liderazgo, promoviendo el logro de metas y objetivos estratégicos.
                 </p>
                 <p>
                   A través de un proceso estructurado (sesiones, talleres y conferencias) fortalezco
@@ -394,6 +398,11 @@ export default function Home() {
                   </div>
                 ))}
               </div>
+            </Reveal>
+
+            {/* Credencial destacada — CPA por la CIC */}
+            <Reveal className="mt-8">
+              <CertificadoCIC />
             </Reveal>
 
             {/* Otras acreditaciones */}

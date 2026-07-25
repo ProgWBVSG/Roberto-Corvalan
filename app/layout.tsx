@@ -104,6 +104,16 @@ const jsonLd = {
           name: "Coach Ejecutivo CCE",
           recognizedBy: { "@type": "Organization", name: "International Coaching Federation (ICF)" },
         },
+        {
+          "@type": "EducationalOccupationalCredential",
+          name: "CPA — Coach Profesional Acreditado",
+          identifier: "AR-29.05.510",
+          validFrom: "2026-05-29",
+          recognizedBy: {
+            "@type": "Organization",
+            name: "Confederación Interamericana de Coaching (CIC)",
+          },
+        },
       ],
     },
     {
