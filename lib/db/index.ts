@@ -13,21 +13,38 @@ export const db = drizzle(client, { schema });
 
 let ready: Promise<unknown> | null = null;
 
-/** Crea la tabla si no existe. Idempotente y cacheado por proceso. */
+/** Crea las tablas si no existen. Idempotente y cacheado por proceso. */
 export function ensureSchema() {
   if (!ready) {
-    ready = client.execute(`
-      CREATE TABLE IF NOT EXISTS leads (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        nombre TEXT NOT NULL,
-        email TEXT NOT NULL,
-        perfil TEXT NOT NULL,
-        mensaje TEXT NOT NULL,
-        estado TEXT NOT NULL DEFAULT 'nuevo',
-        notas TEXT NOT NULL DEFAULT '',
-        created_at INTEGER NOT NULL DEFAULT (unixepoch())
-      )
-    `);
+    ready = Promise.all([
+      client.execute(`
+        CREATE TABLE IF NOT EXISTS leads (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          nombre TEXT NOT NULL,
+          email TEXT NOT NULL,
+          perfil TEXT NOT NULL,
+          mensaje TEXT NOT NULL,
+          estado TEXT NOT NULL DEFAULT 'nuevo',
+          notas TEXT NOT NULL DEFAULT '',
+          created_at INTEGER NOT NULL DEFAULT (unixepoch())
+        )
+      `),
+      client.execute(`
+        CREATE TABLE IF NOT EXISTS site_content (
+          id INTEGER PRIMARY KEY,
+          data TEXT NOT NULL,
+          updated_at INTEGER NOT NULL DEFAULT (unixepoch())
+        )
+      `),
+      client.execute(`
+        CREATE TABLE IF NOT EXISTS media (
+          id TEXT PRIMARY KEY,
+          mime_type TEXT NOT NULL,
+          data_base64 TEXT NOT NULL,
+          created_at INTEGER NOT NULL DEFAULT (unixepoch())
+        )
+      `),
+    ]);
   }
   return ready;
 }

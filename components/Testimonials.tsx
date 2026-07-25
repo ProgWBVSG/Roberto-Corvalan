@@ -4,7 +4,15 @@ import { useEffect, useState } from "react";
 
 type Item = { q: string; a: string; r: string };
 
-export default function Testimonials({ items }: { items: Item[] }) {
+export default function Testimonials({
+  titulo,
+  descripcion,
+  items,
+}: {
+  titulo: string;
+  descripcion: string;
+  items: Item[];
+}) {
   const [i, setI] = useState(0);
 
   useEffect(() => {
@@ -25,11 +33,9 @@ export default function Testimonials({ items }: { items: Item[] }) {
       {/* Izquierda: título */}
       <div>
         <h2 className="font-display text-3xl md:text-[2.9rem] leading-[1.1] tracking-[-0.02em] text-balance">
-          Historias reales de líderes y coaches que acompañé.
+          {titulo}
         </h2>
-        <p className="mt-6 max-w-sm text-ink-2/70 leading-relaxed">
-          Cada una es un camino único, guiado por claridad, método y el coraje de crecer.
-        </p>
+        <p className="mt-6 max-w-sm text-ink-2/70 leading-relaxed">{descripcion}</p>
       </div>
 
       {/* Derecha: testimonio */}

@@ -68,11 +68,19 @@ export default async function AdminPage({
             </p>
             <h1 className="font-display text-2xl md:text-3xl">Roberto C. Corvalán</h1>
           </div>
-          <form action="/api/admin/logout" method="POST">
-            <button className="rounded-full border border-[color:var(--navy-line)] px-4 py-2 text-sm text-white/60 transition-colors hover:text-white hover:border-white/30">
-              Salir
-            </button>
-          </form>
+          <div className="flex items-center gap-3">
+            <Link
+              href="/admin/contenido"
+              className="rounded-full bg-gold px-4 py-2 text-sm font-medium text-[#1a1206] transition-colors hover:bg-gold-2"
+            >
+              Editar contenido
+            </Link>
+            <form action="/api/admin/logout" method="POST">
+              <button className="rounded-full border border-[color:var(--navy-line)] px-4 py-2 text-sm text-white/60 transition-colors hover:text-white hover:border-white/30">
+                Salir
+              </button>
+            </form>
+          </div>
         </div>
 
         {/* Filtros */}

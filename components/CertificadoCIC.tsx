@@ -3,18 +3,25 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-const SRC = "/fotos/certificado-cic.jpeg";
-const ALT =
-  "Certificado de acreditación como Coach Profesional otorgado a Roberto Carlos Corvalán Donoso por la Confederación Interamericana de Coaching (CIC)";
+type Dato = { id: string; etiqueta: string; valor: string };
 
-const datos = [
-  { l: "Credencial", v: "Coach Profesional Acreditado" },
-  { l: "Código", v: "AR · 29.05.510" },
-  { l: "Vigencia", v: "2026 — 2028" },
-  { l: "Sede", v: "Asunción, Paraguay" },
-];
-
-export default function CertificadoCIC() {
+export default function CertificadoCIC({
+  badgeText,
+  titulo,
+  subtitulo,
+  descripcion,
+  imagenSrc,
+  imagenAlt,
+  datos,
+}: {
+  badgeText: string;
+  titulo: string;
+  subtitulo: string;
+  descripcion: string;
+  imagenSrc: string;
+  imagenAlt: string;
+  datos: Dato[];
+}) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -47,8 +54,8 @@ export default function CertificadoCIC() {
           >
             <div className="relative aspect-[853/1280] overflow-hidden rounded-xl border border-[color:var(--gold)]/35 shadow-[0_26px_60px_-24px_rgba(0,0,0,0.85)] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1">
               <Image
-                src={SRC}
-                alt={ALT}
+                src={imagenSrc}
+                alt={imagenAlt}
                 fill
                 quality={90}
                 sizes="(max-width: 768px) 230px, 300px"
@@ -71,31 +78,26 @@ export default function CertificadoCIC() {
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M20 6L9 17l-5-5" />
               </svg>
-              Acreditación vigente
+              {badgeText}
             </span>
 
             <h3 className="mt-5 font-display text-[1.7rem] sm:text-[2rem] leading-[1.12] tracking-[-0.02em]">
-              CPA · Coach Profesional
-              <span className="block text-gold-2 italic">Acreditado</span>
+              {titulo}
+              <span className="block text-gold-2 italic">{subtitulo}</span>
             </h3>
 
             <p className="mt-4 text-[0.98rem] leading-relaxed text-white/60 max-w-md mx-auto md:mx-0">
-              Otorgado por la{" "}
-              <strong className="font-medium text-white/85">
-                Confederación Interamericana de Coaching (CIC)
-              </strong>
-              , tras cumplir con las estipulaciones nacionales e internacionales del comité de
-              acreditación.
+              {descripcion}
             </p>
 
             <dl className="mt-7 grid grid-cols-2 gap-x-6 gap-y-5 text-left max-w-md mx-auto md:mx-0">
               {datos.map((d) => (
-                <div key={d.l} className="border-l border-[color:var(--gold)]/25 pl-3.5">
+                <div key={d.id} className="border-l border-[color:var(--gold)]/25 pl-3.5">
                   <dt className="text-[0.65rem] uppercase tracking-[0.16em] text-white/35">
-                    {d.l}
+                    {d.etiqueta}
                   </dt>
                   <dd className="mt-1 text-[0.92rem] font-medium leading-snug text-ivory">
-                    {d.v}
+                    {d.valor}
                   </dd>
                 </div>
               ))}
@@ -128,8 +130,8 @@ export default function CertificadoCIC() {
             onClick={(e) => e.stopPropagation()}
           >
             <Image
-              src={SRC}
-              alt={ALT}
+              src={imagenSrc}
+              alt={imagenAlt}
               fill
               quality={95}
               sizes="(max-width: 768px) 92vw, 560px"

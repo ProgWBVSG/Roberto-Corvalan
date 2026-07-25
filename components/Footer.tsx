@@ -1,23 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
 
-const WHATSAPP_URL =
-  "https://wa.me/5491136830740?text=" +
-  encodeURIComponent("Hola Roberto, vi tu web y quiero coordinar una llamada.");
-
 const nav = [
   { href: "/#sobre", label: "Sobre mí" },
   { href: "/#enfoque", label: "Enfoque" },
   { href: "/#coaches", label: "Comunidad" },
   { href: "/#servicios", label: "Servicios" },
   { href: "/#eventos", label: "Eventos" },
-];
-
-const servicios = [
-  "Coaching Ejecutivo 1:1",
-  "Talleres para Equipos",
-  "Conferencias",
-  "Consultoría Organizacional",
 ];
 
 const socials = [
@@ -45,7 +34,27 @@ const socials = [
   },
 ];
 
-export default function Footer() {
+export default function Footer({
+  bio,
+  serviciosNombres,
+  whatsappUrl,
+  email,
+  cicBadgeLinea1,
+  cicBadgeLinea2,
+  cicImagenSrc,
+  cicImagenAlt,
+  ubicacion,
+}: {
+  bio: string;
+  serviciosNombres: string[];
+  whatsappUrl: string;
+  email: string;
+  cicBadgeLinea1: string;
+  cicBadgeLinea2: string;
+  cicImagenSrc: string;
+  cicImagenAlt: string;
+  ubicacion: string;
+}) {
   return (
     <footer className="bg-navy-2 text-ivory border-t border-[color:var(--navy-line)]">
       <div className="container-x py-16 md:py-20">
@@ -56,8 +65,7 @@ export default function Footer() {
               Roberto C. Corvalán
             </Link>
             <p className="mt-3 max-w-xs mx-auto md:mx-0 text-sm leading-relaxed text-white/50">
-              Coach ejecutivo certificado ICF. Desarrollo personal, liderazgo y gestión
-              organizacional para líderes, equipos y una comunidad de +1.500 coaches.
+              {bio}
             </p>
             <div className="mt-6 flex gap-2.5 justify-center md:justify-start">
               {socials.map((s) => (
@@ -78,17 +86,17 @@ export default function Footer() {
             <div className="mt-6 inline-flex items-center gap-2.5 rounded-xl bg-white p-2 pr-3.5">
               <div className="relative h-8 w-8 shrink-0">
                 <Image
-                  src="/fotos/cic-acreditacion.jpeg"
-                  alt="Coach Profesional Acreditado — Confederación Interamericana de Coaching (CIC)"
+                  src={cicImagenSrc}
+                  alt={cicImagenAlt}
                   fill
                   sizes="32px"
                   className="rounded-md object-cover"
                 />
               </div>
               <span className="text-left text-[0.68rem] leading-tight text-navy/70">
-                Coach Profesional
+                {cicBadgeLinea1}
                 <br />
-                <strong className="font-semibold text-navy">Acreditado · CIC</strong>
+                <strong className="font-semibold text-navy">{cicBadgeLinea2}</strong>
               </span>
             </div>
           </div>
@@ -111,7 +119,7 @@ export default function Footer() {
           <div>
             <p className="mb-5 font-display text-base text-ivory">Servicios</p>
             <ul className="space-y-3">
-              {servicios.map((s) => (
+              {serviciosNombres.map((s) => (
                 <li key={s}>
                   <Link href="/#servicios" className="text-sm text-white/55 hover:text-gold-2 transition-colors">
                     {s}
@@ -126,16 +134,16 @@ export default function Footer() {
             <p className="mb-5 font-display text-base text-ivory">Contacto</p>
             <ul className="space-y-3 text-sm text-white/55">
               <li>
-                <a href="mailto:hola@robertocorvalan.com" className="hover:text-gold-2 transition-colors">
-                  hola@robertocorvalan.com
+                <a href={`mailto:${email}`} className="hover:text-gold-2 transition-colors">
+                  {email}
                 </a>
               </li>
               <li>
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="hover:text-gold-2 transition-colors">
+                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="hover:text-gold-2 transition-colors">
                   WhatsApp
                 </a>
               </li>
-              <li className="text-white/40">Argentina · Presencial y virtual</li>
+              <li className="text-white/40">{ubicacion}</li>
             </ul>
             <Link
               href="/#contacto"

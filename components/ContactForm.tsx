@@ -55,8 +55,6 @@ const steps: Step[] = [
   },
 ];
 
-const WHATSAPP_NUMBER = "5491136830740";
-
 function isValid(step: Step, value: string): boolean {
   const v = value.trim();
   if (v.length === 0) return false;
@@ -70,7 +68,7 @@ const WhatsAppIcon = ({ size = 20 }: { size?: number }) => (
   </svg>
 );
 
-export default function ContactForm() {
+export default function ContactForm({ whatsappNumber }: { whatsappNumber: string }) {
   const [current, setCurrent] = useState(0);
   const [dir, setDir] = useState(1);
   const [sent, setSent] = useState(false);
@@ -144,7 +142,7 @@ export default function ContactForm() {
       `Me dedico a: ${data.perfil}.\n` +
       `Quisiera que me ayudes con: ${data.mensaje}\n` +
       `Mi email: ${data.email}`;
-    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(texto)}`;
+    return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(texto)}`;
   }
 
   function onKeyDown(e: React.KeyboardEvent) {

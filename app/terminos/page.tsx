@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import LegalHeader from "@/components/LegalHeader";
 import Footer from "@/components/Footer";
+import { getFooterProps } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Términos y Condiciones",
@@ -8,7 +9,8 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-export default function TerminosPage() {
+export default async function TerminosPage() {
+  const footerProps = await getFooterProps();
   return (
     <main className="bg-ivory text-ink">
       <LegalHeader />
@@ -96,7 +98,7 @@ export default function TerminosPage() {
         </div>
       </article>
 
-      <Footer />
+      <Footer {...footerProps} />
     </main>
   );
 }

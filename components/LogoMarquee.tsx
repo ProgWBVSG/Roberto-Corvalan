@@ -2,28 +2,22 @@
 
 import Image from "next/image";
 
-const companies = [
-  { name: "Abart", logo: "/logos/abart.jpeg" },
-  { name: "Federación Patronal Seguros", logo: "/logos/federacion-patronal.jpeg" },
-  { name: "Forza Seguros", logo: "/logos/forza-seguros.jpeg" },
-  { name: "Mary Kay", logo: "/logos/mary-kay.jpeg" },
-  { name: "Monsalvo Propiedades", logo: "/logos/monsalvo-propiedades.jpeg" },
-  { name: "PARH APS Seguros", logo: "/logos/parh-aps.jpeg" },
-  { name: "SETUP", logo: "/logos/setup.jpeg" },
-  { name: "EmprendePyme", logo: "/logos/emprendepyme.jpeg" },
-  { name: "Networking Presencial", logo: "/logos/networking-presencial.jpeg" },
-  { name: "ADN Inmobiliario", logo: "/logos/adn-inmobiliario.jpeg" },
-  { name: "Coaching para Equipos de Salud", logo: "/logos/coaching-equipos-salud.jpeg" },
-];
+type Logo = { id: string; nombre: string; src: string };
 
-export default function LogoMarquee() {
-  const loop = [...companies, ...companies];
+export default function LogoMarquee({
+  titulo,
+  logos,
+}: {
+  titulo: string;
+  logos: Logo[];
+}) {
+  const loop = logos.length ? [...logos, ...logos] : [];
 
   return (
     <section className="py-14 md:py-16 border-y border-[color:var(--line-2)]">
       <div className="container-x">
         <p className="text-center text-xs uppercase tracking-[0.22em] text-muted mb-9">
-          Empresas que confían en mí
+          {titulo}
         </p>
       </div>
 
@@ -31,13 +25,13 @@ export default function LogoMarquee() {
         <div className="flex w-max animate-[marquee_28s_linear_infinite] gap-6 group-hover:[animation-play-state:paused]">
           {loop.map((c, i) => (
             <div
-              key={i}
+              key={`${c.id}-${i}`}
               className="flex h-20 w-40 shrink-0 items-center justify-center rounded-xl border border-[color:var(--line)] bg-white p-4"
             >
               <div className="relative h-full w-full">
                 <Image
-                  src={c.logo}
-                  alt={c.name}
+                  src={c.src}
+                  alt={c.nombre}
                   fill
                   sizes="160px"
                   className="object-contain"

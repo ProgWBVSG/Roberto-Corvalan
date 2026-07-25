@@ -17,6 +17,8 @@ import RolesCarousel from "@/components/RolesCarousel";
 import CertificadoCIC from "@/components/CertificadoCIC";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
+import { getContent } from "@/lib/content";
+import { imgSrc, iconLibrary } from "@/lib/content-schema";
 
 function EventTile({
   src,
@@ -44,74 +46,15 @@ function EventTile({
   );
 }
 
-const roles = [
-  { t: "Coach", d: "Sesiones 1:1 de coaching ejecutivo que impulsan decisiones y resultados." },
-  { t: "Mentor", d: "Mentorías en liderazgo, hábitos y habilidades blandas, con método probado." },
-  { t: "Consultor", d: "Consultoría organizacional para alinear cultura, equipos y productividad." },
-  { t: "Conferencista", d: "Conferencias y talleres sobre liderazgo, cambio y alto rendimiento." },
-];
+export const revalidate = 0;
 
-const enfoque = [
-  {
-    t: "Diagnóstico real",
-    d: "Partimos de tu punto de partida concreto, nunca de fórmulas genéricas.",
-    icon: "M11 4a7 7 0 100 14 7 7 0 000-14zM21 21l-4.3-4.3",
-  },
-  {
-    t: "Proceso estructurado",
-    d: "Sesiones, talleres y conferencias con método y objetivos claros.",
-    icon: "M12 3l9 5-9 5-9-5 9-5zM3 12l9 5 9-5M3 17l9 5 9-5",
-  },
-  {
-    t: "Foco en resultados",
-    d: "Mejora medible en liderazgo, productividad y bienestar del equipo.",
-    icon: "M12 3a9 9 0 100 18 9 9 0 000-18zM12 8a4 4 0 100 8 4 4 0 000-8zM12 11.6a.4.4 0 100 .8.4.4 0 000-.8z",
-  },
-  {
-    t: "Acompañamiento humano",
-    d: "Un proceso confidencial, cercano y sostenido en el tiempo.",
-    icon: "M8 12a3 3 0 100-6 3 3 0 000 6zM2 20c0-3 2.7-5 6-5s6 2 6 5M16 6a3 3 0 011 5.8M22 20c0-2.2-1.2-3.8-3-4.6",
-  },
-];
+export default async function Home() {
+  const content = await getContent();
+  const { global, hero, empresas, servicios, ctaBand, enfoque, sobreMi, comunidad, eventos, banner, testimonios, contacto, footer } = content;
 
-const certificaciones = [
-  {
-    t: "Coach Profesional",
-    d: "International Coaching Federation (ICF), programa ACTP (Accredited Coach Training Program).",
-  },
-  {
-    t: "Coach Ejecutivo",
-    d: "Programa CCE (Continuing Coach Education), conforme a las normas de la ICF.",
-  },
-  { t: "Coach Inmobiliario", d: "Certificado por Ricardo Melo." },
-  { t: "Consultor de Empresas", d: "Acreditado por Grupo Set Consulting." },
-];
+  const waLink = (msg: string) =>
+    `https://wa.me/${global.whatsappNumber}?text=${encodeURIComponent(msg)}`;
 
-const acreditaciones = [
-  "Mentor certificado en el programa de Liderazgo y Habilidades Blandas de John Maxwell.",
-  "Mentor en Liderazgo y los hábitos de la gente altamente efectiva, con Grupo Set y Jonathan Loidi.",
-  "Mentor en Neurociencias Integradas para potenciar procesos de cambio y transformación personal y organizacional, certificado por Marcelo Piredda y Verónica Laura Díaz.",
-];
-
-const testimonios = [
-  {
-    q: "Roberto tiene una capacidad única para ver lo que uno no ve. Salí de cada sesión con más claridad y decisiones concretas.",
-    a: "Directora General",
-    r: "Empresa de retail",
-  },
-  {
-    q: "Su acompañamiento transformó la forma en que lidero mi equipo. Hoy delego mejor y el clima cambió por completo.",
-    a: "Gerente de Operaciones",
-    r: "Industria",
-  },
-  {
-    q: "Como coach, su mentoría me dio herramientas y una comunidad. Es el referente que todo profesional del coaching quiere tener.",
-    a: "Coach certificada",
-    r: "Comunidad +1500",
-  },
-];
-
-export default function Home() {
   return (
     <main id="top" className="bg-ivory text-ink">
       <ScrollProgress />
@@ -121,8 +64,8 @@ export default function Home() {
       <section className="relative min-h-[100svh] w-full overflow-hidden bg-navy text-ivory flex flex-col">
         {/* Foto de fondo */}
         <Image
-          src="/roberto-hero.png"
-          alt="Roberto Corvalán, coach ejecutivo y de liderazgo"
+          src={imgSrc(hero.background)}
+          alt={hero.background.alt}
           fill
           priority
           quality={90}
@@ -138,33 +81,24 @@ export default function Home() {
             <Reveal>
               <p className="flex items-center justify-center md:justify-start gap-3 text-[0.72rem] uppercase tracking-[0.28em] text-gold-2 mb-7">
                 <span className="h-px w-8 bg-gold-2/60" />
-                Coach ejecutivo · Liderazgo
+                {hero.eyebrow}
               </p>
             </Reveal>
             <SplitHeading
               delay={0.1}
               className="font-display font-medium leading-[1.06] tracking-[-0.015em] text-[clamp(1.35rem,5.2vw,3.5rem)]"
               lines={[
-                { text: "Grandes líderes no nacen." },
-                { text: "Se acompañan.", className: "italic text-gold-2" },
+                { text: hero.titleLine1 },
+                { text: hero.titleLine2, className: "italic text-gold-2" },
               ]}
             />
             <Reveal delay={180}>
               <p className="mt-8 max-w-xl mx-auto md:mx-0 text-lg md:text-xl leading-relaxed text-white/70">
-                Soy Roberto Corvalán. Hace más de 20 años acompaño a ejecutivos y a una
-                comunidad de{" "}
+                {hero.introText}{" "}
                 <span className="text-white font-medium">
-                  +1.500{" "}
-                  <Typewriter
-                    words={[
-                      "coaches",
-                      "emprendedores",
-                      "profesionales independientes",
-                      "empresarios",
-                    ]}
-                  />
+                  {hero.statNumber} <Typewriter words={hero.statWords} />
                 </span>{" "}
-                a liderar con claridad, propósito y resultados que perduran.
+                {hero.outroText}
               </p>
             </Reveal>
             <Reveal delay={270}>
@@ -173,7 +107,7 @@ export default function Home() {
                   href="#contacto"
                   className="inline-flex items-center gap-2 rounded-full bg-gold px-8 py-4 text-sm font-medium text-[#1a1206] transition-colors duration-300 hover:bg-gold-2 shadow-[0_18px_44px_-16px_rgba(176,141,76,0.7)]"
                 >
-                  Empecemos a trabajar juntos
+                  {hero.ctaText}
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
                     <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
@@ -185,31 +119,40 @@ export default function Home() {
 
         {/* Roles */}
         <div className="container-x relative w-full pt-10 md:pt-12 pb-10 md:pb-14">
-          <RolesCarousel roles={roles} />
+          <RolesCarousel roles={hero.roles.map((r) => ({ t: r.titulo, d: r.descripcion }))} />
         </div>
       </section>
 
       {/* ============ EMPRESAS (marquee) ============ */}
-      <LogoMarquee />
+      <LogoMarquee
+        titulo={empresas.titulo}
+        logos={empresas.logos.map((l) => ({ id: l.id, nombre: l.nombre, src: imgSrc(l.logo) }))}
+      />
 
       {/* ============ SERVICIOS ============ */}
       <section id="servicios" className="pt-14 md:pt-16 pb-24 md:pb-28">
         <div className="container-x">
           <Reveal className="text-center max-w-3xl mx-auto">
             <h2 className="font-display text-3xl md:text-[3rem] leading-[1.12] tracking-[-0.02em] text-balance">
-              Un acompañamiento para cada objetivo.
+              {servicios.titulo}
             </h2>
-            <p className="mt-5 text-ink-2/70 leading-relaxed text-lg">
-              Elegimos juntos el camino según el momento que estés atravesando vos o tu equipo,
-              presencial o virtual.
-            </p>
+            <p className="mt-5 text-ink-2/70 leading-relaxed text-lg">{servicios.descripcion}</p>
           </Reveal>
 
-          <StickyServices />
+          <StickyServices
+            items={servicios.items.map((s) => ({
+              id: s.id,
+              numero: s.numero,
+              titulo: s.titulo,
+              descripcion: s.descripcion,
+              tag: s.tag,
+              imagenSrc: imgSrc(s.imagen),
+            }))}
+          />
 
           <Reveal className="mt-14 md:mt-16 text-center">
             <a href="#contacto" className="btn btn-gold">
-              Explorá nuestros programas
+              {servicios.ctaText}
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
                 <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -227,18 +170,15 @@ export default function Home() {
             style={{ background: "linear-gradient(160deg, rgba(176,141,76,0.18), rgba(176,141,76,0.05))" }}
           >
             <h2 className="font-display text-3xl md:text-[2.65rem] leading-[1.12] tracking-[-0.02em] text-ink text-balance">
-              ¿Tu liderazgo llegó a un techo?
+              {ctaBand.titulo}
             </h2>
-            <p className="mt-5 max-w-sm text-ink-2/75 leading-relaxed">
-              Una consulta estratégica de 30 minutos, sin cargo, para identificar dónde
-              tu liderazgo necesita método, no más esfuerzo.
-            </p>
+            <p className="mt-5 max-w-sm text-ink-2/75 leading-relaxed">{ctaBand.descripcion}</p>
             <div className="mt-8">
               <a
                 href="#contacto"
                 className="inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm font-medium text-ivory transition-all duration-300 hover:-translate-y-0.5 hover:bg-ink-2"
               >
-                Solicitá una consulta estratégica
+                {ctaBand.ctaText}
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
                   <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -249,8 +189,8 @@ export default function Home() {
           {/* Imagen + testimonio flotante */}
           <div className="relative rounded-3xl overflow-hidden min-h-[340px] md:min-h-[440px]">
             <Image
-              src="/servicios/conferencias.png"
-              alt="Roberto Corvalán en conferencia"
+              src={imgSrc(ctaBand.imagen)}
+              alt={ctaBand.imagen.alt}
               fill
               quality={90}
               sizes="(max-width: 768px) 100vw, 60vw"
@@ -266,10 +206,9 @@ export default function Home() {
                 ))}
               </div>
               <p className="text-sm text-ink-2 leading-relaxed">
-                &ldquo;Salí de cada sesión con más claridad y decisiones concretas. Un antes y un
-                después en mi liderazgo.&rdquo;
+                &ldquo;{ctaBand.testimonioTexto}&rdquo;
               </p>
-              <div className="mt-3 text-xs text-muted">Directora General, empresa de retail</div>
+              <div className="mt-3 text-xs text-muted">{ctaBand.testimonioAutor}</div>
             </div>
           </div>
         </div>
@@ -278,7 +217,7 @@ export default function Home() {
       {/* ============ ENFOQUE (¿Qué hace que funcione?) ============ */}
       <section id="enfoque" className="relative overflow-hidden bg-navy text-ivory">
         <Image
-          src="/servicios/consultoria.png"
+          src={imgSrc(enfoque.imagenFondo)}
           alt=""
           fill
           quality={90}
@@ -290,11 +229,10 @@ export default function Home() {
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 text-center md:text-left">
             <Reveal className="max-w-2xl mx-auto md:mx-0">
               <h2 className="font-display text-3xl md:text-[3rem] leading-[1.08] tracking-[-0.02em] text-balance">
-                ¿Qué hace que mi coaching funcione?
+                {enfoque.titulo}
               </h2>
               <p className="mt-6 max-w-xl mx-auto md:mx-0 text-white/60 leading-relaxed text-lg">
-                Una metodología estructurada y probada, no una fórmula genérica, para desarrollar
-                tu liderazgo y el de tu equipo con resultados medibles.
+                {enfoque.descripcion}
               </p>
             </Reveal>
             <Reveal delay={120} className="text-center md:text-left">
@@ -302,7 +240,7 @@ export default function Home() {
                 href="#contacto"
                 className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-ink transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/90 shadow-[0_16px_40px_-16px_rgba(0,0,0,0.6)]"
               >
-                Quiero mi diagnóstico gratuito
+                {enfoque.ctaText}
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
                   <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -311,16 +249,16 @@ export default function Home() {
           </div>
 
           <div className="mt-16 md:mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {enfoque.map((c, i) => (
-              <Reveal key={c.t} delay={i * 90}>
+            {enfoque.items.map((c, i) => (
+              <Reveal key={c.id} delay={i * 90}>
                 <SpotlightCard className="group h-full rounded-2xl bg-paper text-ink p-6 shadow-[0_24px_60px_-30px_rgba(0,0,0,0.6)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_34px_70px_-24px_rgba(0,0,0,0.75)] text-center sm:text-left">
                   <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[color:var(--gold-soft)] text-gold mb-5 mx-auto sm:mx-0 transition-colors duration-300 group-hover:bg-gold group-hover:text-white">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-                      <path d={c.icon} />
+                      <path d={iconLibrary[c.icono]} />
                     </svg>
                   </div>
-                  <h3 className="font-display text-lg leading-snug relative">{c.t}</h3>
-                  <p className="mt-2.5 text-sm text-ink-2/70 leading-relaxed relative">{c.d}</p>
+                  <h3 className="font-display text-lg leading-snug relative">{c.titulo}</h3>
+                  <p className="mt-2.5 text-sm text-ink-2/70 leading-relaxed relative">{c.descripcion}</p>
                 </SpotlightCard>
               </Reveal>
             ))}
@@ -335,8 +273,8 @@ export default function Home() {
             <Reveal>
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-[color:var(--line)] max-w-xs sm:max-w-sm mx-auto md:max-w-none">
                 <Image
-                  src="/fotos/retrato-profesional.webp"
-                  alt="Roberto Corvalán, coach ejecutivo"
+                  src={imgSrc(sobreMi.foto)}
+                  alt={sobreMi.foto.alt}
                   fill
                   quality={90}
                   sizes="(max-width: 768px) 90vw, 40vw"
@@ -350,77 +288,75 @@ export default function Home() {
             <Reveal>
               <div className="gold-rule mb-8 mx-auto md:mx-0" />
               <h2 className="font-display text-3xl md:text-[2.7rem] leading-tight tracking-[-0.02em] text-balance">
-                Un acompañamiento profesional, humano y con respaldo real.
+                {sobreMi.titulo}
               </h2>
               <div className="mt-8 space-y-5 text-ink-2/80 leading-relaxed text-[1.05rem]">
-                <p>
-                  Soy Roberto Corvalán, coach profesional certificado con sólida formación y
-                  experiencia en desarrollo personal, liderazgo y gestión organizacional. Soy{" "}
-                  <strong className="font-medium text-ink">
-                    CPA (Coach Profesional Acreditado) por la CIC
-                  </strong>
-                  . Mi propósito es acompañar a organizaciones y personas a desplegar su potencial y
-                  su liderazgo, promoviendo el logro de metas y objetivos estratégicos.
-                </p>
-                <p>
-                  A través de un proceso estructurado (sesiones, talleres y conferencias) fortalezco
-                  competencias, mejoro los indicadores de productividad y bienestar, y consolido
-                  equipos de alto rendimiento. El resultado es una transformación sostenible que
-                  impulsa el crecimiento individual y organizacional, y afianza una cultura de
-                  bienestar y excelencia.
-                </p>
+                <p>{sobreMi.parrafo1}</p>
+                <p>{sobreMi.parrafo2}</p>
               </div>
             </Reveal>
 
             {/* Certificaciones */}
-            <Reveal className="mt-14">
-              <p className="mb-6 font-display text-lg text-ink">Certificaciones</p>
-              <div className="grid sm:grid-cols-2 gap-4">
-                {certificaciones.map((c) => (
-                  <div
-                    key={c.t}
-                    className="rounded-2xl border border-[color:var(--line)] bg-paper p-5 transition-colors hover:border-[color:var(--gold)] text-left"
-                  >
-                    <div className="flex items-start gap-3.5">
-                      <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[color:var(--gold-soft)] text-gold">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-                          <circle cx="12" cy="8" r="5" />
-                          <path d="M8.5 12.5L7 21l5-3 5 3-1.5-8.5" />
-                        </svg>
-                      </span>
-                      <div>
-                        <div className="font-medium text-ink leading-snug">{c.t}</div>
-                        <div className="text-sm text-muted mt-1.5 leading-relaxed">{c.d}</div>
+            {sobreMi.certificaciones.length > 0 && (
+              <Reveal className="mt-14">
+                <p className="mb-6 font-display text-lg text-ink">Certificaciones</p>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {sobreMi.certificaciones.map((c) => (
+                    <div
+                      key={c.id}
+                      className="rounded-2xl border border-[color:var(--line)] bg-paper p-5 transition-colors hover:border-[color:var(--gold)] text-left"
+                    >
+                      <div className="flex items-start gap-3.5">
+                        <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[color:var(--gold-soft)] text-gold">
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                            <circle cx="12" cy="8" r="5" />
+                            <path d="M8.5 12.5L7 21l5-3 5 3-1.5-8.5" />
+                          </svg>
+                        </span>
+                        <div>
+                          <div className="font-medium text-ink leading-snug">{c.titulo}</div>
+                          <div className="text-sm text-muted mt-1.5 leading-relaxed">{c.descripcion}</div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
+                  ))}
+                </div>
+              </Reveal>
+            )}
 
             {/* Credencial destacada — CPA por la CIC */}
             <Reveal className="mt-8">
-              <CertificadoCIC />
+              <CertificadoCIC
+                badgeText={sobreMi.certificadoCIC.badgeText}
+                titulo={sobreMi.certificadoCIC.titulo}
+                subtitulo={sobreMi.certificadoCIC.subtitulo}
+                descripcion={sobreMi.certificadoCIC.descripcion}
+                imagenSrc={imgSrc(sobreMi.certificadoCIC.imagen)}
+                imagenAlt={sobreMi.certificadoCIC.imagen.alt}
+                datos={sobreMi.certificadoCIC.datos}
+              />
             </Reveal>
 
             {/* Otras acreditaciones */}
-            <Reveal className="mt-8">
-              <p className="mb-5 font-display text-lg text-ink">Otras acreditaciones</p>
-              <ul className="space-y-3.5 text-left">
-                {acreditaciones.map((a) => (
-                  <li key={a} className="flex items-start gap-3 text-ink-2/80 leading-relaxed">
-                    <svg className="mt-1 shrink-0 text-gold" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    <span className="text-[0.98rem]">{a}</span>
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
+            {sobreMi.otrasAcreditaciones.length > 0 && (
+              <Reveal className="mt-8">
+                <p className="mb-5 font-display text-lg text-ink">Otras acreditaciones</p>
+                <ul className="space-y-3.5 text-left">
+                  {sobreMi.otrasAcreditaciones.map((a) => (
+                    <li key={a.id} className="flex items-start gap-3 text-ink-2/80 leading-relaxed">
+                      <svg className="mt-1 shrink-0 text-gold" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      <span className="text-[0.98rem]">{a.texto}</span>
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
+            )}
 
             <Reveal className="mt-10">
               <a href="#contacto" className="btn btn-gold">
-                Coordinar una reunión
+                {sobreMi.ctaText}
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
                   <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -437,44 +373,27 @@ export default function Home() {
           <div className="md:col-span-7 text-center md:text-left">
             <Reveal>
               <h2 className="font-display text-3xl md:text-[2.9rem] leading-tight tracking-[-0.02em]">
-                Una comunidad que crece unida:{" "}
+                {comunidad.headingPrefix}{" "}
                 <span className="italic text-gold-2">
-                  +1.500{" "}
-                  <Typewriter
-                    words={[
-                      "coaches",
-                      "ejecutivos",
-                      "profesionales",
-                      "emprendedores",
-                      "profesionales independientes",
-                      "empresas",
-                    ]}
-                  />
+                  {comunidad.statNumber} <Typewriter words={comunidad.statWords} />
                 </span>
               </h2>
               <p className="mt-7 max-w-xl text-white/65 leading-relaxed text-lg">
-                Si sos coach, este es tu lugar. Formación continua, mentoría, supervisión de casos y
-                una red de profesionales que comparten camino, herramientas y oportunidades. Elevamos
-                la profesión trabajando juntos.
+                {comunidad.descripcion}
               </p>
               <ul className="mt-9 grid sm:grid-cols-2 gap-x-8 gap-y-4 text-left max-w-md mx-auto md:max-w-none md:mx-0">
-                {[
-                  "Mentoría y supervisión profesional",
-                  "Formación y actualización continua",
-                  "Networking con +1500 colegas",
-                  "Herramientas y metodología propia",
-                ].map((f) => (
-                  <li key={f} className="flex items-start gap-3 text-white/80">
+                {comunidad.features.map((f) => (
+                  <li key={f.id} className="flex items-start gap-3 text-white/80">
                     <svg className="mt-1 shrink-0 text-gold-2" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
-                    <span className="text-[0.98rem] leading-snug">{f}</span>
+                    <span className="text-[0.98rem] leading-snug">{f.texto}</span>
                   </li>
                 ))}
               </ul>
               <div className="mt-10">
                 <a href="#contacto" className="btn btn-gold">
-                  Unite a la comunidad
+                  {comunidad.ctaText}
                 </a>
               </div>
             </Reveal>
@@ -483,8 +402,8 @@ export default function Home() {
             <Reveal delay={150}>
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-[color:var(--navy-line)] max-w-xs sm:max-w-sm mx-auto md:max-w-none">
                 <Image
-                  src="/fotos/comunidad.jpeg"
-                  alt="Roberto Corvalán en la entrega de certificaciones junto a coaches de su comunidad"
+                  src={imgSrc(comunidad.foto)}
+                  alt={comunidad.foto.alt}
                   fill
                   quality={90}
                   sizes="(max-width: 768px) 90vw, 40vw"
@@ -503,27 +422,23 @@ export default function Home() {
           <div className="min-w-0 text-center md:text-left">
             <Reveal>
               <h2 className="font-display text-3xl md:text-[2.9rem] leading-[1.1] tracking-[-0.02em] text-balance">
-                Encuentros que reúnen a grandes referentes.
+                {eventos.titulo}
               </h2>
-              <p className="mt-6 max-w-xl text-ink-2/70 leading-relaxed text-lg">
-                Organizo eventos y formaciones donde referentes del liderazgo y el coaching
-                comparten escenario con una comunidad de{" "}
-                <strong className="text-ink font-medium">+1500 coaches</strong>.
-              </p>
+              <p className="mt-6 max-w-xl text-ink-2/70 leading-relaxed text-lg">{eventos.descripcion}</p>
             </Reveal>
 
             <Reveal delay={150} className="mt-10">
               <div className="rounded-2xl bg-paper border border-[color:var(--line)] py-6">
                 <p className="px-6 text-xs uppercase tracking-[0.24em] text-gold mb-4">
-                  Referentes invitados
+                  {eventos.referentesTitulo}
                 </p>
-                <Marquee items={["Grupo Set", "ARGENNOVA", "Networking Presencial", "CIC"]} />
+                <Marquee items={eventos.referentes.map((r) => r.nombre)} />
               </div>
             </Reveal>
 
             <Reveal delay={220} className="mt-8">
               <a href="#contacto" className="btn btn-gold">
-                Quiero enterarme del próximo evento
+                {eventos.ctaText}
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
                   <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -533,29 +448,16 @@ export default function Home() {
 
           {/* Collage asimétrico */}
           <div className="grid grid-cols-2 gap-4">
-            <Reveal className="col-span-2">
-              <EventTile
-                src="/fotos/evento-taller.jpeg"
-                alt="Roberto Corvalán dictando un taller de modelo de negocio y liderazgo"
-                ratio="aspect-[16/9]"
-              />
-            </Reveal>
-            <Reveal delay={120}>
-              <EventTile
-                src="/fotos/evento-conferencia.jpeg"
-                alt="Roberto Corvalán dando una conferencia sobre liderazgo"
-                ratio="aspect-[4/3]"
-                position="object-top"
-              />
-            </Reveal>
-            <Reveal delay={220}>
-              <EventTile
-                src="/fotos/evento-loidi.jpeg"
-                alt="Roberto Corvalán junto a Jonatan Loidi en un evento de Grupo Set"
-                ratio="aspect-[4/3]"
-                position="object-top"
-              />
-            </Reveal>
+            {eventos.fotos.map((f, i) => (
+              <Reveal key={f.id} delay={i * 100} className={i === 0 ? "col-span-2" : undefined}>
+                <EventTile
+                  src={imgSrc(f.imagen)}
+                  alt={f.imagen.alt}
+                  ratio={f.ratio === "wide" ? "aspect-[16/9]" : "aspect-[4/3]"}
+                  position={f.ratio === "wide" ? "object-center" : "object-top"}
+                />
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
@@ -571,45 +473,28 @@ export default function Home() {
             <div className="relative z-10 grid lg:grid-cols-[1.15fr_0.85fr] items-stretch">
               <div className="relative z-10 p-8 md:p-10 lg:p-11 flex flex-col justify-center text-center lg:text-left items-center lg:items-start">
                 <h2 className="font-display font-medium text-[1.65rem] md:text-[1.9rem] lg:text-[2.15rem] leading-[1.1] tracking-[-0.02em] text-ivory max-w-md mx-auto lg:mx-0">
-                  Más de dos décadas de trabajo,{" "}
-                  <span className="italic text-gold-2">respaldadas por números.</span>
+                  {banner.tituloNormal}{" "}
+                  <span className="italic text-gold-2">{banner.tituloAcento}</span>
                 </h2>
 
                 {/* Estadística destacada con typewriter */}
                 <div className="mt-8 flex items-baseline gap-3 flex-wrap justify-center lg:justify-start">
                   <span className="font-display text-[2.4rem] md:text-5xl leading-none tracking-tight text-gold-2">
-                    +1.500
+                    {banner.statNumber}
                   </span>
                   <span className="font-display text-xl md:text-2xl italic text-ivory/90">
-                    <Typewriter
-                      words={[
-                        "ejecutivos",
-                        "profesionales",
-                        "emprendedores",
-                        "profesionales independientes",
-                        "empresas",
-                      ]}
-                    />
+                    <Typewriter words={banner.statWords} />
                   </span>
                 </div>
 
                 {/* Estadísticas de apoyo — fila */}
                 <div className="mt-7 grid grid-cols-3 max-w-md mx-auto lg:mx-0">
-                  {[
-                    { n: "+20", l: "Años de experiencia" },
-                    { n: "+150", l: "Procesos guiados" },
-                    { n: "98%", l: "Recomiendan" },
-                  ].map((s, i) => (
-                    <div
-                      key={s.n}
-                      className={
-                        i > 0 ? "pl-5 border-l border-[color:var(--navy-line)]" : ""
-                      }
-                    >
+                  {banner.stats.map((s, i) => (
+                    <div key={s.id} className={i > 0 ? "pl-5 border-l border-[color:var(--navy-line)]" : ""}>
                       <span className="block font-display text-2xl md:text-3xl leading-none tracking-tight text-gold-2">
-                        {s.n}
+                        {s.numero}
                       </span>
-                      <div className="mt-2 text-xs text-white/55 leading-snug">{s.l}</div>
+                      <div className="mt-2 text-xs text-white/55 leading-snug">{s.etiqueta}</div>
                     </div>
                   ))}
                 </div>
@@ -618,7 +503,7 @@ export default function Home() {
                   href="#contacto"
                   className="mt-9 inline-flex w-fit items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-medium text-ink transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/90 shadow-[0_16px_40px_-16px_rgba(0,0,0,0.6)]"
                 >
-                  Reservá tu llamada · cupos limitados
+                  {banner.ctaText}
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
                     <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
@@ -630,8 +515,8 @@ export default function Home() {
                   style={{ background: "radial-gradient(circle, var(--gold) 0%, transparent 70%)" }}
                 />
                 <Image
-                  src="/roberto-cutout.png"
-                  alt="Roberto Corvalán"
+                  src={imgSrc(banner.imagen)}
+                  alt={banner.imagen.alt}
                   fill
                   priority={false}
                   quality={90}
@@ -648,7 +533,11 @@ export default function Home() {
       <section className="py-24 md:py-32 bg-paper border-y border-[color:var(--line-2)]">
         <div className="container-x">
           <Reveal>
-            <Testimonials items={testimonios} />
+            <Testimonials
+              titulo={testimonios.titulo}
+              descripcion={testimonios.descripcion}
+              items={testimonios.items.map((t) => ({ q: t.cita, a: t.autor, r: t.rol }))}
+            />
           </Reveal>
         </div>
       </section>
@@ -659,21 +548,18 @@ export default function Home() {
         <div className="container-x relative z-10 grid lg:grid-cols-2 gap-14 items-center">
           <Reveal className="text-center lg:text-left">
             <h2 className="font-display text-3xl md:text-4xl lg:text-[2.75rem] leading-[1.15] tracking-[-0.02em] text-balance">
-              Demos el primer paso hacia tu próximo nivel.
+              {contacto.titulo}
             </h2>
-            <p className="mt-6 max-w-md text-white/65 leading-relaxed text-lg">
-              Contame en qué momento estás y qué querés transformar. Coordinamos una primera
-              conversación, sin compromiso.
-            </p>
+            <p className="mt-6 max-w-md text-white/65 leading-relaxed text-lg">{contacto.descripcion}</p>
             <div className="mt-9 space-y-3 text-white/75 flex flex-col items-center lg:items-start">
-              <a href="mailto:hola@robertocorvalan.com" className="flex items-center gap-3 hover:text-gold-2 transition-colors">
+              <a href={`mailto:${global.email}`} className="flex items-center gap-3 hover:text-gold-2 transition-colors">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3 7l9 6 9-6" />
                 </svg>
-                hola@robertocorvalan.com
+                {global.email}
               </a>
               <a
-                href={`https://wa.me/5491136830740?text=${encodeURIComponent("Hola Roberto, vi tu web y quiero coordinar una llamada.")}`}
+                href={waLink(global.whatsappDefaultMessage)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 hover:text-gold-2 transition-colors"
@@ -687,14 +573,24 @@ export default function Home() {
           </Reveal>
 
           <Reveal delay={120}>
-            <ContactForm />
+            <ContactForm whatsappNumber={global.whatsappNumber} />
           </Reveal>
         </div>
       </section>
 
-      <Footer />
+      <Footer
+        bio={footer.bio}
+        serviciosNombres={servicios.items.map((s) => s.titulo)}
+        whatsappUrl={waLink(global.whatsappDefaultMessage)}
+        email={global.email}
+        cicBadgeLinea1={footer.cicBadgeLinea1}
+        cicBadgeLinea2={footer.cicBadgeLinea2}
+        cicImagenSrc={imgSrc(footer.cicImagen)}
+        cicImagenAlt={footer.cicImagen.alt}
+        ubicacion={footer.ubicacion}
+      />
 
-      <FloatingAssistant />
+      <FloatingAssistant whatsappNumber={global.whatsappNumber} whatsappMessage={global.whatsappDefaultMessage} />
       <ScrollToTop />
     </main>
   );

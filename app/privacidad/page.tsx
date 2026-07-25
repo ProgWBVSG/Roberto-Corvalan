@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import LegalHeader from "@/components/LegalHeader";
 import Footer from "@/components/Footer";
+import { getFooterProps } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Política de Privacidad",
@@ -8,7 +9,8 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-export default function PrivacidadPage() {
+export default async function PrivacidadPage() {
+  const footerProps = await getFooterProps();
   return (
     <main className="bg-ivory text-ink">
       <LegalHeader />
@@ -104,7 +106,7 @@ export default function PrivacidadPage() {
         </div>
       </article>
 
-      <Footer />
+      <Footer {...footerProps} />
     </main>
   );
 }

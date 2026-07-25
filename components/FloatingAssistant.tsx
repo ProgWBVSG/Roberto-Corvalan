@@ -3,10 +3,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 
-const WHATSAPP_URL =
-  "https://wa.me/5491136830740?text=" +
-  encodeURIComponent("Hola Roberto, vi tu web y quiero coordinar una llamada.");
-
 const faqs = [
   {
     q: "¿Las sesiones son presenciales o virtuales?",
@@ -30,7 +26,14 @@ const faqs = [
   },
 ];
 
-export default function FloatingAssistant() {
+export default function FloatingAssistant({
+  whatsappNumber,
+  whatsappMessage,
+}: {
+  whatsappNumber: string;
+  whatsappMessage: string;
+}) {
+  const WHATSAPP_URL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<number | null>(0);
   const [hint, setHint] = useState(false);
