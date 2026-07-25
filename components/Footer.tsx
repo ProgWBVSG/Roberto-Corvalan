@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const WHATSAPP_URL =
   "https://wa.me/5491136830740?text=" +
@@ -71,6 +72,24 @@ export default function Footer() {
                   {s.icon}
                 </a>
               ))}
+            </div>
+
+            {/* Sello de acreditación CIC */}
+            <div className="mt-6 inline-flex items-center gap-2.5 rounded-xl bg-white p-2 pr-3.5">
+              <div className="relative h-8 w-8 shrink-0">
+                <Image
+                  src="/fotos/cic-acreditacion.jpeg"
+                  alt="Coach Profesional Acreditado — Confederación Interamericana de Coaching (CIC)"
+                  fill
+                  sizes="32px"
+                  className="rounded-md object-cover"
+                />
+              </div>
+              <span className="text-left text-[0.68rem] leading-tight text-navy/70">
+                Coach Profesional
+                <br />
+                <strong className="font-semibold text-navy">Acreditado · CIC</strong>
+              </span>
             </div>
           </div>
 

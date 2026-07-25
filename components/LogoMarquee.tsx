@@ -9,6 +9,11 @@ const companies = [
   { name: "Mary Kay", logo: "/logos/mary-kay.jpeg" },
   { name: "Monsalvo Propiedades", logo: "/logos/monsalvo-propiedades.jpeg" },
   { name: "PARH APS Seguros", logo: "/logos/parh-aps.jpeg" },
+  { name: "SETUP", logo: "/logos/setup.jpeg" },
+  { name: "EmprendePyme", logo: "/logos/emprendepyme.jpeg" },
+  { name: "Networking Presencial", logo: "/logos/networking-presencial.jpeg" },
+  { name: "ADN Inmobiliario", logo: "/logos/adn-inmobiliario.jpeg" },
+  { name: "Coaching para Equipos de Salud", logo: "/logos/coaching-equipos-salud.jpeg" },
 ];
 
 export default function LogoMarquee() {
