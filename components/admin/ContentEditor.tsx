@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useTransition } from "react";
 import type { SiteContent } from "@/lib/content-schema";
 import { iconOptions } from "@/lib/content-schema";
@@ -44,9 +45,20 @@ export default function ContentEditor({ initialContent }: { initialContent: Site
       {/* Barra de guardado, fija arriba */}
       <div className="sticky top-0 z-20 -mx-5 mb-6 border-b border-[color:var(--navy-line)] bg-navy/95 px-5 py-4 backdrop-blur-md md:-mx-8 md:px-8">
         <div className="mx-auto flex max-w-4xl items-center justify-between gap-4">
-          <div>
-            <h1 className="font-display text-xl text-ivory">Editar contenido</h1>
-            <p className="text-xs text-white/40">Los cambios se publican al instante al guardar.</p>
+          <div className="flex items-center gap-4">
+            <Link
+              href="/admin"
+              className="flex items-center gap-1.5 rounded-full border border-[color:var(--navy-line)] px-3.5 py-2 text-sm text-white/60 transition-colors hover:text-white hover:border-white/30"
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                <path d="M19 12H5M11 18l-6-6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              Consultas
+            </Link>
+            <div>
+              <h1 className="font-display text-xl text-ivory">Editar contenido</h1>
+              <p className="text-xs text-white/40">Los cambios se publican al instante al guardar.</p>
+            </div>
           </div>
           <div className="flex items-center gap-3">
             {status === "saved" && <span className="text-sm text-emerald-400">✓ Guardado</span>}
