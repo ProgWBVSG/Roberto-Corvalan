@@ -267,11 +267,11 @@ export default async function Home() {
       </section>
 
       {/* ============ SOBRE MÍ ============ */}
-      <section id="sobre" className="py-24 md:py-32">
-        <div className="container-x grid md:grid-cols-12 gap-12 md:gap-16 items-start">
+      <section id="sobre" className="py-16 sm:py-20 md:py-32">
+        <div className="container-x grid md:grid-cols-12 gap-8 sm:gap-10 md:gap-16 items-start">
           <div className="md:col-span-5 md:sticky md:top-28">
             <Reveal>
-              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-[color:var(--line)] max-w-xs sm:max-w-sm mx-auto md:max-w-none">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-[color:var(--line)] max-w-[210px] sm:max-w-[260px] mx-auto md:max-w-none">
                 <Image
                   src={imgSrc(sobreMi.foto)}
                   alt={sobreMi.foto.alt}
@@ -286,11 +286,11 @@ export default async function Home() {
           </div>
           <div className="md:col-span-7 text-center md:text-left">
             <Reveal>
-              <div className="gold-rule mb-8 mx-auto md:mx-0" />
-              <h2 className="font-display text-3xl md:text-[2.7rem] leading-tight tracking-[-0.02em] text-balance">
+              <div className="gold-rule mb-6 sm:mb-8 mx-auto md:mx-0" />
+              <h2 className="font-display text-[1.65rem] sm:text-[2rem] md:text-[2.7rem] leading-tight tracking-[-0.02em] text-balance">
                 {sobreMi.titulo}
               </h2>
-              <div className="mt-8 space-y-5 text-ink-2/80 leading-relaxed text-[1.05rem]">
+              <div className="mt-6 sm:mt-8 space-y-4 sm:space-y-5 text-ink-2/80 leading-relaxed text-[0.97rem] sm:text-[1.05rem]">
                 <p>{sobreMi.parrafo1}</p>
                 <p>{sobreMi.parrafo2}</p>
               </div>
@@ -298,8 +298,8 @@ export default async function Home() {
 
             {/* Certificaciones */}
             {sobreMi.certificaciones.length > 0 && (
-              <Reveal className="mt-14">
-                <p className="mb-6 font-display text-lg text-ink">Certificaciones</p>
+              <Reveal className="mt-10 sm:mt-14">
+                <p className="mb-4 sm:mb-6 font-display text-lg text-ink">Certificaciones</p>
                 <div className="grid sm:grid-cols-2 gap-4">
                   {sobreMi.certificaciones.map((c) => (
                     <div
@@ -477,32 +477,54 @@ export default async function Home() {
           >
             <ShaderBackground overlayClassName="bg-[#0a0e15]/55" />
             <div className="relative z-10 grid lg:grid-cols-[1.15fr_0.85fr] items-stretch">
-              <div className="relative z-10 p-8 md:p-10 lg:p-11 flex flex-col justify-center text-center lg:text-left items-center lg:items-start">
-                <h2 className="font-display font-medium text-[1.65rem] md:text-[1.9rem] lg:text-[2.15rem] leading-[1.1] tracking-[-0.02em] text-ivory max-w-md mx-auto lg:mx-0">
+              <div className="relative z-10 p-6 sm:p-8 md:p-10 lg:p-11 flex flex-col justify-center text-center lg:text-left items-center lg:items-start">
+                <h2 className="font-display font-medium text-[1.4rem] sm:text-[1.65rem] md:text-[1.9rem] lg:text-[2.15rem] leading-[1.15] tracking-[-0.02em] text-ivory max-w-md mx-auto lg:mx-0">
                   {banner.tituloNormal}{" "}
                   <span className="italic text-gold-2">{banner.tituloAcento}</span>
                 </h2>
 
                 {/* Estadística destacada con typewriter */}
-                <div className="mt-8 flex items-baseline gap-3 flex-wrap justify-center lg:justify-start">
-                  <span className="font-display text-[2.4rem] md:text-5xl leading-none tracking-tight text-gold-2">
+                <div className="mt-6 sm:mt-8 flex items-baseline gap-2.5 sm:gap-3 flex-wrap justify-center lg:justify-start">
+                  <span className="font-display text-[2rem] sm:text-[2.4rem] md:text-5xl leading-none tracking-tight text-gold-2">
                     {banner.statNumber}
                   </span>
-                  <span className="font-display text-xl md:text-2xl italic text-ivory/90">
+                  <span className="font-display text-base sm:text-xl md:text-2xl italic text-ivory/90">
                     <Typewriter words={banner.statWords} />
                   </span>
                 </div>
 
-                {/* Estadísticas de apoyo — fila */}
-                <div className="mt-7 grid grid-cols-3 max-w-md mx-auto lg:mx-0">
-                  {banner.stats.map((s, i) => (
-                    <div key={s.id} className={i > 0 ? "pl-5 border-l border-[color:var(--navy-line)]" : ""}>
-                      <span className="block font-display text-2xl md:text-3xl leading-none tracking-tight text-gold-2">
-                        {s.numero}
-                      </span>
-                      <div className="mt-2 text-xs text-white/55 leading-snug">{s.etiqueta}</div>
-                    </div>
-                  ))}
+                {/* Estadísticas de apoyo */}
+                <div className="mt-7 w-full max-w-md mx-auto lg:mx-0">
+                  {/* Mobile: filas tipo ficha, número a la izquierda y dato a la derecha */}
+                  <div className="flex flex-col sm:hidden">
+                    {banner.stats.map((s, i) => (
+                      <div
+                        key={s.id}
+                        className={`flex items-baseline justify-between gap-4 py-3 ${
+                          i > 0 ? "border-t border-[color:var(--navy-line)]" : ""
+                        }`}
+                      >
+                        <span className="font-display text-[1.7rem] leading-none tracking-tight text-gold-2">
+                          {s.numero}
+                        </span>
+                        <span className="text-right text-[0.82rem] leading-snug text-white/55">
+                          {s.etiqueta}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Desktop: columnas */}
+                  <div className="hidden sm:grid grid-cols-3">
+                    {banner.stats.map((s, i) => (
+                      <div key={s.id} className={i > 0 ? "pl-5 border-l border-[color:var(--navy-line)]" : ""}>
+                        <span className="block font-display text-2xl md:text-3xl leading-none tracking-tight text-gold-2">
+                          {s.numero}
+                        </span>
+                        <div className="mt-2 text-xs text-white/55 leading-snug">{s.etiqueta}</div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
                 <a
