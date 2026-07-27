@@ -215,15 +215,6 @@ export const contentSchema = z.object({
     tituloAcento: z.string().min(1).max(120),
     statNumber: z.string().min(1).max(20),
     statWords: z.array(z.string().min(1).max(60)).min(1).max(8),
-    stats: z
-      .array(
-        z.object({
-          id: idSchema,
-          numero: z.string().min(1).max(20),
-          etiqueta: z.string().min(1).max(60),
-        })
-      )
-      .max(6),
     ctaText: z.string().min(1).max(80),
     imagen: imageFieldSchema,
   }),
@@ -475,11 +466,6 @@ export const defaultContent: SiteContent = {
     tituloAcento: "respaldadas por números.",
     statNumber: "+1.500",
     statWords: ["ejecutivos", "profesionales", "emprendedores", "profesionales independientes", "empresas"],
-    stats: [
-      { id: uid(), numero: "+20", etiqueta: "Años de experiencia" },
-      { id: uid(), numero: "+150", etiqueta: "Procesos guiados" },
-      { id: uid(), numero: "98%", etiqueta: "Recomiendan" },
-    ],
     ctaText: "Reservá tu llamada · cupos limitados",
     imagen: img("/roberto-cutout.png", "Roberto Corvalán"),
   },

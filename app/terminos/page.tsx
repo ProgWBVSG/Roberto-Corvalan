@@ -5,7 +5,8 @@ import { getFooterProps } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Términos y Condiciones",
-  description: "Condiciones de uso del sitio web y los servicios de Roberto Corvalán.",
+  description: "Condiciones de uso del sitio web y los servicios de Roberto C. Corvalán.",
+  alternates: { canonical: "/terminos" },
   robots: { index: true, follow: true },
 };
 

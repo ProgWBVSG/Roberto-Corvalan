@@ -46,7 +46,11 @@ function EventTile({
   );
 }
 
-export const revalidate = 0;
+// Página estática con regeneración: se sirve pre-renderizada (rápida, mejor
+// Core Web Vitals) y se regenera al instante cuando se guarda contenido en
+// /admin (saveContent llama a revalidatePath). El plazo horario es una red
+// de seguridad por si esa revalidación no llegara a dispararse.
+export const revalidate = 3600;
 
 export default async function Home() {
   const content = await getContent();
@@ -493,43 +497,9 @@ export default async function Home() {
                   </span>
                 </div>
 
-                {/* Estadísticas de apoyo */}
-                <div className="mt-7 w-full max-w-md mx-auto lg:mx-0">
-                  {/* Mobile: filas tipo ficha, número a la izquierda y dato a la derecha */}
-                  <div className="flex flex-col sm:hidden">
-                    {banner.stats.map((s, i) => (
-                      <div
-                        key={s.id}
-                        className={`flex items-baseline justify-between gap-4 py-3 ${
-                          i > 0 ? "border-t border-[color:var(--navy-line)]" : ""
-                        }`}
-                      >
-                        <span className="font-display text-[1.7rem] leading-none tracking-tight text-gold-2">
-                          {s.numero}
-                        </span>
-                        <span className="text-right text-[0.82rem] leading-snug text-white/55">
-                          {s.etiqueta}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Desktop: columnas */}
-                  <div className="hidden sm:grid grid-cols-3">
-                    {banner.stats.map((s, i) => (
-                      <div key={s.id} className={i > 0 ? "pl-5 border-l border-[color:var(--navy-line)]" : ""}>
-                        <span className="block font-display text-2xl md:text-3xl leading-none tracking-tight text-gold-2">
-                          {s.numero}
-                        </span>
-                        <div className="mt-2 text-xs text-white/55 leading-snug">{s.etiqueta}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
                 <a
                   href="#contacto"
-                  className="mt-9 inline-flex w-fit items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-medium text-ink transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/90 shadow-[0_16px_40px_-16px_rgba(0,0,0,0.6)]"
+                  className="mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-medium text-ink transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/90 shadow-[0_16px_40px_-16px_rgba(0,0,0,0.6)]"
                 >
                   {banner.ctaText}
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">

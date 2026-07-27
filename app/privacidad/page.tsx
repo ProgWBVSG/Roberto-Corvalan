@@ -5,7 +5,8 @@ import { getFooterProps } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Política de Privacidad",
-  description: "Cómo Roberto Corvalán recopila, usa y protege tus datos personales.",
+  description: "Cómo Roberto C. Corvalán recopila, usa y protege tus datos personales.",
+  alternates: { canonical: "/privacidad" },
   robots: { index: true, follow: true },
 };
 

@@ -375,21 +375,6 @@ export default function ContentEditor({ initialContent }: { initialContent: Site
             onChange={(v) => set("banner", { statWords: v.split("\n").map((s) => s.trim()).filter(Boolean) })}
           />
           <Field label="Texto del botón" value={banner.ctaText} onChange={(v) => set("banner", { ctaText: v })} />
-          <div>
-            <p className="mb-3 text-sm font-medium text-ivory">Estadísticas de apoyo</p>
-            <ListEditor
-              items={banner.stats}
-              onChange={(stats) => set("banner", { stats })}
-              newItem={() => ({ id: uid(), numero: "+0", etiqueta: "Etiqueta" })}
-              addLabel="Agregar estadística"
-              renderItem={(item, update) => (
-                <div className="grid grid-cols-2 gap-3">
-                  <Field label="Número" value={item.numero} onChange={(v) => update({ numero: v })} />
-                  <Field label="Etiqueta" value={item.etiqueta} onChange={(v) => update({ etiqueta: v })} />
-                </div>
-              )}
-            />
-          </div>
         </Section>
 
         {/* TESTIMONIOS */}
