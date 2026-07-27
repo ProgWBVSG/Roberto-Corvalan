@@ -28,9 +28,14 @@ export default async function PrivacidadPage() {
             <p>
               Roberto Corvalán, coach ejecutivo, es el responsable del tratamiento de los datos
               personales que se recopilan a través de este sitio web
-              (robertocorvalan.com). Podés contactarnos en{" "}
-              <a href="mailto:hola@robertocorvalan.com" className="text-gold hover:underline">
-                hola@robertocorvalan.com
+              (robertocorvalan.com). Podés contactarnos por{" "}
+              <a
+                href="https://wa.me/5491136830740"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gold hover:underline"
+              >
+                WhatsApp
               </a>{" "}
               ante cualquier consulta sobre esta política.
             </p>
@@ -77,9 +82,14 @@ export default async function PrivacidadPage() {
             <p>
               De acuerdo con la Ley 25.326 de Protección de Datos Personales de Argentina, tenés
               derecho a acceder, rectificar, actualizar o solicitar la eliminación de tus datos
-              personales. Para ejercer estos derechos, escribinos a{" "}
-              <a href="mailto:hola@robertocorvalan.com" className="text-gold hover:underline">
-                hola@robertocorvalan.com
+              personales. Para ejercer estos derechos, escribinos por{" "}
+              <a
+                href="https://wa.me/5491136830740"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gold hover:underline"
+              >
+                WhatsApp
               </a>
               . La Agencia de Acceso a la Información Pública, en su carácter de Órgano de Control
               de la Ley 25.326, tiene la atribución de atender denuncias y reclamos que se

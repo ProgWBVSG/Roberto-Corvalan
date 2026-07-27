@@ -77,10 +77,9 @@ export default function ContentEditor({ initialContent }: { initialContent: Site
 
       <div className="mx-auto max-w-4xl space-y-4">
         {/* GLOBAL */}
-        <Section title="Datos generales" description="WhatsApp y email usados en toda la web" defaultOpen>
+        <Section title="Datos generales" description="WhatsApp usado en toda la web" defaultOpen>
           <Field label="Número de WhatsApp (sin +, con código de país)" value={global.whatsappNumber} onChange={(v) => set("global", { whatsappNumber: v })} placeholder="5491136830740" />
           <TextAreaField label="Mensaje por defecto de WhatsApp" value={global.whatsappDefaultMessage} onChange={(v) => set("global", { whatsappDefaultMessage: v })} rows={2} />
-          <Field label="Email de contacto" value={global.email} onChange={(v) => set("global", { email: v })} />
         </Section>
 
         {/* HERO */}

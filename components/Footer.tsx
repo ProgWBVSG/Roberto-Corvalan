@@ -38,7 +38,6 @@ export default function Footer({
   bio,
   serviciosNombres,
   whatsappUrl,
-  email,
   cicBadgeLinea1,
   cicBadgeLinea2,
   cicImagenSrc,
@@ -48,7 +47,6 @@ export default function Footer({
   bio: string;
   serviciosNombres: string[];
   whatsappUrl: string;
-  email: string;
   cicBadgeLinea1: string;
   cicBadgeLinea2: string;
   cicImagenSrc: string;
@@ -133,11 +131,6 @@ export default function Footer({
           <div>
             <p className="mb-5 font-display text-base text-ivory">Contacto</p>
             <ul className="space-y-3 text-sm text-white/55">
-              <li>
-                <a href={`mailto:${email}`} className="hover:text-gold-2 transition-colors">
-                  {email}
-                </a>
-              </li>
               <li>
                 <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="hover:text-gold-2 transition-colors">
                   WhatsApp

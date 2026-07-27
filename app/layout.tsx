@@ -144,7 +144,6 @@ const jsonLd = {
       image: "https://robertocorvalan.com/roberto-hero.png",
       founder: { "@id": "https://robertocorvalan.com/#person" },
       provider: { "@id": "https://robertocorvalan.com/#person" },
-      email: "hola@robertocorvalan.com",
       telephone: "+5491136830740",
       priceRange: "$$",
       address: {

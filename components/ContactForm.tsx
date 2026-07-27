@@ -230,13 +230,6 @@ export default function ContactForm({ whatsappNumber }: { whatsappNumber: string
             Contactar por WhatsApp
           </a>
 
-          <p className="mt-5 text-sm text-white/45">
-            ¿Preferís email? Escribime a{" "}
-            <a href="mailto:hola@robertocorvalan.com" className="text-gold-2 hover:underline">
-              hola@robertocorvalan.com
-            </a>
-          </p>
-
           <button
             type="button"
             onClick={() => {
