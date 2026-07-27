@@ -269,6 +269,28 @@ export default function ContentEditor({ initialContent }: { initialContent: Site
                   )}
                 />
               </div>
+              <div>
+                <p className="mb-3 text-sm font-medium text-ivory">Redes y asociaciones (carrusel de logos)</p>
+                <Field
+                  label="Título del carrusel"
+                  value={sobreMi.certificadoCIC.asociacionesTitulo}
+                  onChange={(v) => set("sobreMi", { certificadoCIC: { ...sobreMi.certificadoCIC, asociacionesTitulo: v } })}
+                />
+                <div className="mt-3">
+                  <ListEditor
+                    items={sobreMi.certificadoCIC.asociaciones}
+                    onChange={(asociaciones) => set("sobreMi", { certificadoCIC: { ...sobreMi.certificadoCIC, asociaciones } })}
+                    newItem={() => ({ id: uid(), nombre: "Nueva asociación", logo: { mediaId: null, fallbackSrc: "", alt: "" } })}
+                    addLabel="Agregar asociación"
+                    renderItem={(item, update) => (
+                      <>
+                        <Field label="Nombre" value={item.nombre} onChange={(v) => update({ nombre: v })} />
+                        <ImageFieldEditor label="Logo" value={item.logo} onChange={(v) => update({ logo: v })} />
+                      </>
+                    )}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </Section>

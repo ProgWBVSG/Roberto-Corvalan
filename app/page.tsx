@@ -334,6 +334,12 @@ export default async function Home() {
                 imagenSrc={imgSrc(sobreMi.certificadoCIC.imagen)}
                 imagenAlt={sobreMi.certificadoCIC.imagen.alt}
                 datos={sobreMi.certificadoCIC.datos}
+                asociacionesTitulo={sobreMi.certificadoCIC.asociacionesTitulo}
+                asociaciones={sobreMi.certificadoCIC.asociaciones.map((a) => ({
+                  id: a.id,
+                  nombre: a.nombre,
+                  logoSrc: imgSrc(a.logo),
+                }))}
               />
             </Reveal>
 

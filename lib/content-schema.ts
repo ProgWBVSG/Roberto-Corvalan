@@ -155,6 +155,16 @@ export const contentSchema = z.object({
           })
         )
         .max(8),
+      asociacionesTitulo: z.string().min(1).max(80),
+      asociaciones: z
+        .array(
+          z.object({
+            id: idSchema,
+            nombre: z.string().min(1).max(80),
+            logo: imageFieldSchema,
+          })
+        )
+        .max(20),
     }),
   }),
 
@@ -415,6 +425,12 @@ export const defaultContent: SiteContent = {
         { id: uid(), etiqueta: "Código", valor: "AR · 29.05.510" },
         { id: uid(), etiqueta: "Vigencia", valor: "2026 — 2028" },
         { id: uid(), etiqueta: "Sede", valor: "Asunción, Paraguay" },
+      ],
+      asociacionesTitulo: "Redes y asociaciones",
+      asociaciones: [
+        { id: uid(), nombre: "CIC — Confederación Interamericana de Coaching", logo: img("/fotos/cic-acreditacion.jpeg", "CIC — Confederación Interamericana de Coaching") },
+        { id: uid(), nombre: "ARGENNOVA", logo: img("/logos/argennova.png", "ARGENNOVA") },
+        { id: uid(), nombre: "Red Global de Mentores", logo: img("/logos/red-global-mentores.jpeg", "Red Global de Mentores") },
       ],
     },
   },

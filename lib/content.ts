@@ -8,9 +8,35 @@ import { contentSchema, defaultContent, imgSrc, type SiteContent } from "@/lib/c
 const ROW_ID = 1;
 
 /**
+ * Combina lo guardado con los defaults, campo por campo, en cualquier
+ * profundidad. Así, si se agrega un campo nuevo al esquema más adelante,
+ * una sección ya editada por el admin no se descarta entera: solo el
+ * campo nuevo cae al default, el resto de sus ediciones se conservan.
+ * Los arrays (listas editables) se toman completos desde lo guardado,
+ * nunca se mezclan ítem por ítem.
+ */
+function deepMergeDefaults<T>(defaults: T, stored: unknown): T {
+  if (stored === undefined || stored === null) return defaults;
+  if (Array.isArray(defaults)) {
+    return (Array.isArray(stored) ? stored : defaults) as T;
+  }
+  if (defaults !== null && typeof defaults === "object" && typeof stored === "object" && !Array.isArray(stored)) {
+    const result: Record<string, unknown> = { ...(defaults as Record<string, unknown>) };
+    for (const key of Object.keys(defaults as Record<string, unknown>)) {
+      result[key] = deepMergeDefaults(
+        (defaults as Record<string, unknown>)[key],
+        (stored as Record<string, unknown>)[key]
+      );
+    }
+    return result as T;
+  }
+  return (typeof stored === typeof defaults ? stored : defaults) as T;
+}
+
+/**
  * Lee el contenido del sitio desde la base. Si falta la fila, o si el JSON
  * guardado quedó incompleto/corrupto respecto al esquema actual, cada
- * sección faltante o inválida cae de vuelta al default de esa sección
+ * campo faltante o inválido cae de vuelta al default correspondiente
  * (nunca rompe la página pública por un problema de datos).
  */
 export const getContent = cache(async (): Promise<SiteContent> => {
@@ -21,11 +47,7 @@ export const getContent = cache(async (): Promise<SiteContent> => {
     if (!raw) return defaultContent;
 
     const parsedJson = JSON.parse(raw) as Record<string, unknown>;
-    // Merge por sección: lo guardado pisa el default, sección por sección.
-    const merged: Record<string, unknown> = { ...defaultContent };
-    for (const key of Object.keys(defaultContent) as (keyof SiteContent)[]) {
-      if (parsedJson[key] !== undefined) merged[key] = parsedJson[key];
-    }
+    const merged = deepMergeDefaults(defaultContent, parsedJson);
 
     const result = contentSchema.safeParse(merged);
     if (result.success) return result.data;
