@@ -89,7 +89,7 @@ export default function CertificadoCIC({
 
             <h3 className="mt-3.5 font-display text-[1.25rem] sm:text-[1.4rem] leading-[1.15] tracking-[-0.02em]">
               {titulo}
-              <span className="text-gold-2 italic"> {subtitulo}</span>
+              <span className="text-gold-2"> {subtitulo}</span>
             </h3>
 
             <p className="mt-3 text-[0.9rem] leading-relaxed text-white/60 max-w-md mx-auto md:mx-0">

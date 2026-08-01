@@ -36,7 +36,6 @@ export const contentSchema = z.object({
   }),
 
   hero: z.object({
-    eyebrow: z.string().min(1).max(80),
     titleLine1: z.string().min(1).max(80),
     titleLine2: z.string().min(1).max(80),
     introText: z.string().min(1).max(400),
@@ -278,7 +277,6 @@ export const defaultContent: SiteContent = {
   },
 
   hero: {
-    eyebrow: "Coach ejecutivo · Liderazgo",
     titleLine1: "Grandes líderes no nacen.",
     titleLine2: "Se acompañan.",
     introText:

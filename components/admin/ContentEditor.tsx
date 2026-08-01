@@ -85,7 +85,6 @@ export default function ContentEditor({ initialContent }: { initialContent: Site
         {/* HERO */}
         <Section title="Portada (Hero)" description="Lo primero que se ve al entrar">
           <ImageFieldEditor label="Foto de fondo" value={hero.background} onChange={(v) => set("hero", { background: v })} />
-          <Field label="Texto pequeño arriba del título" value={hero.eyebrow} onChange={(v) => set("hero", { eyebrow: v })} />
           <Field label="Título — línea 1" value={hero.titleLine1} onChange={(v) => set("hero", { titleLine1: v })} />
           <Field label="Título — línea 2 (dorada)" value={hero.titleLine2} onChange={(v) => set("hero", { titleLine2: v })} />
           <TextAreaField label="Texto antes del número animado" value={hero.introText} onChange={(v) => set("hero", { introText: v })} />

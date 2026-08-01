@@ -82,18 +82,12 @@ export default async function Home() {
 
         <div className="container-x relative w-full flex-1 flex flex-col justify-center pt-28">
           <div className="max-w-3xl pb-10 md:pb-0 text-center md:text-left mx-auto md:mx-0">
-            <Reveal>
-              <p className="flex items-center justify-center md:justify-start gap-3 text-[0.72rem] uppercase tracking-[0.28em] text-gold-2 mb-7">
-                <span className="h-px w-8 bg-gold-2/60" />
-                {hero.eyebrow}
-              </p>
-            </Reveal>
             <SplitHeading
               delay={0.1}
               className="font-display font-medium leading-[1.06] tracking-[-0.015em] text-[clamp(1.35rem,5.2vw,3.5rem)]"
               lines={[
                 { text: hero.titleLine1 },
-                { text: hero.titleLine2, className: "italic text-gold-2" },
+                { text: hero.titleLine2, className: "text-gold-2" },
               ]}
             />
             <Reveal delay={180}>
@@ -384,7 +378,7 @@ export default async function Home() {
             <Reveal>
               <h2 className="font-display text-3xl md:text-[2.9rem] leading-tight tracking-[-0.02em]">
                 {comunidad.headingPrefix}{" "}
-                <span className="italic text-gold-2">
+                <span className="text-gold-2">
                   {comunidad.statNumber} <Typewriter words={comunidad.statWords} />
                 </span>
               </h2>
@@ -484,7 +478,7 @@ export default async function Home() {
               <div className="relative z-10 p-6 sm:p-8 md:p-10 lg:p-11 flex flex-col justify-center text-center lg:text-left items-center lg:items-start">
                 <h2 className="font-display font-medium text-[1.4rem] sm:text-[1.65rem] md:text-[1.9rem] lg:text-[2.15rem] leading-[1.15] tracking-[-0.02em] text-ivory max-w-md mx-auto lg:mx-0">
                   {banner.tituloNormal}{" "}
-                  <span className="italic text-gold-2">{banner.tituloAcento}</span>
+                  <span className="text-gold-2">{banner.tituloAcento}</span>
                 </h2>
 
                 {/* Estadística destacada con typewriter */}
@@ -492,7 +486,7 @@ export default async function Home() {
                   <span className="font-display text-[2rem] sm:text-[2.4rem] md:text-5xl leading-none tracking-tight text-gold-2">
                     {banner.statNumber}
                   </span>
-                  <span className="font-display text-base sm:text-xl md:text-2xl italic text-ivory/90">
+                  <span className="font-display text-base sm:text-xl md:text-2xl text-ivory/90">
                     <Typewriter words={banner.statWords} />
                   </span>
                 </div>
