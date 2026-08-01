@@ -297,7 +297,8 @@ export default async function Home() {
             {/* Certificaciones */}
             {sobreMi.certificaciones.length > 0 && (
               <Reveal className="mt-10 sm:mt-14">
-                <p className="mb-4 sm:mb-6 font-display text-lg text-ink">Certificaciones</p>
+                <div className="gold-rule mb-4 mx-auto md:mx-0" />
+                <p className="mb-4 sm:mb-6 font-display text-xl text-ink">Certificaciones</p>
                 <div className="grid sm:grid-cols-2 gap-4">
                   {sobreMi.certificaciones.map((c) => (
                     <div
@@ -344,7 +345,8 @@ export default async function Home() {
             {/* Otras acreditaciones */}
             {sobreMi.otrasAcreditaciones.length > 0 && (
               <Reveal className="mt-8">
-                <p className="mb-5 font-display text-lg text-ink">Otras acreditaciones</p>
+                <div className="gold-rule mb-4 mx-auto md:mx-0" />
+                <p className="mb-5 font-display text-xl text-ink">Otras acreditaciones</p>
                 <ul className="space-y-3.5 text-left">
                   {sobreMi.otrasAcreditaciones.map((a) => (
                     <li key={a.id} className="flex items-start gap-3 text-ink-2/80 leading-relaxed">

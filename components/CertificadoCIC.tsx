@@ -50,13 +50,13 @@ export default function CertificadoCIC({
             "radial-gradient(120% 130% at 100% 0%, rgba(176,141,76,0.16) 0%, transparent 55%)",
         }}
       >
-        <div className="grid gap-6 p-6 sm:p-7 md:grid-cols-[minmax(0,0.6fr)_minmax(0,1.4fr)] md:items-center md:gap-8">
+        <div className="grid gap-7 p-7 sm:p-9 md:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] md:items-center md:gap-9">
           {/* Certificado */}
           <button
             type="button"
             onClick={() => setOpen(true)}
             aria-label="Ampliar certificado"
-            className="group relative mx-auto w-full max-w-[150px] md:max-w-[170px] cursor-zoom-in"
+            className="group relative mx-auto w-full max-w-[190px] md:max-w-[220px] cursor-zoom-in"
           >
             <div className="relative aspect-[853/1280] overflow-hidden rounded-xl border border-[color:var(--gold)]/35 shadow-[0_26px_60px_-24px_rgba(0,0,0,0.85)] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1">
               <Image
@@ -64,13 +64,13 @@ export default function CertificadoCIC({
                 alt={imagenAlt}
                 fill
                 quality={90}
-                sizes="170px"
+                sizes="220px"
                 className="object-cover"
               />
               <span className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-white/10" />
             </div>
-            <span className="mt-2.5 flex items-center justify-center gap-1.5 text-[0.65rem] uppercase tracking-[0.16em] text-white/40 transition-colors group-hover:text-gold-2">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <span className="mt-3 flex items-center justify-center gap-1.5 text-[0.68rem] uppercase tracking-[0.16em] text-white/40 transition-colors group-hover:text-gold-2">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <circle cx="11" cy="11" r="7" />
                 <path d="M21 21l-4.3-4.3M11 8v6M8 11h6" strokeLinecap="round" />
               </svg>
@@ -80,29 +80,29 @@ export default function CertificadoCIC({
 
           {/* Detalle */}
           <div className="text-center md:text-left">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-[color:var(--gold)]/35 bg-[color:var(--gold-soft)] px-3 py-1 text-[0.62rem] uppercase tracking-[0.14em] text-gold-2">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-[color:var(--gold)]/35 bg-[color:var(--gold-soft)] px-3.5 py-1.5 text-[0.68rem] uppercase tracking-[0.16em] text-gold-2">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M20 6L9 17l-5-5" />
               </svg>
               {badgeText}
             </span>
 
-            <h3 className="mt-3.5 font-display text-[1.25rem] sm:text-[1.4rem] leading-[1.15] tracking-[-0.02em]">
+            <h3 className="mt-4 font-display text-[1.55rem] sm:text-[1.85rem] leading-[1.15] tracking-[-0.02em]">
               {titulo}
               <span className="text-gold-2"> {subtitulo}</span>
             </h3>
 
-            <p className="mt-3 text-[0.9rem] leading-relaxed text-white/60 max-w-md mx-auto md:mx-0">
+            <p className="mt-3.5 text-[0.98rem] leading-relaxed text-white/60 max-w-md mx-auto md:mx-0">
               {descripcion}
             </p>
 
-            <dl className="mt-5 grid grid-cols-2 gap-x-5 gap-y-4 text-left max-w-md mx-auto md:mx-0">
+            <dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-5 text-left max-w-md mx-auto md:mx-0">
               {datos.map((d) => (
-                <div key={d.id} className="border-l border-[color:var(--gold)]/25 pl-3">
-                  <dt className="text-[0.6rem] uppercase tracking-[0.14em] text-white/35">
+                <div key={d.id} className="border-l border-[color:var(--gold)]/25 pl-3.5">
+                  <dt className="text-[0.65rem] uppercase tracking-[0.14em] text-white/35">
                     {d.etiqueta}
                   </dt>
-                  <dd className="mt-0.5 text-[0.85rem] font-medium leading-snug text-ivory">
+                  <dd className="mt-1 text-[0.92rem] font-medium leading-snug text-ivory">
                     {d.valor}
                   </dd>
                 </div>
@@ -113,23 +113,23 @@ export default function CertificadoCIC({
 
         {/* Carrusel de asociaciones */}
         {asociaciones.length > 0 && (
-          <div className="border-t border-[color:var(--navy-line)] px-6 py-5 sm:px-7">
-            <p className="mb-3 text-center text-[0.62rem] uppercase tracking-[0.18em] text-white/35 md:text-left">
+          <div className="border-t border-[color:var(--navy-line)] px-7 py-6 sm:px-9">
+            <p className="mb-4 text-center text-[0.68rem] uppercase tracking-[0.18em] text-white/35 md:text-left">
               {asociacionesTitulo}
             </p>
             <div className="group relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-              <div className="flex w-max animate-[marquee_20s_linear_infinite] items-center gap-4 group-hover:[animation-play-state:paused]">
+              <div className="flex w-max animate-[marquee_20s_linear_infinite] items-center gap-5 group-hover:[animation-play-state:paused]">
                 {loop.map((a, i) => (
                   <div
                     key={`${a.id}-${i}`}
-                    className="flex h-11 w-24 shrink-0 items-center justify-center rounded-lg border border-[color:var(--navy-line)] bg-white p-2"
+                    className="flex h-14 w-32 shrink-0 items-center justify-center rounded-lg border border-[color:var(--navy-line)] bg-white p-2.5"
                   >
                     <div className="relative h-full w-full">
                       <Image
                         src={a.logoSrc}
                         alt={a.nombre}
                         fill
-                        sizes="96px"
+                        sizes="128px"
                         className="object-contain"
                       />
                     </div>
