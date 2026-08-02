@@ -432,13 +432,6 @@ export const defaultContent: SiteContent = {
             "Roberto C. Corvalán, Embajador de la Red Global de Mentores"
           ),
         },
-        {
-          id: uid(),
-          imagen: img(
-            "/fotos/fundadores-setup.jpeg",
-            "Marcelo Piredda y Roberto C. Corvalán, fundadores y socios de SETUP Coaching y Estrategia Empresarial"
-          ),
-        },
       ],
       datos: [
         { id: uid(), etiqueta: "Credencial", valor: "Coach Profesional Acreditado" },
