@@ -243,11 +243,34 @@ export default function ContentEditor({ initialContent }: { initialContent: Site
           <div className="rounded-xl border border-[color:var(--gold)]/25 p-4">
             <p className="mb-3 text-sm font-medium text-gold-2">Credencial destacada — Certificado CIC</p>
             <div className="space-y-3">
-              <ImageFieldEditor
-                label="Foto del certificado"
-                value={sobreMi.certificadoCIC.imagen}
-                onChange={(v) => set("sobreMi", { certificadoCIC: { ...sobreMi.certificadoCIC, imagen: v } })}
-              />
+              <div>
+                <p className="mb-2 text-sm font-medium text-ivory">
+                  Credenciales (carrusel de fotos)
+                </p>
+                <p className="mb-3 text-xs text-white/40">
+                  Se muestran una por una, rotando automáticamente. La primera es la que
+                  aparece al cargar la página.
+                </p>
+                <ListEditor
+                  items={sobreMi.certificadoCIC.credenciales}
+                  onChange={(credenciales) =>
+                    set("sobreMi", { certificadoCIC: { ...sobreMi.certificadoCIC, credenciales } })
+                  }
+                  minItems={1}
+                  newItem={() => ({
+                    id: uid(),
+                    imagen: { mediaId: null, fallbackSrc: "", alt: "" },
+                  })}
+                  addLabel="Agregar credencial"
+                  renderItem={(item, update) => (
+                    <ImageFieldEditor
+                      label="Foto"
+                      value={item.imagen}
+                      onChange={(v) => update({ imagen: v })}
+                    />
+                  )}
+                />
+              </div>
               <Field label="Texto del badge" value={sobreMi.certificadoCIC.badgeText} onChange={(v) => set("sobreMi", { certificadoCIC: { ...sobreMi.certificadoCIC, badgeText: v } })} />
               <Field label="Título" value={sobreMi.certificadoCIC.titulo} onChange={(v) => set("sobreMi", { certificadoCIC: { ...sobreMi.certificadoCIC, titulo: v } })} />
               <Field label="Subtítulo (dorado)" value={sobreMi.certificadoCIC.subtitulo} onChange={(v) => set("sobreMi", { certificadoCIC: { ...sobreMi.certificadoCIC, subtitulo: v } })} />

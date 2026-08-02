@@ -2,17 +2,18 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Lightbox from "./Lightbox";
 
 type Dato = { id: string; etiqueta: string; valor: string };
 type Asociacion = { id: string; nombre: string; logoSrc: string };
+type Credencial = { id: string; src: string; alt: string };
 
 export default function CertificadoCIC({
   badgeText,
   titulo,
   subtitulo,
   descripcion,
-  imagenSrc,
-  imagenAlt,
+  credenciales,
   datos,
   asociacionesTitulo,
   asociaciones,
@@ -21,25 +22,24 @@ export default function CertificadoCIC({
   titulo: string;
   subtitulo: string;
   descripcion: string;
-  imagenSrc: string;
-  imagenAlt: string;
+  credenciales: Credencial[];
   datos: Dato[];
   asociacionesTitulo: string;
   asociaciones: Asociacion[];
 }) {
-  const [open, setOpen] = useState(false);
+  const [zoom, setZoom] = useState<{ src: string; alt: string } | null>(null);
+  const [slide, setSlide] = useState(0);
   const loop = asociaciones.length ? [...asociaciones, ...asociaciones] : [];
+  const total = credenciales.length;
 
+  // Rotación automática del carrusel de credenciales
   useEffect(() => {
-    if (!open) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
-    document.addEventListener("keydown", onKey);
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = "";
-    };
-  }, [open]);
+    if (total <= 1 || zoom) return;
+    const id = setInterval(() => setSlide((v) => (v + 1) % total), 5000);
+    return () => clearInterval(id);
+  }, [total, zoom]);
+
+  const actual = credenciales[slide] ?? credenciales[0];
 
   return (
     <>
@@ -51,32 +51,63 @@ export default function CertificadoCIC({
         }}
       >
         <div className="grid gap-6 p-5 sm:p-7 md:p-9 md:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] md:items-center md:gap-9">
-          {/* Certificado */}
-          <button
-            type="button"
-            onClick={() => setOpen(true)}
-            aria-label="Ampliar certificado"
-            className="group relative mx-auto w-full max-w-[160px] sm:max-w-[190px] md:max-w-[220px] cursor-zoom-in min-w-0"
-          >
-            <div className="relative aspect-[853/1280] overflow-hidden rounded-xl border border-[color:var(--gold)]/35 shadow-[0_26px_60px_-24px_rgba(0,0,0,0.85)] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1">
-              <Image
-                src={imagenSrc}
-                alt={imagenAlt}
-                fill
-                quality={90}
-                sizes="220px"
-                className="object-cover"
-              />
+          {/* Carrusel de credenciales */}
+          <div className="mx-auto w-full max-w-[160px] sm:max-w-[190px] md:max-w-[220px] min-w-0">
+            <div className="relative aspect-[853/1280] overflow-hidden rounded-xl border border-[color:var(--gold)]/35 shadow-[0_26px_60px_-24px_rgba(0,0,0,0.85)]">
+              {credenciales.map((c, i) => (
+                <button
+                  key={c.id}
+                  type="button"
+                  onClick={() => setZoom({ src: c.src, alt: c.alt })}
+                  aria-label={`Ampliar: ${c.alt}`}
+                  aria-hidden={i !== slide}
+                  tabIndex={i === slide ? 0 : -1}
+                  className={`absolute inset-0 cursor-zoom-in transition-opacity duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                    i === slide ? "opacity-100" : "pointer-events-none opacity-0"
+                  }`}
+                >
+                  <Image
+                    src={c.src}
+                    alt={c.alt}
+                    fill
+                    quality={90}
+                    sizes="220px"
+                    className="object-cover"
+                  />
+                </button>
+              ))}
               <span className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-white/10" />
             </div>
-            <span className="mt-3 flex items-center justify-center gap-1.5 text-[0.68rem] uppercase tracking-[0.16em] text-white/40 transition-colors group-hover:text-gold-2">
+
+            {/* Indicadores */}
+            {total > 1 && (
+              <div className="mt-3 flex justify-center gap-2">
+                {credenciales.map((c, i) => (
+                  <button
+                    key={c.id}
+                    type="button"
+                    onClick={() => setSlide(i)}
+                    aria-label={`Ver credencial ${i + 1}`}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${
+                      i === slide ? "w-5 bg-gold-2" : "w-1.5 bg-white/25 hover:bg-white/40"
+                    }`}
+                  />
+                ))}
+              </div>
+            )}
+
+            <button
+              type="button"
+              onClick={() => setZoom({ src: actual.src, alt: actual.alt })}
+              className="group mt-2.5 flex w-full items-center justify-center gap-1.5 text-[0.68rem] uppercase tracking-[0.16em] text-white/40 transition-colors hover:text-gold-2"
+            >
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <circle cx="11" cy="11" r="7" />
                 <path d="M21 21l-4.3-4.3M11 8v6M8 11h6" strokeLinecap="round" />
               </svg>
               Ampliar
-            </span>
-          </button>
+            </button>
+          </div>
 
           {/* Detalle */}
           <div className="text-center md:text-left min-w-0">
@@ -120,9 +151,12 @@ export default function CertificadoCIC({
             <div className="group relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
               <div className="flex w-max animate-[marquee_20s_linear_infinite] items-center gap-5 group-hover:[animation-play-state:paused]">
                 {loop.map((a, i) => (
-                  <div
+                  <button
                     key={`${a.id}-${i}`}
-                    className="flex h-12 w-28 sm:h-14 sm:w-32 shrink-0 items-center justify-center rounded-lg border border-[color:var(--navy-line)] bg-white p-2 sm:p-2.5"
+                    type="button"
+                    onClick={() => setZoom({ src: a.logoSrc, alt: a.nombre })}
+                    aria-label={`Ampliar logo: ${a.nombre}`}
+                    className="flex h-12 w-28 sm:h-14 sm:w-32 shrink-0 cursor-zoom-in items-center justify-center rounded-lg border border-[color:var(--navy-line)] bg-white p-2 sm:p-2.5 transition-transform duration-300 hover:scale-105"
                   >
                     <div className="relative h-full w-full">
                       <Image
@@ -133,7 +167,7 @@ export default function CertificadoCIC({
                         className="object-contain"
                       />
                     </div>
-                  </div>
+                  </button>
                 ))}
               </div>
             </div>
@@ -141,40 +175,7 @@ export default function CertificadoCIC({
         )}
       </div>
 
-      {/* Lightbox */}
-      {open && (
-        <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm"
-          onClick={() => setOpen(false)}
-          role="dialog"
-          aria-modal="true"
-          aria-label="Certificado ampliado"
-        >
-          <button
-            type="button"
-            onClick={() => setOpen(false)}
-            aria-label="Cerrar"
-            className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white/70 transition-colors hover:border-white/50 hover:text-white"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-              <path d="M18 6L6 18M6 6l12 12" />
-            </svg>
-          </button>
-          <div
-            className="relative h-[86vh] w-full max-w-[min(92vw,560px)]"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <Image
-              src={imagenSrc}
-              alt={imagenAlt}
-              fill
-              quality={95}
-              sizes="(max-width: 768px) 92vw, 560px"
-              className="rounded-xl object-contain"
-            />
-          </div>
-        </div>
-      )}
+      <Lightbox src={zoom?.src ?? null} alt={zoom?.alt ?? ""} onClose={() => setZoom(null)} />
     </>
   );
 }

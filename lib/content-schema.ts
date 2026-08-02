@@ -143,7 +143,16 @@ export const contentSchema = z.object({
       titulo: z.string().min(1).max(80),
       subtitulo: z.string().min(1).max(80),
       descripcion: z.string().min(1).max(400),
-      imagen: imageFieldSchema,
+      // Carrusel de credenciales (certificado CIC, embajador, etc.)
+      credenciales: z
+        .array(
+          z.object({
+            id: idSchema,
+            imagen: imageFieldSchema,
+          })
+        )
+        .min(1)
+        .max(8),
       datos: z
         .array(
           z.object({
@@ -406,7 +415,22 @@ export const defaultContent: SiteContent = {
       subtitulo: "Acreditado",
       descripcion:
         "Otorgado por la Confederación Interamericana de Coaching (CIC), tras cumplir con las estipulaciones nacionales e internacionales del comité de acreditación.",
-      imagen: img("/fotos/certificado-cic.jpeg", "Certificado de acreditación como Coach Profesional otorgado a Roberto Carlos Corvalán Donoso por la Confederación Interamericana de Coaching (CIC)"),
+      credenciales: [
+        {
+          id: uid(),
+          imagen: img(
+            "/fotos/certificado-cic.jpeg",
+            "Certificado de acreditación como Coach Profesional otorgado a Roberto Carlos Corvalán Donoso por la Confederación Interamericana de Coaching (CIC)"
+          ),
+        },
+        {
+          id: uid(),
+          imagen: img(
+            "/fotos/embajador-red-global-mentores.jpeg",
+            "Roberto C. Corvalán, Embajador de la Red Global de Mentores"
+          ),
+        },
+      ],
       datos: [
         { id: uid(), etiqueta: "Credencial", valor: "Coach Profesional Acreditado" },
         { id: uid(), etiqueta: "Código", valor: "AR · 29.05.510" },

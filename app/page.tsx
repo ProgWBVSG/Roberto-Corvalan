@@ -15,36 +15,11 @@ import LogoMarquee from "@/components/LogoMarquee";
 import StickyServices from "@/components/StickyServices";
 import RolesCarousel from "@/components/RolesCarousel";
 import CertificadoCIC from "@/components/CertificadoCIC";
+import EventGallery from "@/components/EventGallery";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import { getContent } from "@/lib/content";
 import { imgSrc, iconLibrary } from "@/lib/content-schema";
-
-function EventTile({
-  src,
-  alt,
-  ratio = "aspect-[4/3]",
-  position = "object-center",
-}: {
-  src: string;
-  alt: string;
-  ratio?: string;
-  position?: string;
-}) {
-  return (
-    <div className={`group relative ${ratio} overflow-hidden rounded-2xl border border-[color:var(--line)]`}>
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        quality={90}
-        sizes="(max-width: 768px) 90vw, 45vw"
-        className={`object-cover ${position} transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105`}
-      />
-      <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-transparent transition-colors duration-500 group-hover:ring-[color:var(--gold)]/40" />
-    </div>
-  );
-}
 
 // Página estática con regeneración: se sirve pre-renderizada (rápida, mejor
 // Core Web Vitals) y se regenera al instante cuando se guarda contenido en
@@ -330,8 +305,11 @@ export default async function Home() {
                 titulo={sobreMi.certificadoCIC.titulo}
                 subtitulo={sobreMi.certificadoCIC.subtitulo}
                 descripcion={sobreMi.certificadoCIC.descripcion}
-                imagenSrc={imgSrc(sobreMi.certificadoCIC.imagen)}
-                imagenAlt={sobreMi.certificadoCIC.imagen.alt}
+                credenciales={sobreMi.certificadoCIC.credenciales.map((c) => ({
+                  id: c.id,
+                  src: imgSrc(c.imagen),
+                  alt: c.imagen.alt,
+                }))}
                 datos={sobreMi.certificadoCIC.datos}
                 asociacionesTitulo={sobreMi.certificadoCIC.asociacionesTitulo}
                 asociaciones={sobreMi.certificadoCIC.asociaciones.map((a) => ({
@@ -453,18 +431,14 @@ export default async function Home() {
           </div>
 
           {/* Collage asimétrico */}
-          <div className="grid grid-cols-2 gap-4">
-            {eventos.fotos.map((f, i) => (
-              <Reveal key={f.id} delay={i * 100} className={i === 0 ? "col-span-2" : undefined}>
-                <EventTile
-                  src={imgSrc(f.imagen)}
-                  alt={f.imagen.alt}
-                  ratio={f.ratio === "wide" ? "aspect-[16/9]" : "aspect-[4/3]"}
-                  position={f.ratio === "wide" ? "object-center" : "object-top"}
-                />
-              </Reveal>
-            ))}
-          </div>
+          <EventGallery
+            fotos={eventos.fotos.map((f) => ({
+              id: f.id,
+              src: imgSrc(f.imagen),
+              alt: f.imagen.alt,
+              ratio: f.ratio,
+            }))}
+          />
         </div>
       </section>
 
