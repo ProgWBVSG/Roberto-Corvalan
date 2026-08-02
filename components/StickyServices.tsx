@@ -21,7 +21,7 @@ export default function StickyServices({ items }: { items: ServicioItem[] }) {
         >
           <div className="relative grid overflow-hidden rounded-[1.75rem] md:rounded-[2rem] border border-[color:var(--navy-line)] bg-navy shadow-[0_36px_90px_-46px_rgba(0,0,0,0.85)] md:grid-cols-2">
             {/* Texto */}
-            <div className="order-2 md:order-1 flex flex-col justify-center p-8 md:p-11 lg:p-14 text-center md:text-left items-center md:items-start">
+            <div className="order-2 md:order-1 flex flex-col justify-center p-6 sm:p-8 md:p-11 lg:p-14 text-center md:text-left items-center md:items-start min-w-0">
               <div className="flex items-center justify-center md:justify-start gap-4">
                 <span className="font-display text-[2.6rem] md:text-5xl leading-none text-[color:var(--gold-2)]">
                   {s.numero}
@@ -60,7 +60,7 @@ export default function StickyServices({ items }: { items: ServicioItem[] }) {
             </div>
 
             {/* Imagen */}
-            <div className="order-1 md:order-2 relative min-h-[220px] sm:min-h-[280px] md:min-h-0">
+            <div className="order-1 md:order-2 relative min-h-[220px] sm:min-h-[280px] md:min-h-0 min-w-0">
               <Image
                 src={s.imagenSrc}
                 alt={s.titulo}

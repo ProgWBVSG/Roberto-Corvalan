@@ -267,7 +267,7 @@ export default async function Home() {
       {/* ============ SOBRE MÍ ============ */}
       <section id="sobre" className="py-16 sm:py-20 md:py-32">
         <div className="container-x grid md:grid-cols-12 gap-8 sm:gap-10 md:gap-16 items-start">
-          <div className="md:col-span-5 md:sticky md:top-28">
+          <div className="md:col-span-5 md:sticky md:top-28 min-w-0">
             <Reveal>
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-[color:var(--line)] max-w-[210px] sm:max-w-[260px] mx-auto md:max-w-none">
                 <Image
@@ -282,7 +282,7 @@ export default async function Home() {
               </div>
             </Reveal>
           </div>
-          <div className="md:col-span-7 text-center md:text-left">
+          <div className="md:col-span-7 text-center md:text-left min-w-0">
             <Reveal>
               <div className="gold-rule mb-6 sm:mb-8 mx-auto md:mx-0" />
               <h2 className="font-display text-[1.65rem] sm:text-[2rem] md:text-[2.7rem] leading-tight tracking-[-0.02em] text-balance">
@@ -376,7 +376,7 @@ export default async function Home() {
       <section id="coaches" className="relative bg-navy text-ivory grain overflow-hidden py-24 md:py-32">
         <ShaderBackground />
         <div className="container-x relative z-10 grid md:grid-cols-12 gap-12 items-center">
-          <div className="md:col-span-7 text-center md:text-left">
+          <div className="md:col-span-7 text-center md:text-left min-w-0">
             <Reveal>
               <h2 className="font-display text-3xl md:text-[2.9rem] leading-tight tracking-[-0.02em]">
                 {comunidad.headingPrefix}{" "}
@@ -404,7 +404,7 @@ export default async function Home() {
               </div>
             </Reveal>
           </div>
-          <div className="md:col-span-5">
+          <div className="md:col-span-5 min-w-0">
             <Reveal delay={150}>
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-[color:var(--navy-line)] max-w-xs sm:max-w-sm mx-auto md:max-w-none">
                 <Image

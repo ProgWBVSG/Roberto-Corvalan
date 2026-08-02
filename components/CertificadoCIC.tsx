@@ -50,13 +50,13 @@ export default function CertificadoCIC({
             "radial-gradient(120% 130% at 100% 0%, rgba(176,141,76,0.16) 0%, transparent 55%)",
         }}
       >
-        <div className="grid gap-7 p-7 sm:p-9 md:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] md:items-center md:gap-9">
+        <div className="grid gap-6 p-5 sm:p-7 md:p-9 md:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] md:items-center md:gap-9">
           {/* Certificado */}
           <button
             type="button"
             onClick={() => setOpen(true)}
             aria-label="Ampliar certificado"
-            className="group relative mx-auto w-full max-w-[190px] md:max-w-[220px] cursor-zoom-in"
+            className="group relative mx-auto w-full max-w-[160px] sm:max-w-[190px] md:max-w-[220px] cursor-zoom-in min-w-0"
           >
             <div className="relative aspect-[853/1280] overflow-hidden rounded-xl border border-[color:var(--gold)]/35 shadow-[0_26px_60px_-24px_rgba(0,0,0,0.85)] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1">
               <Image
@@ -79,7 +79,7 @@ export default function CertificadoCIC({
           </button>
 
           {/* Detalle */}
-          <div className="text-center md:text-left">
+          <div className="text-center md:text-left min-w-0">
             <span className="inline-flex items-center gap-1.5 rounded-full border border-[color:var(--gold)]/35 bg-[color:var(--gold-soft)] px-3.5 py-1.5 text-[0.68rem] uppercase tracking-[0.16em] text-gold-2">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M20 6L9 17l-5-5" />
@@ -96,7 +96,7 @@ export default function CertificadoCIC({
               {descripcion}
             </p>
 
-            <dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-5 text-left max-w-md mx-auto md:mx-0">
+            <dl className="mt-6 grid grid-cols-1 xs:grid-cols-2 gap-x-6 gap-y-4 sm:gap-y-5 text-left max-w-md mx-auto md:mx-0">
               {datos.map((d) => (
                 <div key={d.id} className="border-l border-[color:var(--gold)]/25 pl-3.5">
                   <dt className="text-[0.65rem] uppercase tracking-[0.14em] text-white/35">
@@ -113,7 +113,7 @@ export default function CertificadoCIC({
 
         {/* Carrusel de asociaciones */}
         {asociaciones.length > 0 && (
-          <div className="border-t border-[color:var(--navy-line)] px-7 py-6 sm:px-9">
+          <div className="border-t border-[color:var(--navy-line)] px-5 py-5 sm:px-7 md:px-9 sm:py-6">
             <p className="mb-4 text-center text-[0.68rem] uppercase tracking-[0.18em] text-white/35 md:text-left">
               {asociacionesTitulo}
             </p>
@@ -122,7 +122,7 @@ export default function CertificadoCIC({
                 {loop.map((a, i) => (
                   <div
                     key={`${a.id}-${i}`}
-                    className="flex h-14 w-32 shrink-0 items-center justify-center rounded-lg border border-[color:var(--navy-line)] bg-white p-2.5"
+                    className="flex h-12 w-28 sm:h-14 sm:w-32 shrink-0 items-center justify-center rounded-lg border border-[color:var(--navy-line)] bg-white p-2 sm:p-2.5"
                   >
                     <div className="relative h-full w-full">
                       <Image

@@ -169,8 +169,6 @@
 html {
   scroll-behavior: smooth;
   font-size: 106.25%; /* base 17px — lectura más cómoda y sólida */
-  overflow-x: hidden;
-  width: 100%;
 }
 @media (max-width: 30rem) {
   html { font-size: 100%; } /* mobile: evitar overflow, base 16px */
@@ -185,9 +183,6 @@ body {
   letter-spacing: -0.003em;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;
-  width: 100%;
-  max-width: 100vw;
 }
 
 ::selection {
