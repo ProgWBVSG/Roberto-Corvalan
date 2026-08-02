@@ -38,6 +38,7 @@ export default function Footer({
   bio,
   serviciosNombres,
   whatsappUrl,
+  email,
   cicBadgeLinea1,
   cicBadgeLinea2,
   cicImagenSrc,
@@ -47,6 +48,7 @@ export default function Footer({
   bio: string;
   serviciosNombres: string[];
   whatsappUrl: string;
+  email: string;
   cicBadgeLinea1: string;
   cicBadgeLinea2: string;
   cicImagenSrc: string;
@@ -134,6 +136,11 @@ export default function Footer({
               <li>
                 <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="hover:text-gold-2 transition-colors">
                   WhatsApp
+                </a>
+              </li>
+              <li>
+                <a href={`mailto:${email}`} className="break-all hover:text-gold-2 transition-colors">
+                  {email}
                 </a>
               </li>
               <li className="text-white/40">{ubicacion}</li>

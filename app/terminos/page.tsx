@@ -89,7 +89,14 @@ export default async function TerminosPage() {
           <section>
             <h2 className="font-display text-xl text-ink mb-3">8. Contacto</h2>
             <p>
-              Ante cualquier consulta sobre estos términos, escribinos por{" "}
+              Ante cualquier consulta sobre estos términos, escribinos a{" "}
+              <a
+                href="mailto:info@robertocorvalancoach.com"
+                className="text-gold hover:underline break-all"
+              >
+                info@robertocorvalancoach.com
+              </a>{" "}
+              o por{" "}
               <a
                 href="https://wa.me/5491136830740"
                 target="_blank"

@@ -68,7 +68,13 @@ const WhatsAppIcon = ({ size = 20 }: { size?: number }) => (
   </svg>
 );
 
-export default function ContactForm({ whatsappNumber }: { whatsappNumber: string }) {
+export default function ContactForm({
+  whatsappNumber,
+  email,
+}: {
+  whatsappNumber: string;
+  email: string;
+}) {
   const [current, setCurrent] = useState(0);
   const [dir, setDir] = useState(1);
   const [sent, setSent] = useState(false);
@@ -229,6 +235,13 @@ export default function ContactForm({ whatsappNumber }: { whatsappNumber: string
             <WhatsAppIcon size={20} />
             Contactar por WhatsApp
           </a>
+
+          <p className="mt-5 text-sm text-white/45">
+            ¿Preferís email? Escribime a{" "}
+            <a href={`mailto:${email}`} className="text-gold-2 hover:underline break-all">
+              {email}
+            </a>
+          </p>
 
           <button
             type="button"

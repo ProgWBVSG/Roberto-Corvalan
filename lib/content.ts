@@ -88,6 +88,7 @@ export async function getFooterProps() {
     bio: footer.bio,
     serviciosNombres: servicios.items.map((s) => s.titulo),
     whatsappUrl: `https://wa.me/${global.whatsappNumber}?text=${encodeURIComponent(global.whatsappDefaultMessage)}`,
+    email: global.email,
     cicBadgeLinea1: footer.cicBadgeLinea1,
     cicBadgeLinea2: footer.cicBadgeLinea2,
     cicImagenSrc: imgSrc(footer.cicImagen),

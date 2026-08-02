@@ -33,6 +33,7 @@ export const contentSchema = z.object({
   global: z.object({
     whatsappNumber: z.string().min(6).max(20),
     whatsappDefaultMessage: z.string().min(1).max(300),
+    email: z.string().email(),
   }),
 
   hero: z.object({
@@ -283,6 +284,7 @@ export const defaultContent: SiteContent = {
   global: {
     whatsappNumber: "5491136830740",
     whatsappDefaultMessage: "Hola Roberto, vi tu web y quiero coordinar una llamada.",
+    email: "info@robertocorvalancoach.com",
   },
 
   hero: {

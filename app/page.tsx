@@ -531,11 +531,21 @@ export default async function Home() {
                 </svg>
                 Contactar por WhatsApp
               </a>
+              <a
+                href={`mailto:${global.email}`}
+                className="flex items-center gap-3 hover:text-gold-2 transition-colors"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <rect x="3" y="5" width="18" height="14" rx="2" />
+                  <path d="M3 7l9 6 9-6" />
+                </svg>
+                <span className="break-all">{global.email}</span>
+              </a>
             </div>
           </Reveal>
 
           <Reveal delay={120}>
-            <ContactForm whatsappNumber={global.whatsappNumber} />
+            <ContactForm whatsappNumber={global.whatsappNumber} email={global.email} />
           </Reveal>
         </div>
       </section>
@@ -544,6 +554,7 @@ export default async function Home() {
         bio={footer.bio}
         serviciosNombres={servicios.items.map((s) => s.titulo)}
         whatsappUrl={waLink(global.whatsappDefaultMessage)}
+        email={global.email}
         cicBadgeLinea1={footer.cicBadgeLinea1}
         cicBadgeLinea2={footer.cicBadgeLinea2}
         cicImagenSrc={imgSrc(footer.cicImagen)}

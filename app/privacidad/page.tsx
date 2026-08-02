@@ -27,8 +27,7 @@ export default async function PrivacidadPage() {
             <h2 className="font-display text-xl text-ink mb-3">1. Quién trata tus datos</h2>
             <p>
               Roberto Corvalán, coach ejecutivo, es el responsable del tratamiento de los datos
-              personales que se recopilan a través de este sitio web
-              (robertocorvalan.com). Podés contactarnos por{" "}
+              personales que se recopilan a través de este sitio web. Podés contactarnos por{" "}
               <a
                 href="https://wa.me/5491136830740"
                 target="_blank"
@@ -36,6 +35,13 @@ export default async function PrivacidadPage() {
                 className="text-gold hover:underline"
               >
                 WhatsApp
+              </a>{" "}
+              o escribiendo a{" "}
+              <a
+                href="mailto:info@robertocorvalancoach.com"
+                className="text-gold hover:underline break-all"
+              >
+                info@robertocorvalancoach.com
               </a>{" "}
               ante cualquier consulta sobre esta política.
             </p>
@@ -82,7 +88,14 @@ export default async function PrivacidadPage() {
             <p>
               De acuerdo con la Ley 25.326 de Protección de Datos Personales de Argentina, tenés
               derecho a acceder, rectificar, actualizar o solicitar la eliminación de tus datos
-              personales. Para ejercer estos derechos, escribinos por{" "}
+              personales. Para ejercer estos derechos, escribinos a{" "}
+              <a
+                href="mailto:info@robertocorvalancoach.com"
+                className="text-gold hover:underline break-all"
+              >
+                info@robertocorvalancoach.com
+              </a>{" "}
+              o por{" "}
               <a
                 href="https://wa.me/5491136830740"
                 target="_blank"
