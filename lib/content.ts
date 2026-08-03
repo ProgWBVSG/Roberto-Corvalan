@@ -3,7 +3,7 @@ import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { db, ensureSchema } from "@/lib/db";
 import { siteContent } from "@/lib/db/schema";
-import { contentSchema, defaultContent, imgSrc, type SiteContent } from "@/lib/content-schema";
+import { contentSchema, defaultContent, imgSrc, mailtoLink, type SiteContent } from "@/lib/content-schema";
 
 const ROW_ID = 1;
 
@@ -89,6 +89,7 @@ export async function getFooterProps() {
     serviciosNombres: servicios.items.map((s) => s.titulo),
     whatsappUrl: `https://wa.me/${global.whatsappNumber}?text=${encodeURIComponent(global.whatsappDefaultMessage)}`,
     email: global.email,
+    emailUrl: mailtoLink(global.email, global.emailDefaultSubject, global.emailDefaultBody),
     cicBadgeLinea1: footer.cicBadgeLinea1,
     cicBadgeLinea2: footer.cicBadgeLinea2,
     cicImagenSrc: imgSrc(footer.cicImagen),

@@ -39,6 +39,7 @@ export default function Footer({
   serviciosNombres,
   whatsappUrl,
   email,
+  emailUrl,
   cicBadgeLinea1,
   cicBadgeLinea2,
   cicImagenSrc,
@@ -49,6 +50,7 @@ export default function Footer({
   serviciosNombres: string[];
   whatsappUrl: string;
   email: string;
+  emailUrl: string;
   cicBadgeLinea1: string;
   cicBadgeLinea2: string;
   cicImagenSrc: string;
@@ -139,7 +141,7 @@ export default function Footer({
                 </a>
               </li>
               <li>
-                <a href={`mailto:${email}`} className="break-all hover:text-gold-2 transition-colors">
+                <a href={emailUrl} className="break-all hover:text-gold-2 transition-colors">
                   {email}
                 </a>
               </li>

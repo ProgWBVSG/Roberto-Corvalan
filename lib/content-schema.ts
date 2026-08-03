@@ -26,6 +26,23 @@ export function imgSrc(field: ImageField): string {
   return field.mediaId ? `/api/media/${field.mediaId}` : field.fallbackSrc;
 }
 
+/**
+ * Arma un enlace mailto con el asunto y el cuerpo ya redactados, para que al
+ * tocarlo se abra el cliente de correo listo para enviar (igual que el
+ * enlace de WhatsApp).
+ */
+export function mailtoLink(
+  email: string,
+  subject?: string,
+  body?: string
+): string {
+  const params = new URLSearchParams();
+  if (subject) params.set("subject", subject);
+  if (body) params.set("body", body);
+  const qs = params.toString().replace(/\+/g, "%20");
+  return `mailto:${email}${qs ? `?${qs}` : ""}`;
+}
+
 const iconKeySchema = z.enum(["target", "layers", "chart", "heart", "star", "shield"]);
 export type IconKey = z.infer<typeof iconKeySchema>;
 
@@ -34,6 +51,8 @@ export const contentSchema = z.object({
     whatsappNumber: z.string().min(6).max(20),
     whatsappDefaultMessage: z.string().min(1).max(300),
     email: z.string().email(),
+    emailDefaultSubject: z.string().min(1).max(150),
+    emailDefaultBody: z.string().min(1).max(500),
   }),
 
   hero: z.object({
@@ -284,7 +303,10 @@ export const defaultContent: SiteContent = {
   global: {
     whatsappNumber: "5491136830740",
     whatsappDefaultMessage: "Hola Roberto, vi tu web y quiero coordinar una llamada.",
-    email: "info@robertocorvalancoach.com",
+    email: "info@robertocorvalancoach.com.ar",
+    emailDefaultSubject: "Consulta desde la web",
+    emailDefaultBody:
+      "Hola Roberto,\n\nVi tu web y me gustaría coordinar una conversación.\n\nMi nombre es: \nMe dedico a: \nQuisiera que me ayudes con: \n\n¡Gracias!",
   },
 
   hero: {

@@ -142,13 +142,26 @@ export default function ContactForm({
     }
   }
 
-  function whatsappHref() {
-    const texto =
+  function mensajeArmado() {
+    return (
       `Hola Roberto, soy ${data.nombre}.\n` +
       `Me dedico a: ${data.perfil}.\n` +
       `Quisiera que me ayudes con: ${data.mensaje}\n` +
-      `Mi email: ${data.email}`;
-    return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(texto)}`;
+      `Mi email: ${data.email}`
+    );
+  }
+
+  function whatsappHref() {
+    return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(mensajeArmado())}`;
+  }
+
+  /** Mismo mensaje que WhatsApp, pero listo para enviar por correo. */
+  function emailHref() {
+    const params = new URLSearchParams({
+      subject: `Consulta de ${data.nombre || "la web"}`,
+      body: mensajeArmado(),
+    });
+    return `mailto:${email}?${params.toString().replace(/\+/g, "%20")}`;
   }
 
   function onKeyDown(e: React.KeyboardEvent) {
@@ -238,7 +251,7 @@ export default function ContactForm({
 
           <p className="mt-5 text-sm text-white/45">
             ¿Preferís email? Escribime a{" "}
-            <a href={`mailto:${email}`} className="text-gold-2 hover:underline break-all">
+            <a href={emailHref()} className="text-gold-2 hover:underline break-all">
               {email}
             </a>
           </p>

@@ -91,10 +91,10 @@ export default async function TerminosPage() {
             <p>
               Ante cualquier consulta sobre estos términos, escribinos a{" "}
               <a
-                href="mailto:info@robertocorvalancoach.com"
+                href="mailto:info@robertocorvalancoach.com.ar?subject=Consulta%20sobre%20los%20T%C3%A9rminos%20y%20Condiciones"
                 className="text-gold hover:underline break-all"
               >
-                info@robertocorvalancoach.com
+                info@robertocorvalancoach.com.ar
               </a>{" "}
               o por{" "}
               <a

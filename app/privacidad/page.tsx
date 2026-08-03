@@ -38,10 +38,10 @@ export default async function PrivacidadPage() {
               </a>{" "}
               o escribiendo a{" "}
               <a
-                href="mailto:info@robertocorvalancoach.com"
+                href="mailto:info@robertocorvalancoach.com.ar?subject=Consulta%20sobre%20la%20Pol%C3%ADtica%20de%20Privacidad"
                 className="text-gold hover:underline break-all"
               >
-                info@robertocorvalancoach.com
+                info@robertocorvalancoach.com.ar
               </a>{" "}
               ante cualquier consulta sobre esta política.
             </p>
@@ -90,10 +90,10 @@ export default async function PrivacidadPage() {
               derecho a acceder, rectificar, actualizar o solicitar la eliminación de tus datos
               personales. Para ejercer estos derechos, escribinos a{" "}
               <a
-                href="mailto:info@robertocorvalancoach.com"
+                href="mailto:info@robertocorvalancoach.com.ar?subject=Ejercicio%20de%20derechos%20sobre%20mis%20datos%20personales&body=Hola%2C%0A%0AQuiero%20ejercer%20mis%20derechos%20sobre%20mis%20datos%20personales%20(acceso%2C%20rectificaci%C3%B3n%2C%20actualizaci%C3%B3n%20o%20eliminaci%C3%B3n).%0A%0AMi%20nombre%20es%3A%20%0A"
                 className="text-gold hover:underline break-all"
               >
-                info@robertocorvalancoach.com
+                info@robertocorvalancoach.com.ar
               </a>{" "}
               o por{" "}
               <a

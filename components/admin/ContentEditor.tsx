@@ -80,7 +80,9 @@ export default function ContentEditor({ initialContent }: { initialContent: Site
         <Section title="Datos generales" description="WhatsApp y email usados en toda la web" defaultOpen>
           <Field label="Número de WhatsApp (sin +, con código de país)" value={global.whatsappNumber} onChange={(v) => set("global", { whatsappNumber: v })} placeholder="5491136830740" />
           <TextAreaField label="Mensaje por defecto de WhatsApp" value={global.whatsappDefaultMessage} onChange={(v) => set("global", { whatsappDefaultMessage: v })} rows={2} />
-          <Field label="Email de contacto" value={global.email} onChange={(v) => set("global", { email: v })} placeholder="info@robertocorvalancoach.com" />
+          <Field label="Email de contacto" value={global.email} onChange={(v) => set("global", { email: v })} placeholder="info@robertocorvalancoach.com.ar" />
+          <Field label="Asunto del email (se completa solo al tocarlo)" value={global.emailDefaultSubject} onChange={(v) => set("global", { emailDefaultSubject: v })} />
+          <TextAreaField label="Cuerpo del email (se completa solo al tocarlo)" value={global.emailDefaultBody} onChange={(v) => set("global", { emailDefaultBody: v })} rows={5} />
         </Section>
 
         {/* HERO */}

@@ -144,7 +144,7 @@ const jsonLd = {
       image: "https://robertocorvalan.com/roberto-hero.png",
       founder: { "@id": "https://robertocorvalan.com/#person" },
       provider: { "@id": "https://robertocorvalan.com/#person" },
-      email: "info@robertocorvalancoach.com",
+      email: "info@robertocorvalancoach.com.ar",
       telephone: "+5491136830740",
       priceRange: "$$",
       address: {

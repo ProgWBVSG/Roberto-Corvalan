@@ -19,7 +19,7 @@ import EventGallery from "@/components/EventGallery";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import { getContent } from "@/lib/content";
-import { imgSrc, iconLibrary } from "@/lib/content-schema";
+import { imgSrc, iconLibrary, mailtoLink } from "@/lib/content-schema";
 
 // Página estática con regeneración: se sirve pre-renderizada (rápida, mejor
 // Core Web Vitals) y se regenera al instante cuando se guarda contenido en
@@ -532,7 +532,7 @@ export default async function Home() {
                 Contactar por WhatsApp
               </a>
               <a
-                href={`mailto:${global.email}`}
+                href={mailtoLink(global.email, global.emailDefaultSubject, global.emailDefaultBody)}
                 className="flex items-center gap-3 hover:text-gold-2 transition-colors"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -555,6 +555,7 @@ export default async function Home() {
         serviciosNombres={servicios.items.map((s) => s.titulo)}
         whatsappUrl={waLink(global.whatsappDefaultMessage)}
         email={global.email}
+        emailUrl={mailtoLink(global.email, global.emailDefaultSubject, global.emailDefaultBody)}
         cicBadgeLinea1={footer.cicBadgeLinea1}
         cicBadgeLinea2={footer.cicBadgeLinea2}
         cicImagenSrc={imgSrc(footer.cicImagen)}
