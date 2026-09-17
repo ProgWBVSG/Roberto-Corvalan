@@ -162,7 +162,7 @@ export const contentSchema = z.object({
       badgeText: z.string().min(1).max(60),
       titulo: z.string().min(1).max(80),
       subtitulo: z.string().min(1).max(80),
-      descripcion: z.string().min(1).max(400),
+      descripcion: z.string().min(1).max(600),
       // Carrusel de credenciales (certificado CIC, embajador, etc.)
       credenciales: z
         .array(
@@ -438,7 +438,7 @@ export const defaultContent: SiteContent = {
       titulo: "CPA · Coach Profesional",
       subtitulo: "Acreditado",
       descripcion:
-        "Otorgado por la Confederación Interamericana de Coaching (CIC), tras cumplir con las estipulaciones nacionales e internacionales del comité de acreditación.",
+        "Otorgado por la Confederación Interamericana de Coaching (CIC), tras cumplir con las estipulaciones nacionales e internacionales del comité de acreditación. Además, como Certified Expert Mentor y Embajador de la Red Global de Mentores (RGM), ofrece mentoría profesional para desarrollar personas, profesionales y empresas, impulsando resultados, liderazgo, hábitos efectivos y crecimiento mediante procesos de reflexión y planificación.",
       credenciales: [
         {
           id: uid(),
@@ -452,6 +452,13 @@ export const defaultContent: SiteContent = {
           imagen: img(
             "/fotos/embajador-red-global-mentores.jpeg",
             "Roberto C. Corvalán, Embajador de la Red Global de Mentores"
+          ),
+        },
+        {
+          id: uid(),
+          imagen: img(
+            "/fotos/mentor-rgm.jpeg",
+            "Certificado Certified Expert Mentor (XPM) otorgado a Roberto Corvalán por la Academia Global de la Red Global de Mentores (RGM)"
           ),
         },
       ],

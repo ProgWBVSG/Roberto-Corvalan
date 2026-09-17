@@ -132,6 +132,15 @@ const jsonLd = {
             name: "Confederación Interamericana de Coaching (CIC)",
           },
         },
+        {
+          "@type": "EducationalOccupationalCredential",
+          name: "Certified Expert Mentor (XPM)",
+          validFrom: "2026-08-01",
+          recognizedBy: {
+            "@type": "Organization",
+            name: "Red Global de Mentores (RGM) · Academia Global",
+          },
+        },
       ],
     },
     {
