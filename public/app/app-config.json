@@ -1,0 +1,11 @@
+{
+  "_instrucciones": "Pegá acá los datos de tu proyecto de Firebase (Configuración del proyecto > Tus apps > App web). Mientras apiKey esté vacío, la app funciona en modo demo.",
+  "firebase": {
+    "apiKey": "",
+    "authDomain": "",
+    "projectId": "",
+    "storageBucket": "",
+    "messagingSenderId": "",
+    "appId": ""
+  }
+}

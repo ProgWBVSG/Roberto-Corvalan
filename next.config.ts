@@ -5,6 +5,12 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
     qualities: [75, 90],
   },
+  async rewrites() {
+    return [
+      { source: "/app", destination: "/app/index.html" },
+      { source: "/rumbo", destination: "/rumbo/index.html" },
+    ];
+  },
   async headers() {
     return [
       {

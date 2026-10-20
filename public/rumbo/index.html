@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rumbo Coaching y Mentoría · App de habilidades blandas | Roberto Corvalán</title>
+<meta name="description" content="Rumbo Coaching y Mentoría, la app gratuita de coaching de Roberto Corvalán: diagnóstico de habilidades blandas, compromisos y objetivos SMART en tu propia bitácora. Versiones para personas y empresas.">
+<link rel="canonical" href="https://www.robertocorvalancoach.com.ar/rumbo">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta property="og:title" content="Rumbo Coaching y Mentoría">
+<meta property="og:description" content="Rumbo Coaching y Mentoría, la app gratuita de coaching de Roberto Corvalán: diagnóstico de habilidades blandas, compromisos y objetivos SMART en tu propia bitácora. Versiones para personas y empresas.">
+<meta property="og:url" content="https://www.robertocorvalancoach.com.ar/rumbo">
+<meta property="og:image" content="https://www.robertocorvalancoach.com.ar/rumbo/img/og-rumbo.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caladea:ital,wght@0,400;0,700;1,400&family=Carlito:wght@400;700&display=swap">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Rumbo Coaching y Mentoría", "alternateName": "Rumbo", "applicationCategory": "LifestyleApplication", "operatingSystem": "Web, Android, iOS", "url": "https://www.robertocorvalancoach.com.ar/rumbo", "inLanguage": "es", "description": "Rumbo Coaching y Mentoría, la app gratuita de coaching de Roberto Corvalán: diagnóstico de habilidades blandas, compromisos y objetivos SMART en tu propia bitácora. Versiones para personas y empresas.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "ARS"}, "author": {"@type": "Person", "name": "Roberto Corvalán", "jobTitle": "Coach Profesional", "url": "https://www.robertocorvalancoach.com.ar/"}, "image": "https://www.robertocorvalancoach.com.ar/rumbo/img/og-rumbo.jpg"}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿La app es gratis?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Compromisos, plan de acción y aprendizajes son gratis, sin límite de tiempo. Premium es una suscripción mensual opcional que suma objetivos SMART, el seguimiento semanal, los contenidos de las sesiones y las notas de tu coach."}}, {"@type": "Question", "name": "¿Tengo que descargar algo?", "acceptedAnswer": {"@type": "Answer", "text": "No. Se abre en el navegador. En el celular podés agregarla a la pantalla de inicio y queda como una app más: en Android, desde el menú de Chrome con “Agregar a la pantalla principal”; en iPhone, desde Compartir con “Agregar a pantalla de inicio”."}}, {"@type": "Question", "name": "¿Qué es Rumbo?", "acceptedAnswer": {"@type": "Answer", "text": "Rumbo Coaching y Mentoría es la app de Roberto Corvalán para sostener tu proceso de coaching: tu bitácora personal de habilidades, compromisos y objetivos. Es gratuita y tiene un plan Premium opcional."}}, {"@type": "Question", "name": "¿Qué diferencia hay entre la versión para personas y la de empresas?", "acceptedAnswer": {"@type": "Answer", "text": "Cambian las habilidades que se evalúan: la de personas apunta al desarrollo personal y profesional; la de empresas, a lo que más pesa en el trabajo en equipo. Para usar la de empresas necesitás el código que te da tu organización."}}, {"@type": "Question", "name": "¿Necesito estar haciendo coaching con Roberto?", "acceptedAnswer": {"@type": "Answer", "text": "No. Cualquier persona puede usarla para ordenar sus compromisos y objetivos. Si trabajás con Roberto, además podés vincularte con él para que te acompañe entre sesiones."}}, {"@type": "Question", "name": "¿Quién ve lo que escribo?", "acceptedAnswer": {"@type": "Answer", "text": "Solo vos. Si te vinculás con tu coach, él también puede ver tus registros para acompañarte. Podés desvincularte en cualquier momento desde Más › Mi coach."}}, {"@type": "Question", "name": "¿Cómo pago Premium?", "acceptedAnswer": {"@type": "Answer", "text": "Desde la app, por Mercado Pago o transferencia. Cuando hayas pagado, tocás “Ya pagué, avisar” y el plan se activa apenas se confirma el pago."}}, {"@type": "Question", "name": "¿Puedo borrar mi cuenta?", "acceptedAnswer": {"@type": "Answer", "text": "Sí, desde Más › Mi cuenta. Se eliminan tu cuenta y todos tus registros de forma permanente."}}]}]</script>
+</head>
+<body style="margin:0">
+<style>
+/* Layout: navy hero with two phones, then a single 1080px column alternating text and screenshots; gold used only for marks and the primary button. */
+:root {
+  --navy: #1B2A4A;
+  --navy-deep: #0E1830;
+  --gold: #C9A227;
+  --gold-ink: #7A5F0C;
+  --gold-soft: #FBF4DC;
+  --bg: #F7F6F2;
+  --surface: #FFFFFF;
+  --fg: #1C2333;
+  --muted: #59617A;
+  --line: #E2DFD6;
+  --soft: #EEF0F5;
+  --on-navy: #F3EFE3;
+  --on-navy-muted: #C6CCDA;
+  --display: "Caladea", Cambria, Georgia, serif;
+  --body: "Carlito", Calibri, "Segoe UI", system-ui, sans-serif;
+}
+.bt * { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); }
+.bt { font-family: var(--body); font-size: 17px; line-height: 1.55; color: var(--fg); background: var(--bg); }
+.bt .wrap { max-width: 1080px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.bt h1, .bt h2, .bt h3 { font-family: var(--display); font-weight: 700; line-height: 1.12; margin: 0; text-wrap: balance; }
+.bt p { margin: 0; }
+.bt a { color: inherit; }
+.bt .eyebrow { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--gold-ink); }
+
+/* Buttons */
+.bt .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 22px; border-radius: 10px; font-weight: 700; font-size: 16.5px; text-decoration: none; border: 1.5px solid transparent; transition: transform .15s ease, background-color .15s ease; }
+.bt .btn:hover { transform: translateY(-1px); }
+.bt .btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+.bt .btn-gold { background: var(--gold); color: #1B2A4A; }
+.bt .btn-gold:hover { background: #D6B23C; }
+.bt .btn-line { border-color: currentColor; color: var(--on-navy); }
+.bt .btn-navy { background: var(--navy); color: #FFFFFF; }
+.bt .btn-outline { border-color: var(--line); color: var(--fg); background: var(--surface); }
+
+/* Hero */
+.bt .hero { background: var(--navy); color: var(--on-navy); overflow: hidden; }
+.bt .hero .wrap { display: grid; grid-template-columns: 1.05fr .95fr; gap: 40px; align-items: center; padding-block: 64px 0; }
+.bt .hero .eyebrow { color: var(--gold); }
+.bt .hero h1 { font-size: clamp(36px, 5vw, 56px); margin-top: 14px; }
+.bt .hero .lead { margin-top: 18px; font-size: 19px; color: var(--on-navy-muted); max-width: 34em; }
+.bt .hero .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.bt .hero .fine { margin-top: 14px; font-size: 14.5px; color: var(--on-navy-muted); }
+.bt .hero .copy { padding-bottom: 64px; min-width: 0; }
+.bt .phones { position: relative; height: 520px; min-width: 0; }
+.bt .phone { position: absolute; width: 250px; border-radius: 34px; background: #0B111C; padding: 8px; box-shadow: 0 30px 60px rgba(4,8,18,.45); }
+.bt .phone img { display: block; width: 100%; height: auto; border-radius: 27px; }
+.bt .phones .p1 { left: 8%; top: 20px; z-index: 2; }
+.bt .phones .p2 { left: 48%; top: 90px; transform: rotate(4deg); opacity: .96; }
+.bt .seal { width: 54px; height: 54px; border-radius: 50%; border: 1.5px solid var(--gold); display: grid; place-items: center; font-family: var(--display); font-weight: 700; color: var(--gold); font-size: 19px; }
+.bt .brandline { display: flex; align-items: center; gap: 12px; }
+.bt .brandline .mark { width: 56px; height: 56px; flex: none; }
+.bt .brandline .wordmark { font-family: var(--display); font-weight: 700; font-size: 30px; line-height: 1; color: var(--on-navy); margin: 0 0 4px; }
+.bt .brandline .subword { margin: 0 0 4px; font-size: 12px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); }
+.bt .brandline span { font-size: 14px; letter-spacing: .08em; text-transform: uppercase; color: var(--on-navy-muted); }
+
+/* Sections */
+.bt section.block { padding-block: 80px; }
+.bt .head { max-width: 40em; }
+.bt .head h2 { font-size: clamp(30px, 3.6vw, 42px); margin-top: 10px; }
+.bt .head p { margin-top: 14px; color: var(--muted); font-size: 18.5px; }
+
+/* Free pillars */
+.bt .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+.bt .pillar { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 10px; }
+.bt .pillar h3 { font-size: 22px; }
+.bt .pillar p { color: var(--muted); }
+.bt .tag { align-self: flex-start; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 3px 10px; border-radius: 99px; background: var(--soft); color: var(--muted); }
+.bt .tag.gold { background: var(--gold-soft); color: var(--gold-ink); }
+.bt .glyph { font-family: var(--display); font-size: 30px; color: var(--gold-ink); line-height: 1; }
+
+/* Feature rows */
+.bt .feature { display: grid; grid-template-columns: 1fr 320px; gap: 56px; align-items: center; padding-block: 48px; border-top: 1px solid var(--line); }
+.bt .feature:nth-of-type(even) { grid-template-columns: 320px 1fr; }
+.bt .feature:nth-of-type(even) .fcopy { order: 2; }
+.bt .feature .fcopy { min-width: 0; }
+.bt .feature h3 { font-size: clamp(26px, 3vw, 34px); margin-top: 12px; }
+.bt .feature p { margin-top: 12px; color: var(--muted); font-size: 18px; max-width: 32em; }
+.bt .feature ul { margin: 16px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.bt .feature li { display: flex; gap: 10px; }
+.bt .feature li::before { content: ""; flex: none; width: 7px; height: 7px; margin-top: 10px; border-radius: 50%; background: var(--gold); }
+.bt .feature .phone { position: static; width: 100%; max-width: 300px; margin: 0 auto; box-shadow: 0 24px 48px rgba(14,24,48,.18); }
+.bt .smart { display: flex; gap: 8px; margin-top: 18px; }
+.bt .smart span { width: 44px; height: 44px; border-radius: 50%; background: var(--gold); color: #1B2A4A; display: grid; place-items: center; font-family: var(--display); font-weight: 700; font-size: 20px; }
+.bt .smart-legend { margin-top: 8px; font-size: 14.5px; color: var(--muted); }
+
+.bt .versions { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 22px; }
+.bt .version { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
+.bt .version h3 { font-size: 19px; }
+.bt .version p { margin-top: 6px; font-size: 15.5px; color: var(--muted); }
+@media (max-width: 560px) { .bt .versions { grid-template-columns: 1fr; } }
+
+/* Steps */
+.bt .steps-band { background: var(--surface); border-block: 1px solid var(--line); }
+.bt ol.steps { list-style: none; margin: 40px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; counter-reset: s; }
+.bt ol.steps li { counter-increment: s; display: flex; flex-direction: column; gap: 8px; }
+.bt ol.steps li::before { content: counter(s); font-family: var(--display); font-weight: 700; font-size: 22px; width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--gold); color: var(--gold-ink); display: grid; place-items: center; }
+.bt ol.steps h3 { font-size: 21px; }
+.bt ol.steps p { color: var(--muted); }
+
+/* Plans */
+.bt .plans { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 40px; }
+.bt .plan { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 14px; }
+.bt .plan.premium { border: 2px solid var(--gold); }
+.bt .plan h3 { font-size: 26px; }
+.bt .price { font-family: var(--display); font-size: 40px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
+.bt .price small { font-family: var(--body); font-size: 16px; font-weight: 400; color: var(--muted); }
+.bt .plan ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.bt .plan li { display: flex; gap: 10px; }
+.bt .plan li::before { content: "✓"; color: var(--gold-ink); font-weight: 700; flex: none; }
+.bt .plan li.plus::before { content: "★"; }
+.bt .plan .note { font-size: 14.5px; color: var(--muted); }
+
+/* Teams band */
+.bt .teams { background: var(--navy); color: var(--on-navy); border-radius: 20px; padding: 44px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; align-items: center; }
+.bt .teams h2 { font-size: clamp(26px, 3vw, 34px); }
+.bt .teams p { color: var(--on-navy-muted); margin-top: 12px; }
+.bt .teams .eyebrow { color: var(--gold); }
+.bt .teams .ctas { display: flex; flex-wrap: wrap; gap: 12px; justify-content: flex-end; }
+
+/* FAQ */
+.bt .faq { margin-top: 32px; border-top: 1px solid var(--line); }
+.bt .faq details { border-bottom: 1px solid var(--line); }
+.bt .faq summary { cursor: pointer; list-style: none; padding: 20px 0; font-weight: 700; font-size: 18.5px; display: flex; justify-content: space-between; gap: 16px; }
+.bt .faq summary::-webkit-details-marker { display: none; }
+.bt .faq summary::after { content: "+"; font-family: var(--display); font-size: 26px; line-height: 1; color: var(--gold-ink); flex: none; }
+.bt .faq details[open] summary::after { content: "–"; }
+.bt .faq summary:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.bt .faq .ans { padding: 0 0 20px; color: var(--muted); max-width: 46em; }
+
+/* Final */
+.bt .final { text-align: center; padding-block: 80px 96px; }
+.bt .final h2 { font-size: clamp(30px, 4vw, 44px); }
+.bt .final p { margin: 14px auto 0; color: var(--muted); max-width: 32em; font-size: 18.5px; }
+.bt .final .ctas { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 28px; }
+
+@media (max-width: 900px) {
+  .bt .hero .wrap { grid-template-columns: 1fr; padding-top: 48px; }
+  .bt .hero .copy { padding-bottom: 0; }
+  .bt .phones { height: 400px; }
+  .bt .phone { width: 190px; }
+  .bt .phones .p1 { left: calc(50% - 175px); }
+  .bt .phones .p2 { left: calc(50% - 5px); top: 60px; }
+  .bt .pillars, .bt ol.steps { grid-template-columns: 1fr; }
+  .bt .feature, .bt .feature:nth-of-type(even) { grid-template-columns: 1fr; gap: 28px; }
+  .bt .feature:nth-of-type(even) .fcopy { order: 0; }
+  .bt .feature .phone { max-width: 260px; }
+  .bt .plans, .bt .teams { grid-template-columns: 1fr; }
+  .bt .teams { padding: 28px; }
+  .bt .teams .ctas { justify-content: flex-start; }
+  .bt section.block { padding-block: 56px; }
+}
+@media (max-width: 420px) {
+  .bt .phones { height: 340px; }
+  .bt .phone { width: 160px; border-radius: 26px; padding: 6px; }
+  .bt .phone img { border-radius: 21px; }
+  .bt .phones .p1 { left: calc(50% - 150px); }
+  .bt .phones .p2 { left: calc(50% - 4px); top: 50px; }
+  .bt .hero .ctas .btn { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) { .bt .btn { transition: none; } .bt .btn:hover { transform: none; } }
+</style>
+
+<div class="bt">
+  <header class="hero">
+    <div class="wrap">
+      <div class="copy">
+        <div class="brandline"><img class="mark" src="/rumbo/img/rumbo-mark.png" alt="" width="160" height="160"><div><p class="wordmark">Rumbo</p><p class="subword">Coaching y Mentoría</p><span>Con Roberto Corvalán · Coach Profesional</span></div></div>
+        <p class="eyebrow" style="margin-top:28px">App gratuita · Tu bitácora de coaching</p>
+        <h1>Lo que decidís en la sesión, sostenelo toda la semana</h1>
+        <p class="lead">Descubrí tus habilidades blandas, anotá tus compromisos y bajalos a acciones concretas. Una herramienta pensada para que el proceso de coaching siga vivo entre una sesión y la siguiente.</p>
+        <div class="ctas">
+          <a class="btn btn-gold" href="/app/">Crear mi cuenta gratis</a>
+          <a class="btn btn-line" href="https://wa.me/5491136830740?text=Hola%20Roberto%2C%20quiero%20agendar%20una%20sesi%C3%B3n" target="_blank" rel="noopener">Agendá tu sesión</a>
+        </div>
+        <p class="fine">Funciona en el navegador del celular o la computadora. No hace falta descargar nada.</p>
+      </div>
+      <div class="phones" aria-hidden="true">
+        <div class="phone p1"><img src="/rumbo/img/habilidades.webp" alt="" width="780" height="1560"></div>
+        <div class="phone p2"><img src="/rumbo/img/compromisos.webp" alt="" width="780" height="1560" loading="lazy"></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="block" aria-labelledby="habilidades">
+      <div class="wrap">
+        <article class="feature" style="border-top:0;padding-top:0">
+          <div class="fcopy">
+            <p class="eyebrow">Gratis · 2 minutos</p>
+            <h2 id="habilidades" style="font-size:clamp(30px,3.6vw,42px);margin-top:10px">Descubrí tus habilidades blandas</h2>
+            <p>Respondé 8 frases y mirá tu mapa: tus fortalezas y lo que te conviene desarrollar. Después elegís una habilidad y la practicás con un desafío concreto por semana.</p>
+            <div class="versions">
+              <div class="version">
+                <h3>Para personas</h3>
+                <p>Comunicación y oratoria, escucha activa, gestión emocional, conversaciones difíciles, pedidos y compromisos, negociación, gestión del tiempo y liderazgo personal.</p>
+              </div>
+              <div class="version">
+                <h3>Para equipos de trabajo</h3>
+                <p>Liderazgo de equipos, comunicación efectiva, feedback, trabajo en equipo, gestión emocional, negociación, prioridades y adaptación al cambio.</p>
+              </div>
+            </div>
+          </div>
+          <div class="phone"><img src="/rumbo/img/equipo.webp" alt="Mapa de habilidades de un equipo en el panel del coach" width="780" height="1560" loading="lazy"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="block" style="padding-top:0" aria-labelledby="gratis">
+      <div class="wrap">
+        <div class="head">
+          <p class="eyebrow">Parte gratuita</p>
+          <h2 id="gratis">El cambio pasa entre una sesión y la siguiente</h2>
+          <p>En la sesión aparece la claridad. Durante la semana aparecen las urgencias. Rumbo guarda lo que decidiste para que lo sostengas cuando más cuesta.</p>
+        </div>
+        <div class="pillars">
+          <article class="pillar">
+            <span class="glyph" aria-hidden="true">◎</span>
+            <h3>Compromisos</h3>
+            <p>Qué decidís sostener, para qué, para cuándo y cómo vas a saber que lo cumpliste.</p>
+            <span class="tag">Gratis</span>
+          </article>
+          <article class="pillar">
+            <span class="glyph" aria-hidden="true">✓</span>
+            <h3>Plan de acción</h3>
+            <p>Cada compromiso bajado a pasos concretos con fecha. Los vencidos se marcan solos.</p>
+            <span class="tag">Gratis</span>
+          </article>
+          <article class="pillar">
+            <span class="glyph" aria-hidden="true">✎</span>
+            <h3>Aprendizajes</h3>
+            <p>La idea que más te resonó de cada sesión o taller, y la situación donde la vas a aplicar.</p>
+            <span class="tag">Gratis</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" style="padding-top:0" aria-labelledby="premium-title">
+      <div class="wrap">
+        <div class="head" style="margin-bottom:24px">
+          <p class="eyebrow">Plan Premium</p>
+          <h2 id="premium-title">Herramientas para ir más lejos</h2>
+        </div>
+
+        <article class="feature">
+          <div class="fcopy">
+            <span class="tag gold">Premium</span>
+            <h3>Entrená cada habilidad en cinco etapas</h3>
+            <p>El recorrido FORMA lleva cada habilidad de la teoría a la práctica real: Fundamentos, Observación, Roleplay, Mentoreo en acción y Autonomía.</p>
+            <ul>
+              <li>Herramientas guiadas: A.E.R.A., GROW y Para Quién · Qué Digo · Cómo Lo Digo</li>
+              <li>Cada práctica se vuelve un compromiso con fecha</li>
+              <li>Devoluciones de tu coach en cada etapa</li>
+            </ul>
+          </div>
+          <div class="phone"><img src="/rumbo/img/recorrido.webp" alt="Recorrido FORMA de gestión emocional con el método A.E.R.A." width="780" height="1560" loading="lazy"></div>
+        </article>
+
+        <article class="feature">
+          <div class="fcopy">
+            <span class="tag gold">Premium</span>
+            <h3>Objetivos SMART, letra por letra</h3>
+            <p>Diseñá metas propias, más allá de las sesiones. La app te guía para que cada objetivo sea específico, medible, alcanzable, relevante y con fecha.</p>
+            <div class="smart" aria-label="Específico, Medible, Alcanzable, Relevante, Temporal"><span>S</span><span>M</span><span>A</span><span>R</span><span>T</span></div>
+            <p class="smart-legend">Específico · Medible · Alcanzable · Relevante · Temporal</p>
+            <ul>
+              <li>Indicador, valor actual y meta para cada objetivo</li>
+              <li>Barra de avance y días que faltan para la fecha límite</li>
+              <li>Áreas: profesional, personal, finanzas, salud, relaciones, aprendizaje</li>
+            </ul>
+          </div>
+          <div class="phone"><img src="/rumbo/img/smart.webp" alt="Pantalla de Objetivos SMART con un objetivo al 33% de avance" width="780" height="1560" loading="lazy"></div>
+        </article>
+
+        <article class="feature">
+          <div class="fcopy">
+            <span class="tag gold">Premium</span>
+            <h3>Tu avance, semana a semana</h3>
+            <p>Cinco minutos por semana: cuánto avanzaste del 1 al 10, qué lograste, qué te frenó y cuál es tu próximo paso. La curva te muestra la tendencia.</p>
+            <ul>
+              <li>Compromisos cumplidos y acciones hechas, de un vistazo</li>
+              <li>Registro semanal con logros y obstáculos</li>
+              <li>Gráfico de evolución para conversar en tu próxima sesión</li>
+            </ul>
+          </div>
+          <div class="phone"><img src="/rumbo/img/avance.webp" alt="Pantalla Mi avance con el gráfico semanal" width="780" height="1560" loading="lazy"></div>
+        </article>
+
+        <article class="feature">
+          <div class="fcopy">
+            <span class="tag gold">Premium</span>
+            <h3>Tu coach te acompaña entre sesiones</h3>
+            <p>Si trabajás con Roberto, te vinculás con su código. Él ve tus compromisos y tu avance, te deja devoluciones y comparte la idea clave de cada sesión o taller.</p>
+            <ul>
+              <li>Notas de tu coach sobre tus compromisos y objetivos</li>
+              <li>Contenidos y prácticas de cada encuentro</li>
+              <li>Vos decidís: podés desvincularte cuando quieras</li>
+            </ul>
+          </div>
+          <div class="phone"><img src="/rumbo/img/coach-detalle.webp" alt="Panel del coach con el avance de un coachee" width="780" height="1560" loading="lazy"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="block steps-band" aria-labelledby="empezar">
+      <div class="wrap">
+        <div class="head">
+          <p class="eyebrow">Cómo empezar</p>
+          <h2 id="empezar">En dos minutos estás escribiendo tu primer compromiso</h2>
+        </div>
+        <ol class="steps">
+          <li><h3>Creá tu cuenta</h3><p>Con tu email y una contraseña. Es gratis.</p></li>
+          <li><h3>Escribí tu primer compromiso</h3><p>Ideal apenas termina la sesión, mientras la conversación está fresca.</p></li>
+          <li><h3>Vinculate con tu coach</h3><p>Si trabajás con Roberto, ingresá su código en Más › Mi coach.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="tuya">
+      <div class="wrap">
+        <article class="feature" style="border-top:0;padding-top:0">
+          <div class="fcopy">
+            <p class="eyebrow">Personalizada</p>
+            <h2 id="tuya" style="font-size:clamp(30px,3.6vw,42px);margin-top:10px">Una bitácora con tu nombre</h2>
+            <p>Cada persona tiene su propia bitácora: la Bitácora de Martina, la Bitácora de Juan. Las empresas la reciben con su nombre y su logo, para que el equipo la sienta propia.</p>
+            <ul>
+              <li>Para personas: tu bitácora toma tu nombre</li>
+              <li>Para empresas: nombre y logo de la organización, o de cada equipo</li>
+              <li>El método y el acompañamiento de Roberto, siempre presentes</li>
+            </ul>
+          </div>
+          <div class="phone"><img src="/rumbo/img/empresa-habilidades.webp" alt="Rumbo personalizada como Bitácora del Equipo Comercial con el logo de la empresa" width="780" height="1560" loading="lazy"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="block" style="padding-top:0" aria-labelledby="planes">
+      <div class="wrap">
+        <div class="head">
+          <p class="eyebrow">Planes</p>
+          <h2 id="planes">Empezá gratis. Sumá Premium cuando lo necesites</h2>
+        </div>
+        <div class="plans">
+          <article class="plan">
+            <h3>Gratis</h3>
+            <p class="price">$0 <small>para siempre</small></p>
+            <ul>
+              <li>Diagnóstico de habilidades y práctica semanal</li>
+              <li>Compromisos sin límite</li>
+              <li>Plan de acción con fechas</li>
+              <li>Aprendizajes de cada sesión</li>
+              <li>Vínculo con tu coach</li>
+            </ul>
+            <a class="btn btn-outline" href="/app/">Crear mi cuenta gratis</a>
+          </article>
+          <article class="plan premium">
+            <span class="tag gold">Recomendado</span>
+            <h3>Premium</h3>
+            <p class="price">Mensual</p>
+            <p class="note" style="margin-top:-6px">Suscripción mensual. El valor vigente figura en la app.</p>
+            <ul>
+              <li>Todo lo del plan gratis</li>
+              <li class="plus">Recorridos completos de habilidades blandas</li>
+              <li class="plus">Objetivos SMART</li>
+              <li class="plus">Mi avance con gráfico semanal</li>
+              <li class="plus">Contenidos de cada sesión y taller</li>
+              <li class="plus">Notas de tu coach</li>
+            </ul>
+            <a class="btn btn-gold" href="/app/">Empezar y pasar a Premium</a>
+            <p class="note">Pago por Mercado Pago o transferencia. Si hacés un proceso de coaching con Roberto, Premium puede estar incluido.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" style="padding-top:0" aria-labelledby="equipos">
+      <div class="wrap">
+        <div class="teams">
+          <div>
+            <p class="eyebrow">Para empresas y equipos</p>
+            <h2 id="equipos">Que los acuerdos del taller no se queden en el taller</h2>
+            <p>Con el código de tu empresa, cada participante hace su diagnóstico y practica entre encuentros. Roberto ve el mapa de habilidades del equipo para diseñar el taller y acompañar el avance de cada persona.</p>
+          </div>
+          <div class="ctas">
+            <a class="btn btn-gold" href="https://wa.me/5491136830740?text=Hola%20Roberto%2C%20quiero%20coordinar%20un%20taller%20para%20mi%20equipo" target="_blank" rel="noopener">Coordinar una reunión</a>
+            <a class="btn btn-line" href="https://www.robertocorvalancoach.com.ar/">Ver servicios</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" style="padding-top:16px" aria-labelledby="faq">
+      <div class="wrap">
+        <div class="head">
+          <p class="eyebrow">Preguntas frecuentes</p>
+          <h2 id="faq">Lo que suelen preguntar</h2>
+        </div>
+        <div class="faq">
+          <details><summary>¿La app es gratis?</summary><p class="ans">Sí. Compromisos, plan de acción y aprendizajes son gratis, sin límite de tiempo. Premium es una suscripción mensual opcional que suma objetivos SMART, el seguimiento semanal, los contenidos de las sesiones y las notas de tu coach.</p></details>
+          <details><summary>¿Tengo que descargar algo?</summary><p class="ans">No. Se abre en el navegador. En el celular podés agregarla a la pantalla de inicio y queda como una app más: en Android, desde el menú de Chrome con “Agregar a la pantalla principal”; en iPhone, desde Compartir con “Agregar a pantalla de inicio”.</p></details>
+          <details><summary>¿Qué es Rumbo?</summary><p class="ans">Rumbo Coaching y Mentoría es la app de Roberto Corvalán para sostener tu proceso de coaching: tu bitácora personal de habilidades, compromisos y objetivos. Es gratuita y tiene un plan Premium opcional.</p></details>
+          <details><summary>¿Qué diferencia hay entre la versión para personas y la de empresas?</summary><p class="ans">Cambian las habilidades que se evalúan: la de personas apunta al desarrollo personal y profesional; la de empresas, a lo que más pesa en el trabajo en equipo. Para usar la de empresas necesitás el código que te da tu organización.</p></details>
+          <details><summary>¿Necesito estar haciendo coaching con Roberto?</summary><p class="ans">No. Cualquier persona puede usarla para ordenar sus compromisos y objetivos. Si trabajás con Roberto, además podés vincularte con él para que te acompañe entre sesiones.</p></details>
+          <details><summary>¿Quién ve lo que escribo?</summary><p class="ans">Solo vos. Si te vinculás con tu coach, él también puede ver tus registros para acompañarte. Podés desvincularte en cualquier momento desde Más › Mi coach.</p></details>
+          <details><summary>¿Cómo pago Premium?</summary><p class="ans">Desde la app, por Mercado Pago o transferencia. Cuando hayas pagado, tocás “Ya pagué, avisar” y el plan se activa apenas se confirma el pago.</p></details>
+          <details><summary>¿Puedo borrar mi cuenta?</summary><p class="ans">Sí, desde Más › Mi cuenta. Se eliminan tu cuenta y todos tus registros de forma permanente.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="final" aria-labelledby="final">
+      <div class="wrap">
+        <h2 id="final">Tu próximo compromiso empieza hoy</h2>
+        <p>Creá tu cuenta gratis y escribí lo que decidiste en tu última conversación de coaching.</p>
+        <div class="ctas">
+          <a class="btn btn-navy" href="/app/">Crear mi cuenta gratis</a>
+          <a class="btn btn-outline" href="https://wa.me/5491136830740?text=Hola%20Roberto%2C%20quiero%20una%20consulta%20estrat%C3%A9gica%20gratuita" target="_blank" rel="noopener">Consulta estratégica gratuita</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

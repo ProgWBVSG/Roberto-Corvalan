@@ -8,6 +8,7 @@ const links = [
   { href: "#coaches", label: "Coaches" },
   { href: "#servicios", label: "Servicios" },
   { href: "#eventos", label: "Eventos" },
+  { href: "/rumbo", label: "Rumbo" },
 ];
 
 const socials = [

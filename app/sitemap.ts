@@ -10,6 +10,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
+      url: "https://robertocorvalan.com/rumbo",
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: "https://robertocorvalan.com/privacidad",
       lastModified: now,
       changeFrequency: "yearly",
