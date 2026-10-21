@@ -1,11 +1,10 @@
 {
-  "_instrucciones": "Pegá acá los datos de tu proyecto de Firebase (Configuración del proyecto > Tus apps > App web). Mientras apiKey esté vacío, la app funciona en modo demo.",
   "firebase": {
-    "apiKey": "",
-    "authDomain": "",
-    "projectId": "",
-    "storageBucket": "",
-    "messagingSenderId": "",
-    "appId": ""
+    "apiKey": "AIzaSyA4jcXi2yjV0503I5GkxtYMedwEHOstXkk",
+    "authDomain": "rumbo-1b1ed.firebaseapp.com",
+    "projectId": "rumbo-1b1ed",
+    "storageBucket": "rumbo-1b1ed.firebasestorage.app",
+    "messagingSenderId": "879269408911",
+    "appId": "1:879269408911:web:7f70719991d2ad2d8e80fa"
   }
 }
