@@ -1,4 +1,5 @@
 {
+  "_instrucciones": "Configuración de Firebase del proyecto rumbo-1b1ed. Va en public/app/app-config.json (reemplaza al vacío).",
   "firebase": {
     "apiKey": "AIzaSyA4jcXi2yjV0503I5GkxtYMedwEHOstXkk",
     "authDomain": "rumbo-1b1ed.firebaseapp.com",
