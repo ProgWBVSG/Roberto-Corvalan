@@ -24,6 +24,7 @@ export default async function Page() {
           <h2 className="font-display text-xl text-ink">Qué datos guardamos</h2>
           <ul className="space-y-2 list-disc pl-5">
             <li>Nombre y email, para crear tu cuenta.</li>
+              <li>Tu número de WhatsApp, para que tu coach pueda contactarte y coordinar las sesiones.</li>
             <li>Lo que escribís en la app: compromisos, acciones, aprendizajes, objetivos y registros semanales.</li>
             <li>Si avisás un pago, la fecha del aviso. Los datos de pago los procesa Mercado Pago o tu banco; la app no los recibe.</li>
           </ul>
